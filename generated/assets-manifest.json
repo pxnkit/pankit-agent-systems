@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-07-27T00:00:00.000Z",
+  "assetCount": 0,
+  "assets": [],
+  "policy": {
+    "repositoryAssetsImported": false,
+    "reason": "The project catalog uses text and interface-native presentation; no repository-owned or third-party media was ingested.",
+    "manualAssetsOverrideGenerated": true
+  }
+}

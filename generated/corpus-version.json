@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "version": "2026-07-27.manual.1",
+  "generatedAt": "2026-07-27T00:00:00.000Z",
+  "catalogProjectCount": 34,
+  "verifiedPublicProjectCount": 29,
+  "pendingTitleOnlyProjectCount": 5,
+  "featuredProjectCount": 8,
+  "rankedProjectCount": 6,
+  "knowledgeChunkCount": 30,
+  "searchDocumentCount": 34,
+  "sourceManifestVersion": 1,
+  "contentPolicyVersion": 1,
+  "manualOverrideRevision": 1,
+  "notes": [
+    "Manual project records override generated metadata.",
+    "Only allowlisted projects are present.",
+    "Explicit project and current employment or organization exclusions are enforced."
+  ]
+}

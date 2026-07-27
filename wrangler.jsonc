@@ -1,0 +1,46 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "pankit-research-portfolio",
+  "main": "./worker/index.ts",
+  "compatibility_date": "2026-05-22",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "dist/client",
+    "not_found_handling": "none",
+    "binding": "ASSETS",
+  },
+  "vars": {
+    "CHAT_MOCK_MODE": "true",
+    "AI_MODEL": "@cf/meta/llama-3.1-8b-instruct-fast",
+    "RATE_LIMIT_MAX_REQUESTS": "12",
+    "RATE_LIMIT_WINDOW_SECONDS": "60",
+  },
+  "env": {
+    "production": {
+      "name": "pankit-research-portfolio",
+      "assets": {
+        "directory": "dist/client",
+        "not_found_handling": "none",
+        "binding": "ASSETS",
+      },
+      "ai": {
+        "binding": "AI",
+      },
+      "vars": {
+        "CHAT_MOCK_MODE": "false",
+        "AI_MODEL": "@cf/meta/llama-3.1-8b-instruct-fast",
+        "RATE_LIMIT_MAX_REQUESTS": "12",
+        "RATE_LIMIT_WINDOW_SECONDS": "60",
+      },
+
+      // Optional distributed rate limiting. Create the namespace, then
+      // uncomment this block and replace the placeholder with its real ID.
+      // "kv_namespaces": [
+      //   {
+      //     "binding": "RATE_LIMIT_KV",
+      //     "id": "<RATE_LIMIT_KV_NAMESPACE_ID>"
+      //   }
+      // ]
+    },
+  },
+}

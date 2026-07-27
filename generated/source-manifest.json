@@ -1,0 +1,296 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-07-27",
+  "precedence": [
+    "manual-curation",
+    "local-readme-and-docs",
+    "trusted-github-metadata"
+  ],
+  "overridePolicy": "Manual descriptions, rankings, aliases, featured choices, and exclusions always override generated metadata.",
+  "trustedHosts": ["github.com"],
+  "sources": [
+    {
+      "projectSlug": "rka-lab",
+      "sourceIds": ["local:rka-lab:readme", "github:pxnkit/rka-lab"],
+      "primaryKind": "local-readme",
+      "localPath": "../rka-lab/README.md",
+      "trustedUrls": ["https://github.com/pxnkit/rka-lab"]
+    },
+    {
+      "projectSlug": "txnmem",
+      "sourceIds": ["local:txnmem:readme", "github:pxnkit/txnmem"],
+      "primaryKind": "local-readme",
+      "localPath": "../txnmem/README.md",
+      "trustedUrls": ["https://github.com/pxnkit/txnmem"]
+    },
+    {
+      "projectSlug": "chronicle-guard",
+      "sourceIds": [
+        "local:chronicle-guard:readme",
+        "github:pxnkit/chronicle-guard"
+      ],
+      "primaryKind": "local-readme",
+      "localPath": "../chronicle-guard/README.md",
+      "trustedUrls": ["https://github.com/pxnkit/chronicle-guard"]
+    },
+    {
+      "projectSlug": "intentledger",
+      "sourceIds": ["local:intentledger:readme", "github:pxnkit/intentledger"],
+      "primaryKind": "local-readme",
+      "localPath": "../intentledger/README.md",
+      "trustedUrls": ["https://github.com/pxnkit/intentledger"]
+    },
+    {
+      "projectSlug": "freshindex",
+      "sourceIds": ["local:freshindex:readme", "github:pxnkit/freshindex"],
+      "primaryKind": "local-readme",
+      "localPath": "../freshindex/README.md",
+      "trustedUrls": ["https://github.com/pxnkit/freshindex"]
+    },
+    {
+      "projectSlug": "recallresolve",
+      "sourceIds": [
+        "local:recallresolve:implementation-brief",
+        "github:pxnkit/recallresolve"
+      ],
+      "primaryKind": "local-implementation-brief",
+      "localPath": "../prompts/14_RECALLRESOLVE_PUBLICATION_GRADE_IMPLEMENTATION_PROMPT.md",
+      "trustedUrls": ["https://github.com/pxnkit/recallresolve"]
+    },
+    {
+      "projectSlug": "hippogate",
+      "sourceIds": ["local:hippogate:readme", "github:pxnkit/hippogate"],
+      "primaryKind": "local-readme",
+      "localPath": "../hippogate/README.md",
+      "trustedUrls": ["https://github.com/pxnkit/hippogate"]
+    },
+    {
+      "projectSlug": "hypothesisops",
+      "sourceIds": [
+        "local:hypothesisops:readme",
+        "github:pxnkit/hypothesisops"
+      ],
+      "primaryKind": "local-readme",
+      "localPath": "../hypothesisops/README.md",
+      "trustedUrls": ["https://github.com/pxnkit/hypothesisops"]
+    },
+    {
+      "projectSlug": "methodchain",
+      "sourceIds": ["local:methodchain:readme", "github:pxnkit/methodchain"],
+      "primaryKind": "local-readme",
+      "localPath": "../methodchain/README.md",
+      "trustedUrls": ["https://github.com/pxnkit/methodchain"]
+    },
+    {
+      "projectSlug": "changepilot",
+      "sourceIds": ["local:changepilot:readme", "github:pxnkit/changepilot"],
+      "primaryKind": "local-readme",
+      "localPath": "../changepilot/README.md",
+      "trustedUrls": ["https://github.com/pxnkit/changepilot"]
+    },
+    {
+      "projectSlug": "memequiv",
+      "sourceIds": ["local:memequiv:readme", "github:pxnkit/memequiv"],
+      "primaryKind": "local-readme",
+      "localPath": "../memequiv/README.md",
+      "trustedUrls": ["https://github.com/pxnkit/memequiv"]
+    },
+    {
+      "projectSlug": "currigraph",
+      "sourceIds": ["local:currigraph:readme", "github:pxnkit/currigraph"],
+      "primaryKind": "local-readme",
+      "localPath": "../currigraph/README.md",
+      "trustedUrls": ["https://github.com/pxnkit/currigraph"]
+    },
+    {
+      "projectSlug": "communicate-to-remember",
+      "sourceIds": [
+        "local:communicate-to-remember:readme",
+        "github:pxnkit/communicate-to-remember"
+      ],
+      "primaryKind": "local-readme",
+      "localPath": "../communicate-to-remember/README.md",
+      "trustedUrls": ["https://github.com/pxnkit/communicate-to-remember"]
+    },
+    {
+      "projectSlug": "scopeguard",
+      "sourceIds": ["local:scopeguard:readme", "github:pxnkit/scopeguard"],
+      "primaryKind": "local-readme",
+      "localPath": "../scopeguard/README.md",
+      "trustedUrls": ["https://github.com/pxnkit/scopeguard"]
+    },
+    {
+      "projectSlug": "worldmodel-lstar",
+      "sourceIds": [
+        "local:worldmodel-lstar:readme",
+        "github:pxnkit/worldmodel-lstar"
+      ],
+      "primaryKind": "local-readme",
+      "localPath": "../worldmodel-lstar/README.md",
+      "trustedUrls": ["https://github.com/pxnkit/worldmodel-lstar"]
+    },
+    {
+      "projectSlug": "lineagerag",
+      "sourceIds": ["local:lineagerag:readme", "github:pxnkit/lineagerag"],
+      "primaryKind": "local-readme",
+      "localPath": "../lineagerag/README.md",
+      "trustedUrls": ["https://github.com/pxnkit/lineagerag"]
+    },
+    {
+      "projectSlug": "robustask",
+      "sourceIds": ["local:robustask:readme", "github:pxnkit/robustask"],
+      "primaryKind": "local-readme",
+      "localPath": "../robustask/README.md",
+      "trustedUrls": ["https://github.com/pxnkit/robustask"]
+    },
+    {
+      "projectSlug": "skillfalsify",
+      "sourceIds": ["local:skillfalsify:readme", "github:pxnkit/skillfalsify"],
+      "primaryKind": "local-readme",
+      "localPath": "../skillfalsify/README.md",
+      "trustedUrls": ["https://github.com/pxnkit/skillfalsify"]
+    },
+    {
+      "projectSlug": "regimebank",
+      "sourceIds": ["local:regimebank:readme", "github:pxnkit/regimebank"],
+      "primaryKind": "local-readme",
+      "localPath": "../regimebank/README.md",
+      "trustedUrls": ["https://github.com/pxnkit/regimebank"]
+    },
+    {
+      "projectSlug": "memintervene",
+      "sourceIds": ["local:memintervene:readme", "github:pxnkit/memintervene"],
+      "primaryKind": "local-readme",
+      "localPath": "../memintervene/README.md",
+      "trustedUrls": ["https://github.com/pxnkit/memintervene"]
+    },
+    {
+      "projectSlug": "certicompress",
+      "sourceIds": [
+        "local:certicompress:readme",
+        "github:pxnkit/certicompress"
+      ],
+      "primaryKind": "local-readme",
+      "localPath": "../certicompress/README.md",
+      "trustedUrls": ["https://github.com/pxnkit/certicompress"]
+    },
+    {
+      "projectSlug": "tempo-trust",
+      "sourceIds": ["local:tempo-trust:readme", "github:pxnkit/tempo-trust"],
+      "primaryKind": "local-readme",
+      "localPath": "../tempo-trust/README.md",
+      "trustedUrls": ["https://github.com/pxnkit/tempo-trust"]
+    },
+    {
+      "projectSlug": "temporags",
+      "sourceIds": ["local:temporags:readme", "github:pxnkit/temporags"],
+      "primaryKind": "local-readme",
+      "localPath": "../temporags/README.md",
+      "trustedUrls": ["https://github.com/pxnkit/temporags"]
+    },
+    {
+      "projectSlug": "paramledger",
+      "sourceIds": ["local:paramledger:readme", "github:pxnkit/paramledger"],
+      "primaryKind": "local-readme",
+      "localPath": "../paramledger/README.md",
+      "trustedUrls": ["https://github.com/pxnkit/paramledger"]
+    },
+    {
+      "projectSlug": "verifysplit",
+      "sourceIds": ["local:verifysplit:readme", "github:pxnkit/verifysplit"],
+      "primaryKind": "local-readme",
+      "localPath": "../verifysplit/README.md",
+      "trustedUrls": ["https://github.com/pxnkit/verifysplit"]
+    },
+    {
+      "projectSlug": "evidroute",
+      "sourceIds": ["local:evidroute:readme", "github:pxnkit/evidroute"],
+      "primaryKind": "local-readme",
+      "localPath": "../evidroute/README.md",
+      "trustedUrls": ["https://github.com/pxnkit/evidroute"]
+    },
+    {
+      "projectSlug": "trace-mem",
+      "sourceIds": ["github:pxnkit/trace-mem"],
+      "primaryKind": "trusted-github-metadata",
+      "trustedUrls": ["https://github.com/pxnkit/trace-mem"]
+    },
+    {
+      "projectSlug": "barriernow",
+      "sourceIds": ["local:barriernow:readme", "github:pxnkit/barriernow"],
+      "primaryKind": "local-readme",
+      "localPath": "../barriernow/README.md",
+      "trustedUrls": ["https://github.com/pxnkit/barriernow"]
+    },
+    {
+      "projectSlug": "whofixesthis",
+      "sourceIds": ["local:whofixesthis:readme", "github:pxnkit/whofixesthis"],
+      "primaryKind": "local-readme",
+      "localPath": "../whofixesthis/README.md",
+      "trustedUrls": ["https://github.com/pxnkit/whofixesthis"]
+    },
+    {
+      "sourceIds": ["manual:ranked-projects"],
+      "primaryKind": "manual-curation",
+      "localPath": "data/ranked-projects.ts",
+      "trustedUrls": []
+    }
+  ],
+  "rankedEntries": [
+    {
+      "rank": 1,
+      "projectNumber": 24,
+      "title": "ChaffMem",
+      "slug": "chaffmem",
+      "sourceId": "ranked:project-24",
+      "sourceStatus": "pending",
+      "evidenceLevel": "title-only"
+    },
+    {
+      "rank": 2,
+      "projectNumber": 21,
+      "title": "MemEquiv",
+      "slug": "memequiv",
+      "sourceId": "github:pxnkit/memequiv",
+      "sourceStatus": "verified",
+      "evidenceLevel": "public-repository",
+      "trustedUrl": "https://github.com/pxnkit/memequiv"
+    },
+    {
+      "rank": 3,
+      "projectNumber": 41,
+      "title": "SynthesisAutopsy",
+      "slug": "synthesisautopsy",
+      "sourceId": "ranked:project-41",
+      "sourceStatus": "pending",
+      "evidenceLevel": "title-only"
+    },
+    {
+      "rank": 4,
+      "projectNumber": 46,
+      "title": "RowWitness",
+      "slug": "rowwitness",
+      "sourceId": "ranked:project-46",
+      "sourceStatus": "pending",
+      "evidenceLevel": "title-only"
+    },
+    {
+      "rank": 5,
+      "projectNumber": 45,
+      "title": "ProbeDiff",
+      "slug": "probediff",
+      "sourceId": "ranked:project-45",
+      "sourceStatus": "pending",
+      "evidenceLevel": "title-only"
+    },
+    {
+      "rank": 6,
+      "projectNumber": 35,
+      "title": "VeriForget",
+      "slug": "veriforget",
+      "sourceId": "ranked:project-35",
+      "sourceStatus": "pending",
+      "evidenceLevel": "title-only"
+    }
+  ]
+}

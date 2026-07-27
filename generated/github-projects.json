@@ -1,0 +1,212 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": "2026-07-27",
+  "source": "https://github.com/pxnkit?tab=repositories",
+  "projectCount": 29,
+  "overridePolicy": "Manual project records and exclusions take precedence over this discovery snapshot.",
+  "projects": [
+    {
+      "slug": "rka-lab",
+      "name": "RKA-Lab",
+      "description": "Causal evaluation from memory recognition through recall, source recollection, and executable action.",
+      "url": "https://github.com/pxnkit/rka-lab",
+      "sourceId": "github:pxnkit/rka-lab"
+    },
+    {
+      "slug": "txnmem",
+      "name": "TxnMem",
+      "description": "Transactional shared memory and semantic serializability for concurrent agent teams.",
+      "url": "https://github.com/pxnkit/txnmem",
+      "sourceId": "github:pxnkit/txnmem"
+    },
+    {
+      "slug": "chronicle-guard",
+      "name": "ChronicleGuard",
+      "description": "Source-aware multimodal recall integrity with paired synthetic evaluation.",
+      "url": "https://github.com/pxnkit/chronicle-guard",
+      "sourceId": "github:pxnkit/chronicle-guard"
+    },
+    {
+      "slug": "intentledger",
+      "name": "IntentLedger",
+      "description": "Cancellation-safe prospective memory for long-horizon agents.",
+      "url": "https://github.com/pxnkit/intentledger",
+      "sourceId": "github:pxnkit/intentledger"
+    },
+    {
+      "slug": "freshindex",
+      "name": "FreshIndex",
+      "description": "Capacity-aware proactive verification for mutable agent memory.",
+      "url": "https://github.com/pxnkit/freshindex",
+      "sourceId": "github:pxnkit/freshindex"
+    },
+    {
+      "slug": "recallresolve",
+      "name": "RecallResolve",
+      "description": "Evidence-first exact product-recall variant resolution with active multimodal evidence acquisition.",
+      "url": "https://github.com/pxnkit/recallresolve",
+      "sourceId": "github:pxnkit/recallresolve"
+    },
+    {
+      "slug": "hippogate",
+      "name": "HippoGate",
+      "description": "Belief-state control for episodic-to-semantic memory consolidation.",
+      "url": "https://github.com/pxnkit/hippogate",
+      "sourceId": "github:pxnkit/hippogate"
+    },
+    {
+      "slug": "hypothesisops",
+      "name": "HypothesisOps",
+      "description": "Safe interventional search for reproducible cloud incident diagnosis.",
+      "url": "https://github.com/pxnkit/hypothesisops",
+      "sourceId": "github:pxnkit/hypothesisops"
+    },
+    {
+      "slug": "methodchain",
+      "name": "MethodChain",
+      "description": "Evidence-governed reconstruction of experimental protocol citation chains.",
+      "url": "https://github.com/pxnkit/methodchain",
+      "sourceId": "github:pxnkit/methodchain"
+    },
+    {
+      "slug": "changepilot",
+      "name": "ChangePilot",
+      "description": "Version-aware Python API migration analysis, conservative codemods, and closed-world verification.",
+      "url": "https://github.com/pxnkit/changepilot",
+      "sourceId": "github:pxnkit/changepilot"
+    },
+    {
+      "slug": "memequiv",
+      "name": "MemEquiv",
+      "description": "Executable metamorphic contracts for persistent agent memory.",
+      "url": "https://github.com/pxnkit/memequiv",
+      "sourceId": "github:pxnkit/memequiv"
+    },
+    {
+      "slug": "currigraph",
+      "name": "CurriGraph",
+      "description": "Directed transfer graphs for online curriculum selection in tool agents.",
+      "url": "https://github.com/pxnkit/currigraph",
+      "sourceId": "github:pxnkit/currigraph"
+    },
+    {
+      "slug": "communicate-to-remember",
+      "name": "Communicate to Remember",
+      "description": "Joint communication and memory routing with a contextual bandit.",
+      "url": "https://github.com/pxnkit/communicate-to-remember",
+      "sourceId": "github:pxnkit/communicate-to-remember"
+    },
+    {
+      "slug": "scopeguard",
+      "name": "ScopeGuard",
+      "description": "Argument-level memory non-interference for tool-using agents.",
+      "url": "https://github.com/pxnkit/scopeguard",
+      "sourceId": "github:pxnkit/scopeguard"
+    },
+    {
+      "slug": "worldmodel-lstar",
+      "name": "WorldModel-L*",
+      "description": "Active world-model induction for tool agents with explicit symbolic uncertainty.",
+      "url": "https://github.com/pxnkit/worldmodel-lstar",
+      "sourceId": "github:pxnkit/worldmodel-lstar"
+    },
+    {
+      "slug": "lineagerag",
+      "name": "LineageRAG",
+      "description": "Copy-aware evidence corroboration for offline retrieval-augmented verification.",
+      "url": "https://github.com/pxnkit/lineagerag",
+      "sourceId": "github:pxnkit/lineagerag"
+    },
+    {
+      "slug": "robustask",
+      "name": "RobustAsk",
+      "description": "Reliability-aware clarification under noisy and changing user answers.",
+      "url": "https://github.com/pxnkit/robustask",
+      "sourceId": "github:pxnkit/robustask"
+    },
+    {
+      "slug": "skillfalsify",
+      "name": "FALSIFY",
+      "description": "Active counterexample discovery for safer procedural memory in tool-using agents.",
+      "url": "https://github.com/pxnkit/skillfalsify",
+      "sourceId": "github:pxnkit/skillfalsify"
+    },
+    {
+      "slug": "regimebank",
+      "name": "RegimeBank",
+      "description": "Regime-aware memory for agents operating in recurring environments.",
+      "url": "https://github.com/pxnkit/regimebank",
+      "sourceId": "github:pxnkit/regimebank"
+    },
+    {
+      "slug": "memintervene",
+      "name": "MemIntervene",
+      "description": "Replay-defined causal evaluation for action-grounded agent memory.",
+      "url": "https://github.com/pxnkit/memintervene",
+      "sourceId": "github:pxnkit/memintervene"
+    },
+    {
+      "slug": "certicompress",
+      "name": "CertiCompress",
+      "description": "Proof-carrying memory consolidation for action-coupled agents.",
+      "url": "https://github.com/pxnkit/certicompress",
+      "sourceId": "github:pxnkit/certicompress"
+    },
+    {
+      "slug": "tempo-trust",
+      "name": "TEMPO-Trust",
+      "description": "Claim-conditioned online source reliability for temporal evidence streams.",
+      "url": "https://github.com/pxnkit/tempo-trust",
+      "sourceId": "github:pxnkit/tempo-trust"
+    },
+    {
+      "slug": "temporags",
+      "name": "TempoRGS",
+      "description": "Reader-aware parallel anytime reranker-guided graph search under latency budgets.",
+      "url": "https://github.com/pxnkit/temporags",
+      "sourceId": "github:pxnkit/temporags"
+    },
+    {
+      "slug": "paramledger",
+      "name": "ParamLedger",
+      "description": "Evidence-governed promotion and rollback for parametric memory.",
+      "url": "https://github.com/pxnkit/paramledger",
+      "sourceId": "github:pxnkit/paramledger"
+    },
+    {
+      "slug": "verifysplit",
+      "name": "VerifySplit",
+      "description": "Independent-evidence controls for shared failure in generator-verifier systems.",
+      "url": "https://github.com/pxnkit/verifysplit",
+      "sourceId": "github:pxnkit/verifysplit"
+    },
+    {
+      "slug": "evidroute",
+      "name": "EvidRoute",
+      "description": "Risk-constrained sequential routing across heterogeneous evidence sources.",
+      "url": "https://github.com/pxnkit/evidroute",
+      "sourceId": "github:pxnkit/evidroute"
+    },
+    {
+      "slug": "trace-mem",
+      "name": "TraceMem",
+      "description": "Causal reliability maps for persistent agents with fault injection, counterfactual replay, and pre-commit verification.",
+      "url": "https://github.com/pxnkit/trace-mem",
+      "sourceId": "github:pxnkit/trace-mem"
+    },
+    {
+      "slug": "barriernow",
+      "name": "BarrierNow",
+      "description": "Fresh-evidence research workbench for personalized accessible route decisions.",
+      "url": "https://github.com/pxnkit/barriernow",
+      "sourceId": "github:pxnkit/barriernow"
+    },
+    {
+      "slug": "whofixesthis",
+      "name": "WhoFixesThis",
+      "description": "Temporal responsibility search for evidence-based civic service routing.",
+      "url": "https://github.com/pxnkit/whofixesthis",
+      "sourceId": "github:pxnkit/whofixesthis"
+    }
+  ]
+}
