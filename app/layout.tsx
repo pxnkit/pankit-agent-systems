@@ -5,7 +5,7 @@ import "./globals.css";
 
 const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
-  "https://pankit-agent-systems.sites.openai.com";
+  "https://pankit-agent-systems.brahmkhatripankit.chatgpt.site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

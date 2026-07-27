@@ -3,7 +3,7 @@ import type { MetadataRoute } from "next";
 export default function robots(): MetadataRoute.Robots {
   const base =
     process.env.NEXT_PUBLIC_SITE_URL ??
-    "https://pankit-agent-systems.sites.openai.com";
+    "https://pankit-agent-systems.brahmkhatripankit.chatgpt.site";
   return {
     rules: {
       userAgent: "*",
