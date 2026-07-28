@@ -204,6 +204,8 @@ Worker, and runs browser tests against the Worker preview runtime.
 `npm run deploy` with the protected environment credentials. When the public
 Turnstile key is nonempty, a preflight lists only the configured Worker secret
 names and refuses to build unless `TURNSTILE_SECRET_KEY` is already present.
+The deployment job remains skipped until `NEXT_PUBLIC_SITE_URL` is configured,
+so a newly created repository cannot publish to an unintended account.
 
 Create a protected GitHub environment named `production` and add:
 
