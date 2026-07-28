@@ -1,47 +1,48 @@
 # Architecture
 
-This portfolio is a server-rendered React application with a grounded research
-chat. It is built with the bundled **vinext/Vite Cloudflare Worker starter**.
-That runtime choice is deliberate and is the source of truth for local
-development, builds, and deployment.
+This portfolio is a Next.js App Router application with a grounded research
+chat. `@opennextjs/cloudflare` transforms the standard Next.js build for the
+Cloudflare Workers runtime. The committed OpenNext and Wrangler configuration
+is the source of truth for local preview, CI, and production deployment.
 
 ## Runtime truth
 
-vinext reproduces the Next.js App Router programming model on Vite and React
-Server Components. The project therefore keeps familiar App Router semantics:
+The application uses standard App Router semantics:
 
 - file-system routes under `app/`;
 - server and client component boundaries;
 - route handlers such as `app/api/chat/route.ts`;
 - metadata, layouts, loading states, and server-side rendering.
 
-The production artifact is a Cloudflare Worker ES module. Vite and
-`@cloudflare/vite-plugin` produce the client, RSC, and SSR environments, while
-`worker/index.ts` delegates application requests to
-`vinext/server/app-router-entry`.
+`next build` produces `.next/`. The OpenNext build then adapts that output into
+`.open-next/worker.js` and `.open-next/assets`. Wrangler serves the adapted
+artifact in the local `workerd` runtime and publishes the same artifact to the
+public Cloudflare Worker.
 
-This is **not** a standard `next build`, an OpenNext conversion, or an
-`@opennextjs/cloudflare` application. No OpenNext adapter or configuration
-belongs in this repository. vinext has a smaller and newer compatibility
-surface than mature Next.js runtimes, so new framework APIs should be verified
-against the pinned vinext version before adoption.
+Server code uses the Next.js Node.js runtime. `next.config.ts` initializes
+OpenNext binding support for `next dev`, and server routes obtain bindings
+through `getCloudflareContext()` from `@opennextjs/cloudflare`. Direct
+`cloudflare:workers` imports and `runtime = "edge"` declarations do not belong
+in application routes.
 
 ## System view
 
 ```mermaid
 flowchart LR
-    B["Browser"] --> W["Cloudflare Worker (ESM)"]
-    W --> V["vinext App Router"]
-    V --> P["Portfolio pages and project routes"]
-    V --> C["POST /api/chat"]
+    B["Browser"] --> W["Public Cloudflare Worker"]
+    W --> O["OpenNext request handler"]
+    O --> P["Next.js pages and project routes"]
+    O --> C["POST /api/chat"]
     C --> G["Input, abuse, and scope guards"]
     G --> R["Allowlisted corpus retrieval"]
     R --> M{"Chat mode"}
     M -->|"mock"| D["Deterministic grounded response"]
-    M -->|"live"| A["Workers AI binding: AI"]
-    A --> O["Grounded answer with sources"]
-    D --> O
-    O --> B
+    M -->|"retrieval-only"| F["Extractive grounded response"]
+    M -->|"cloudflare"| A["Workers AI binding: AI"]
+    A --> S["Validated SSE stream"]
+    D --> S
+    F --> S
+    S --> B
     K["Optional RATE_LIMIT_KV"] --> G
     T["Optional Turnstile verification"] --> G
 ```
@@ -52,14 +53,14 @@ Portfolio content is assembled before deployment:
 
 ```mermaid
 flowchart LR
-    L["Explicit 29-repository allowlist"] --> X["Content extraction"]
-    S["Allowlisted sibling README files"] --> X
-    E["Editorial overrides and exclusions"] --> X
+    L["Explicit 29-repository allowlist"] --> X["Canonical corpus builder"]
+    S["Allowlisted README and metadata"] --> X
+    E["Editorial MDX and exclusions"] --> X
     R["Manual title-only shortlist entries"] --> X
-    X --> J["Committed generated data"]
+    X --> J["Manifest, chunks, index, corpus version"]
     J --> U["Pages, project cards, and filters"]
-    J --> R["Chat retrieval corpus"]
-    Q["verify:content"] --> J
+    J --> C["Closed chat retrieval corpus"]
+    Q["Policy and mandatory retrieval checks"] --> J
 ```
 
 The application never scans arbitrary repositories at request time and never
@@ -77,61 +78,77 @@ workflow.
 
 ### Portfolio pages
 
-1. The Worker receives the request.
-2. vinext resolves the App Router route.
+1. The public `workers.dev` route receives the request.
+2. The OpenNext Worker resolves the App Router route.
 3. Server components read committed portfolio data.
 4. Client components hydrate only the interactions that need browser state,
    such as filters, theme selection, and the chat composer.
-5. Static assets are served through the `ASSETS` binding.
+5. Static assets are served from `.open-next/assets` through the `ASSETS`
+   binding. Fingerprinted `/_next/static/*` assets carry immutable caching.
 
 ### Chat
 
-1. The browser sends a bounded message, short recent history, and an optional
-   Turnstile token to `POST /api/chat`.
+1. The browser sends a question of at most 700 characters, no more than six
+   recent history items, and an optional Turnstile token to `POST /api/chat`.
 2. The route validates shape and size, applies abuse controls, and rejects
    unsupported methods or content types.
-3. Retrieval runs only over the committed allowlisted corpus.
+3. Retrieval selects four to six unique sources from the committed allowlisted
+   corpus.
 4. The model prompt treats retrieved text as evidence, never as instructions.
-5. Mock mode returns a deterministic response without a provider call. Live
-   mode calls the `AI` Workers AI binding.
-6. The response streams text and ends with structured source cards. If evidence
-   is insufficient, the route narrows the answer or abstains.
+5. Mock mode is deterministic, retrieval-only mode is extractive, and
+   Cloudflare mode calls the `AI` Workers AI binding.
+6. Cloudflare mode consumes the actual model token stream, buffers through each
+   citation boundary, and validates every factual segment against its approved
+   source before releasing it. Raw uncited model tokens never reach the
+   browser.
+7. Invalid segments, unsupported output, or failed generation fall back to
+   grounded retrieval rather than open-domain model knowledge.
+8. The route streams `metadata`, optional `fallback`, `source-list`,
+   `text-delta`, and `completion` Server-Sent Events. Stream-safe terminal
+   failures may emit `error`.
 
 The detailed policy lives in [Chat grounding](chat-grounding.md).
 
 ## Cloudflare bindings
 
-| Binding or value       | Requirement                               | Purpose                                                        |
-| ---------------------- | ----------------------------------------- | -------------------------------------------------------------- |
-| `ASSETS`               | Required by the Worker entry              | Serves `dist/client` assets                                    |
-| `AI`                   | Required for live chat                    | Runs the configured Workers AI model                           |
-| `RATE_LIMIT_KV`        | Optional                                  | Shares rate-limit counters across Worker isolates              |
-| `TURNSTILE_SECRET_KEY` | Optional, paired with the public site key | Verifies Turnstile tokens server-side                          |
-| `IP_HASH_SALT`         | Recommended secret in production          | Separates one-way rate-limit keys from raw network identifiers |
-| `CHAT_MOCK_MODE`       | Required configuration                    | Selects deterministic mock or live AI behavior                 |
-| `AI_MODEL`             | Required in live mode                     | Names the Workers AI model                                     |
+| Binding or value                | Requirement                               | Purpose                                                        |
+| ------------------------------- | ----------------------------------------- | -------------------------------------------------------------- |
+| `ASSETS`                        | Required                                  | Serves `.open-next/assets`                                     |
+| `AI`                            | Cloudflare chat mode                      | Runs the configured Workers AI model                           |
+| `RATE_LIMIT_KV`                 | Optional                                  | Shares abuse-throttle counters across Worker isolates          |
+| `TURNSTILE_SECRET_KEY`          | Optional, paired with the public site key | Verifies Turnstile tokens server-side                          |
+| `RATE_LIMIT_SALT`               | Recommended secret in production          | Separates one-way rate-limit keys from raw network identifiers |
+| `AI_MODE`                       | Required                                  | Selects mock, retrieval-only, or Cloudflare behavior           |
+| `AI_MODEL_PRIMARY`              | Cloudflare chat mode                      | Names the primary Workers AI model                             |
+| `AI_MODEL_ECONOMY`              | Optional                                  | Names the bounded economy-routing model                        |
+| `AI_MODEL_CHALLENGER`           | Evaluation only                           | Names the explicitly invoked challenger model                  |
+| `ENABLE_ECONOMY_ROUTING`        | Optional                                  | Enables the economy-routing policy                             |
+| `MAX_SESSION_GENERATED_ANSWERS` | Required                                  | Bounds generated answers per browser session                   |
+| `MAX_QUESTION_CHARACTERS`       | Required                                  | Enforces the server question limit                             |
 
-Without `RATE_LIMIT_KV`, any in-memory limiter is only best-effort per Worker
-isolate and must not be described as a global quota. Without Turnstile
-configuration, the chat still applies its other input and rate controls.
+Without `RATE_LIMIT_KV`, request and session counters are non-durable and local
+to one Worker isolate. They reset on eviction, restart, or deploy and are not
+coordinated across isolates or points of presence, so they must not be
+described as a global quota. Turnstile is optional, but the public site key and
+server secret must be configured as a pair; a mismatch makes health degraded
+and generated chat fail closed.
 
 ## Repository map
 
-| Path                   | Responsibility                                                         |
-| ---------------------- | ---------------------------------------------------------------------- |
-| `app/`                 | Routes, layouts, metadata, and server request boundaries               |
-| `components/`          | Reusable navigation, portfolio, project, and chat UI                   |
-| `data/`                | Curated project authority, rankings, aliases, and exclusion policy     |
-| `generated/`           | Derived GitHub metadata, manifests, knowledge chunks, and search index |
-| `content/writing/`     | Reusable research, retrospective, and evaluation-note templates        |
-| `lib/`                 | Retrieval, chat, validation, and shared server utilities               |
-| `scripts/`             | Deterministic content generation and verification                      |
-| `worker/index.ts`      | Cloudflare Worker entry and image handling                             |
-| `vite.config.ts`       | vinext, Sites, and Cloudflare Vite integration                         |
-| `wrangler.jsonc`       | Direct Cloudflare Worker deployment and bindings                       |
-| `.openai/hosting.json` | Sites project metadata and managed-resource declarations               |
-| `tests/`               | Content, server, render, and browser contracts                         |
-| `docs/`                | Architecture, operations, content, and evaluation guidance             |
+| Path                  | Responsibility                                                         |
+| --------------------- | ---------------------------------------------------------------------- |
+| `app/`                | Routes, layouts, metadata, and server request boundaries               |
+| `components/`         | Reusable navigation, portfolio, project, and chat UI                   |
+| `content/`            | Editorial profile, overview, themes, map, scope, and writing sources   |
+| `data/`               | Curated project authority, rankings, aliases, and exclusion policy     |
+| `generated/`          | Derived GitHub metadata, manifests, knowledge chunks, and search index |
+| `lib/`                | Retrieval, chat, validation, and shared server utilities               |
+| `scripts/`            | Deterministic corpus generation and verification                       |
+| `open-next.config.ts` | OpenNext adapter behavior                                              |
+| `wrangler.jsonc`      | Worker entry, assets, public route, variables, and bindings            |
+| `public/_headers`     | Immutable cache policy for fingerprinted Next.js assets                |
+| `tests/`              | Content, server, render, and browser contracts                         |
+| `docs/`               | Architecture, operations, content, and evaluation guidance             |
 
 ## Security and privacy boundaries
 
@@ -154,4 +171,5 @@ configuration, the chat still applies its other input and rate controls.
 - Presenting synthetic smoke results as external scientific validation.
 - Indexing biographical or organizational details outside the approved
   portfolio content boundary.
-- Adding an OpenNext adapter alongside vinext.
+- Running a second Sites, vinext, or direct-Wrangler publishing path alongside
+  the OpenNext deployment contract.

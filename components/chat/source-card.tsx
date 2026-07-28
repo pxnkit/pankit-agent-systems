@@ -3,6 +3,8 @@ import Link from "next/link";
 export type TrustedSource = {
   id: string;
   title: string;
+  excerpt?: string;
+  projectSlug?: string;
   section?: string;
   type?: string;
   internalUrl?: string;
@@ -11,7 +13,10 @@ export type TrustedSource = {
 };
 
 export function SourceCard({ source }: { source: TrustedSource }) {
-  const href = source.internalUrl ?? source.url;
+  const href =
+    source.internalUrl ??
+    source.url ??
+    (source.projectSlug ? `/projects/${source.projectSlug}` : undefined);
   if (!href) return null;
   const external = href.startsWith("https://");
 

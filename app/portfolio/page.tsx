@@ -55,19 +55,26 @@ export default function PortfolioPage() {
           className="system-diagram"
           aria-label="Search leads to memory, verification, and action"
         >
-          {["Search", "Memory", "Verification", "Action"].map(
-            (label, index) => (
-              <div className="system-step" key={label}>
-                <span className="step-number">0{index + 1}</span>
-                <strong>{label}</strong>
-                {index < 3 ? (
-                  <span className="step-arrow" aria-hidden="true">
-                    →
-                  </span>
-                ) : null}
-              </div>
-            ),
-          )}
+          {[
+            ["Search", "Search-Guided+Reasoning"],
+            ["Memory", "Agent+Memory"],
+            ["Verification", "Verification"],
+            ["Action", "Tool-Agent+Evaluation"],
+          ].map(([label, pillar], index) => (
+            <Link
+              className="system-step"
+              href={`/projects?pillar=${pillar}`}
+              key={label}
+            >
+              <span className="step-number">0{index + 1}</span>
+              <strong>{label}</strong>
+              {index < 3 ? (
+                <span className="step-arrow" aria-hidden="true">
+                  →
+                </span>
+              ) : null}
+            </Link>
+          ))}
           <p>
             Evidence can also return the system to search or make it abstain.
           </p>

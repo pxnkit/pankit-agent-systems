@@ -1,9 +1,3 @@
-/**
- * Application-owned Cloudflare binding surface.
- *
- * Run `npx wrangler types cloudflare-env.d.ts --include-runtime false` after
- * changing wrangler.jsonc if you prefer Wrangler to regenerate this interface.
- */
 interface PortfolioAiBinding {
   run(
     model: string,
@@ -25,32 +19,42 @@ interface PortfolioRateLimitKv {
   ): Promise<void>;
 }
 
-declare namespace Cloudflare {
-  interface Env {
-    AI?: PortfolioAiBinding;
-    RATE_LIMIT_KV?: PortfolioRateLimitKv;
-    AI_MODEL: string;
-    CHAT_MOCK_MODE: string;
-    RATE_LIMIT_MAX_REQUESTS: string;
-    RATE_LIMIT_WINDOW_SECONDS: string;
-    TURNSTILE_SECRET_KEY?: string;
-    IP_HASH_SALT?: string;
-  }
-}
-
-declare module "cloudflare:workers" {
-  export const env: Cloudflare.Env;
+interface CloudflareEnv {
+  AI?: PortfolioAiBinding;
+  ASSETS: Fetcher;
+  RATE_LIMIT_KV?: PortfolioRateLimitKv;
+  GITHUB_USERNAME: string;
+  GITHUB_TOKEN?: string;
+  AI_MODE: "cloudflare" | "mock" | "retrieval-only";
+  AI_MODEL_PRIMARY: string;
+  AI_MODEL_ECONOMY: string;
+  AI_MODEL_CHALLENGER: string;
+  ENABLE_ECONOMY_ROUTING: string;
+  TURNSTILE_SECRET_KEY?: string;
+  RATE_LIMIT_SALT?: string;
+  MAX_SESSION_GENERATED_ANSWERS: string;
+  MAX_QUESTION_CHARACTERS: string;
+  NEXT_PUBLIC_SITE_URL?: string;
 }
 
 declare namespace NodeJS {
   interface ProcessEnv {
-    readonly AI_MODEL?: string;
-    readonly CHAT_MOCK_MODE?: string;
-    readonly RATE_LIMIT_MAX_REQUESTS?: string;
-    readonly RATE_LIMIT_WINDOW_SECONDS?: string;
-    readonly TURNSTILE_SECRET_KEY?: string;
-    readonly IP_HASH_SALT?: string;
-    readonly NEXT_PUBLIC_TURNSTILE_SITE_KEY?: string;
     readonly NEXT_PUBLIC_SITE_URL?: string;
+    readonly GITHUB_USERNAME?: string;
+    readonly GITHUB_TOKEN?: string;
+    readonly AI_MODE?: "cloudflare" | "mock" | "retrieval-only";
+    readonly AI_MODEL_PRIMARY?: string;
+    readonly AI_MODEL_ECONOMY?: string;
+    readonly AI_MODEL_CHALLENGER?: string;
+    readonly ENABLE_ECONOMY_ROUTING?: string;
+    readonly NEXT_PUBLIC_TURNSTILE_SITE_KEY?: string;
+    readonly TURNSTILE_SECRET_KEY?: string;
+    readonly RATE_LIMIT_SALT?: string;
+    readonly MAX_SESSION_GENERATED_ANSWERS?: string;
+    readonly MAX_QUESTION_CHARACTERS?: string;
+    readonly CONTACT_EMAIL?: string;
+    readonly NEXT_PUBLIC_LINKEDIN_URL?: string;
+    readonly NEXT_PUBLIC_CV_URL?: string;
+    readonly NEXT_PUBLIC_NEWSLETTER_URL?: string;
   }
 }

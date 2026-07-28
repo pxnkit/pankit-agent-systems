@@ -13,6 +13,7 @@ import {
   readOptionalJson,
   relativeProjectPath,
 } from "./_safe-project-data.mjs";
+import { checkCorpus } from "./build-corpus.mjs";
 
 /** @param {unknown} value @param {string} path @param {Array<{path: string, value: string}>} findings */
 function inspectValue(value, path, findings) {
@@ -58,7 +59,11 @@ async function generatedJsonFiles(directory) {
  * Checks data values, not source code comments, and never imports a repository
  * module. Missing generated artifacts are treated as an empty optional layer.
  *
- * @param {{projectsPath?: string, generatedDirectory?: string}} [options]
+ * @param {{
+ *   projectsPath?: string,
+ *   generatedDirectory?: string,
+ *   checkCorpus?: boolean
+ * }} [options]
  */
 export async function verifyContentExclusions(options = {}) {
   const projectsPath = assertProjectPath(
@@ -79,6 +84,25 @@ export async function verifyContentExclusions(options = {}) {
     inspectValue(value, relativeProjectPath(file), findings);
   }
 
+  let corpus = { ok: true, issues: [] };
+  if (options.checkCorpus !== false) {
+    try {
+      corpus = await checkCorpus({ projectsPath, generatedDirectory });
+    } catch (error) {
+      corpus = {
+        ok: false,
+        issues: [
+          error instanceof Error
+            ? error.message
+            : "Corpus validation failed unexpectedly.",
+        ],
+      };
+    }
+    corpus.issues.forEach((issue) =>
+      findings.push({ path: "generated corpus", value: issue }),
+    );
+  }
+
   const unique = [
     ...new Map(
       findings.map((finding) => [
@@ -87,13 +111,13 @@ export async function verifyContentExclusions(options = {}) {
       ]),
     ).values(),
   ];
-  return { ok: unique.length === 0, findings: unique };
+  return { ok: unique.length === 0 && corpus.ok, findings: unique, corpus };
 }
 
 async function main() {
   const result = await verifyContentExclusions();
   if (!result.ok) {
-    console.error("Excluded employment or materials content was found:");
+    console.error("Content verification failed:");
     result.findings.forEach((finding) =>
       console.error(`- ${finding.path}: ${finding.value}`),
     );

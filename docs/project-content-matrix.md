@@ -5,7 +5,7 @@ content and retrieval decision, not a claim that every project is production
 ready or scientifically validated. Project status and limitations must stay
 attached to the claims extracted from each repository README.
 
-Snapshot date: 2026-07-27.
+Snapshot date: 2026-07-28.
 
 ## Allowlisted repositories
 
@@ -92,3 +92,22 @@ set.
    validated” travel with any related capability or result claim.
 6. Generated files must preserve a repository identifier and source path so a
    displayed fact can be traced back to its approved source.
+
+## Corpus release invariants
+
+`npm run build:corpus` must reproduce the committed source manifest, knowledge
+chunks, search index, and corpus version. The build is accepted only when:
+
+- the allowlist contains exactly the 29 repositories above;
+- the five manual shortlist records remain title/rank-only;
+- all four explicit exclusions and mapped aliases are absent;
+- at least 15 allowlisted repositories have verified public evidence;
+- at least 60 unique chunks exist, including at least two profile chunks and
+  four research-theme chunks;
+- every chunk has a stable ID and registered approved source ID;
+- no excluded content, duplicate chunk, or broken internal route is emitted;
+- mandatory identity, overview, connection, exact-project, comparison, theme,
+  navigation, and excluded-topic retrieval fixtures pass.
+
+These are minimum safety and coverage checks, not evidence that every project
+has equivalent source depth or scientific validation.

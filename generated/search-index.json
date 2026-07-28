@@ -1,15 +1,22 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-07-27T00:00:00.000Z",
-  "documentCount": 34,
+  "version": "2026-07-28.aa1cb8f8150a",
+  "generatedAt": "2026-07-28T00:00:00.000Z",
+  "documentCount": 54,
   "documents": [
     {
       "id": "project:rka-lab",
       "kind": "project",
       "slug": "rka-lab",
       "title": "RKA-Lab",
-      "summary": "Evaluation from memory recognition through recall, source recollection, and action.",
-      "terms": ["rka lab", "rkabench", "agent memory", "causal evaluation"],
+      "summary": "Evaluation library for tracing remembered evidence from recognition through recall, source recollection, and action.",
+      "terms": [
+        "RKA Lab",
+        "RKABench",
+        "agent memory",
+        "causal evaluation",
+        "benchmarking"
+      ],
       "url": "https://github.com/pxnkit/rka-lab",
       "sourceIds": ["local:rka-lab:readme", "github:pxnkit/rka-lab"]
     },
@@ -18,8 +25,14 @@
       "kind": "project",
       "slug": "txnmem",
       "title": "TxnMem",
-      "summary": "Transactional shared memory for concurrent agent teams.",
-      "terms": ["txn mem", "memoryrace", "transactions", "serializability"],
+      "summary": "Transactional shared memory with explicit update semantics and replayable histories for concurrent agent teams.",
+      "terms": [
+        "Txn Mem",
+        "MemoryRace",
+        "shared memory",
+        "transactions",
+        "concurrency"
+      ],
       "url": "https://github.com/pxnkit/txnmem",
       "sourceIds": ["local:txnmem:readme", "github:pxnkit/txnmem"]
     },
@@ -28,8 +41,13 @@
       "kind": "project",
       "slug": "chronicle-guard",
       "title": "ChronicleGuard",
-      "summary": "Source-aware multimodal recall integrity and belief updates.",
-      "terms": ["chronicle guard", "multimodal recall", "episodic evidence"],
+      "summary": "Source-aware multimodal recall evaluation that keeps episodic evidence separate from mutable beliefs.",
+      "terms": [
+        "Chronicle Guard",
+        "multimodal recall",
+        "provenance",
+        "belief updates"
+      ],
       "url": "https://github.com/pxnkit/chronicle-guard",
       "sourceIds": [
         "local:chronicle-guard:readme",
@@ -41,8 +59,13 @@
       "kind": "project",
       "slug": "intentledger",
       "title": "IntentLedger",
-      "summary": "Cancellation-safe prospective memory with an append-only lifecycle ledger.",
-      "terms": ["intent ledger", "prospective memory", "idempotency"],
+      "summary": "Cancellation-safe prospective memory built on an append-only lifecycle ledger.",
+      "terms": [
+        "Intent Ledger",
+        "prospective memory",
+        "event ledger",
+        "idempotency"
+      ],
       "url": "https://github.com/pxnkit/intentledger",
       "sourceIds": ["local:intentledger:readme", "github:pxnkit/intentledger"]
     },
@@ -51,8 +74,13 @@
       "kind": "project",
       "slug": "freshindex",
       "title": "FreshIndex",
-      "summary": "Capacity-aware proactive verification for mutable memories.",
-      "terms": ["fresh index", "verification scheduling", "freshness"],
+      "summary": "Capacity-aware scheduling for proactive verification of mutable agent memories.",
+      "terms": [
+        "Fresh Index",
+        "verification scheduling",
+        "freshness",
+        "restless bandits"
+      ],
       "url": "https://github.com/pxnkit/freshindex",
       "sourceIds": ["local:freshindex:readme", "github:pxnkit/freshindex"]
     },
@@ -61,12 +89,13 @@
       "kind": "project",
       "slug": "recallresolve",
       "title": "RecallResolve",
-      "summary": "Exact product-recall variant resolution with active multimodal evidence.",
+      "summary": "Evidence-first resolution of exact consumer-product recall variants with active multimodal evidence acquisition.",
       "terms": [
-        "recall resolve",
-        "recallact",
+        "Recall Resolve",
+        "RecallAct Bench",
         "entity resolution",
-        "product recall"
+        "multimodal retrieval",
+        "product recalls"
       ],
       "url": "https://github.com/pxnkit/recallresolve",
       "sourceIds": [
@@ -79,8 +108,13 @@
       "kind": "project",
       "slug": "hippogate",
       "title": "HippoGate",
-      "summary": "Belief-state control for episodic-to-semantic memory consolidation.",
-      "terms": ["hippo gate", "memory consolidation", "pomdp"],
+      "summary": "Belief-state control for deciding whether to forget, probe, retain, or consolidate a candidate memory.",
+      "terms": [
+        "Hippo Gate",
+        "memory consolidation",
+        "POMDP",
+        "decision theory"
+      ],
       "url": "https://github.com/pxnkit/hippogate",
       "sourceIds": ["local:hippogate:readme", "github:pxnkit/hippogate"]
     },
@@ -89,8 +123,13 @@
       "kind": "project",
       "slug": "hypothesisops",
       "title": "HypothesisOps",
-      "summary": "Safe sequential interventional search for cloud incident diagnosis.",
-      "terms": ["hypothesis ops", "incident diagnosis", "causal search"],
+      "summary": "Safe sequential search over competing causal explanations for simulated cloud incidents.",
+      "terms": [
+        "Hypothesis Ops",
+        "incident diagnosis",
+        "causal search",
+        "safe interventions"
+      ],
       "url": "https://github.com/pxnkit/hypothesisops",
       "sourceIds": ["local:hypothesisops:readme", "github:pxnkit/hypothesisops"]
     },
@@ -99,8 +138,13 @@
       "kind": "project",
       "slug": "methodchain",
       "title": "MethodChain",
-      "summary": "Evidence-governed reconstruction of experimental protocol citation chains.",
-      "terms": ["method chain", "scientific methods", "provenance"],
+      "summary": "Evidence-governed reconstruction of experimental procedures spread across citations and supporting files.",
+      "terms": [
+        "Method Chain",
+        "provenance",
+        "scientific methods",
+        "citation chains"
+      ],
       "url": "https://github.com/pxnkit/methodchain",
       "sourceIds": ["local:methodchain:readme", "github:pxnkit/methodchain"]
     },
@@ -109,8 +153,8 @@
       "kind": "project",
       "slug": "changepilot",
       "title": "ChangePilot",
-      "summary": "Version-aware Python API migration analysis and conservative codemods.",
-      "terms": ["change pilot", "api migration", "static analysis", "codemod"],
+      "summary": "Version-aware Python API migration analysis with conservative edits and closed-world verification.",
+      "terms": ["Change Pilot", "static analysis", "API migration", "codemods"],
       "url": "https://github.com/pxnkit/changepilot",
       "sourceIds": ["local:changepilot:readme", "github:pxnkit/changepilot"]
     },
@@ -121,10 +165,13 @@
       "title": "MemEquiv",
       "summary": "Executable metamorphic contracts for persistent agent memory.",
       "terms": [
-        "mem equiv",
-        "metamorphic testing",
+        "Mem Equiv",
+        "Metamorphic Contracts for Personalized Memory",
         "agent memory",
-        "contracts"
+        "metamorphic testing",
+        "counterexamples",
+        "project 21",
+        "rank 2"
       ],
       "url": "https://github.com/pxnkit/memequiv",
       "sourceIds": ["local:memequiv:readme", "github:pxnkit/memequiv"]
@@ -134,8 +181,13 @@
       "kind": "project",
       "slug": "currigraph",
       "title": "CurriGraph",
-      "summary": "Directed transfer graphs for online curriculum selection.",
-      "terms": ["curri graph", "curriculum learning", "transfer graph"],
+      "summary": "Directed transfer graphs for online curriculum selection in tool agents.",
+      "terms": [
+        "Curri Graph",
+        "curriculum learning",
+        "transfer graphs",
+        "tool agents"
+      ],
       "url": "https://github.com/pxnkit/currigraph",
       "sourceIds": ["local:currigraph:readme", "github:pxnkit/currigraph"]
     },
@@ -144,8 +196,13 @@
       "kind": "project",
       "slug": "communicate-to-remember",
       "title": "Communicate to Remember",
-      "summary": "Joint communication and memory routing for multi-agent systems.",
-      "terms": ["contextual bandit", "multi-agent", "memory routing"],
+      "summary": "Contextual-bandit routing that jointly chooses communication and memory actions for multi-agent systems.",
+      "terms": [
+        "Communicate-to-Remember",
+        "multi-agent systems",
+        "contextual bandits",
+        "memory routing"
+      ],
       "url": "https://github.com/pxnkit/communicate-to-remember",
       "sourceIds": [
         "local:communicate-to-remember:readme",
@@ -157,13 +214,8 @@
       "kind": "project",
       "slug": "scopeguard",
       "title": "ScopeGuard",
-      "summary": "Argument-level memory non-interference for tool-using agents.",
-      "terms": [
-        "scope guard",
-        "memory safety",
-        "tool arguments",
-        "authorization"
-      ],
+      "summary": "Argument-level memory non-interference checks for tool-using agents.",
+      "terms": ["Scope Guard", "memory safety", "tool use", "non-interference"],
       "url": "https://github.com/pxnkit/scopeguard",
       "sourceIds": ["local:scopeguard:readme", "github:pxnkit/scopeguard"]
     },
@@ -172,8 +224,14 @@
       "kind": "project",
       "slug": "worldmodel-lstar",
       "title": "WorldModel-L*",
-      "summary": "Active symbolic world-model induction for hidden tool behavior.",
-      "terms": ["world model lstar", "active learning", "symbolic uncertainty"],
+      "summary": "Active symbolic world-model induction for learning hidden tool behavior before committing to a plan.",
+      "terms": [
+        "WorldModel L*",
+        "World Model L*",
+        "active learning",
+        "tool agents",
+        "symbolic uncertainty"
+      ],
       "url": "https://github.com/pxnkit/worldmodel-lstar",
       "sourceIds": [
         "local:worldmodel-lstar:readme",
@@ -185,13 +243,8 @@
       "kind": "project",
       "slug": "lineagerag",
       "title": "LineageRAG",
-      "summary": "Copy-aware evidence corroboration for retrieval-augmented verification.",
-      "terms": [
-        "lineage rag",
-        "copy detection",
-        "provenance",
-        "fact verification"
-      ],
+      "summary": "Copy-aware evidence corroboration that groups dependent documents before verification.",
+      "terms": ["Lineage RAG", "RAG", "provenance", "fact verification"],
       "url": "https://github.com/pxnkit/lineagerag",
       "sourceIds": ["local:lineagerag:readme", "github:pxnkit/lineagerag"]
     },
@@ -200,8 +253,13 @@
       "kind": "project",
       "slug": "robustask",
       "title": "RobustAsk",
-      "summary": "Reliability-aware clarification under noisy and changing answers.",
-      "terms": ["robust ask", "clarification", "uncertainty", "fatigue"],
+      "summary": "Reliability-aware clarification when user answers may be noisy, changing, or systematically confused.",
+      "terms": [
+        "Robust Ask",
+        "clarification",
+        "uncertainty",
+        "decision theory"
+      ],
       "url": "https://github.com/pxnkit/robustask",
       "sourceIds": ["local:robustask:readme", "github:pxnkit/robustask"]
     },
@@ -210,12 +268,13 @@
       "kind": "project",
       "slug": "skillfalsify",
       "title": "FALSIFY",
-      "summary": "Active minimal-counterexample discovery for procedural memory.",
+      "summary": "Active minimal-counterexample discovery for selective procedural memory.",
       "terms": [
-        "skill falsify",
-        "falsify",
-        "counterexample",
-        "procedural memory"
+        "SkillFalsify",
+        "Skill Falsify",
+        "counterexamples",
+        "procedural memory",
+        "tool safety"
       ],
       "url": "https://github.com/pxnkit/skillfalsify",
       "sourceIds": ["local:skillfalsify:readme", "github:pxnkit/skillfalsify"]
@@ -225,8 +284,13 @@
       "kind": "project",
       "slug": "regimebank",
       "title": "RegimeBank",
-      "summary": "Separate memories for operating regimes that disappear and recur.",
-      "terms": ["regime bank", "continual learning", "change point"],
+      "summary": "Separate memory banks for recurring operating regimes in non-stationary environments.",
+      "terms": [
+        "Regime Bank",
+        "continual learning",
+        "change points",
+        "recurring regimes"
+      ],
       "url": "https://github.com/pxnkit/regimebank",
       "sourceIds": ["local:regimebank:readme", "github:pxnkit/regimebank"]
     },
@@ -235,8 +299,8 @@
       "kind": "project",
       "slug": "memintervene",
       "title": "MemIntervene",
-      "summary": "Replay-defined causal evaluation of memory effects on action.",
-      "terms": ["mem intervene", "causal evaluation", "counterfactual replay"],
+      "summary": "Replay-defined causal evaluation of how stored memories change later agent actions.",
+      "terms": ["Mem Intervene", "causal evaluation", "replay", "agent memory"],
       "url": "https://github.com/pxnkit/memintervene",
       "sourceIds": ["local:memintervene:readme", "github:pxnkit/memintervene"]
     },
@@ -245,8 +309,13 @@
       "kind": "project",
       "slug": "certicompress",
       "title": "CertiCompress",
-      "summary": "Proof-carrying memory consolidation for action-coupled agents.",
-      "terms": ["certi compress", "memory consolidation", "behavior replay"],
+      "summary": "Proof-carrying consolidation for action-coupled agent memory.",
+      "terms": [
+        "Certi Compress",
+        "memory consolidation",
+        "provenance",
+        "behavior replay"
+      ],
       "url": "https://github.com/pxnkit/certicompress",
       "sourceIds": ["local:certicompress:readme", "github:pxnkit/certicompress"]
     },
@@ -255,12 +324,13 @@
       "kind": "project",
       "slug": "tempo-trust",
       "title": "TEMPO-Trust",
-      "summary": "Claim-conditioned online source reliability under drift and copying.",
+      "summary": "Claim-conditioned online source reliability under drift, copying, and delayed feedback.",
       "terms": [
-        "tempo trust",
+        "Tempo Trust",
+        "TEMPO Trust",
         "source reliability",
         "concept drift",
-        "copying"
+        "evidence aggregation"
       ],
       "url": "https://github.com/pxnkit/tempo-trust",
       "sourceIds": ["local:tempo-trust:readme", "github:pxnkit/tempo-trust"]
@@ -269,9 +339,18 @@
       "id": "project:temporags",
       "kind": "project",
       "slug": "temporags",
-      "title": "TempoRGS",
-      "summary": "Parallel anytime reranker-guided graph search under latency budgets.",
-      "terms": ["tempo rgs", "temporags", "graph search", "reranking", "rag"],
+      "title": "TempoRAGS",
+      "summary": "Reader-aware parallel anytime reranker-guided graph search under latency budgets.",
+      "terms": [
+        "Tempo RAGS",
+        "Tempo-RAGS",
+        "TempoRGS",
+        "Tempo RGS",
+        "Tempo-RGS",
+        "graph search",
+        "reranking",
+        "RAG"
+      ],
       "url": "https://github.com/pxnkit/temporags",
       "sourceIds": ["local:temporags:readme", "github:pxnkit/temporags"]
     },
@@ -280,9 +359,9 @@
       "kind": "project",
       "slug": "paramledger",
       "title": "ParamLedger",
-      "summary": "Evidence-governed promotion and rollback for parametric memory.",
+      "summary": "Evidence-governed promotion and rollback for parametric memory updates.",
       "terms": [
-        "param ledger",
+        "Param Ledger",
         "parametric memory",
         "model governance",
         "rollback"
@@ -295,8 +374,13 @@
       "kind": "project",
       "slug": "verifysplit",
       "title": "VerifySplit",
-      "summary": "Independent-evidence controls for generator-verifier shared failure.",
-      "terms": ["verify split", "generator verifier", "independent evidence"],
+      "summary": "Independent-evidence controls for shared failure in generator-verifier systems.",
+      "terms": [
+        "Verify Split",
+        "generator-verifier",
+        "independent evidence",
+        "trajectory search"
+      ],
       "url": "https://github.com/pxnkit/verifysplit",
       "sourceIds": ["local:verifysplit:readme", "github:pxnkit/verifysplit"]
     },
@@ -306,7 +390,7 @@
       "slug": "evidroute",
       "title": "EvidRoute",
       "summary": "Risk-constrained sequential routing across heterogeneous evidence sources.",
-      "terms": ["evid route", "source routing", "selective prediction", "rag"],
+      "terms": ["Evid Route", "source routing", "selective prediction", "RAG"],
       "url": "https://github.com/pxnkit/evidroute",
       "sourceIds": ["local:evidroute:readme", "github:pxnkit/evidroute"]
     },
@@ -315,8 +399,14 @@
       "kind": "project",
       "slug": "trace-mem",
       "title": "TraceMem",
-      "summary": "Causal reliability maps with fault injection and counterfactual replay.",
-      "terms": ["trace mem", "causal tracing", "fault injection", "replay"],
+      "summary": "Causal reliability maps for persistent agents using fault injection, counterfactual replay, and pre-commit verification.",
+      "terms": [
+        "Trace Mem",
+        "Trace-Mem",
+        "causal tracing",
+        "fault injection",
+        "agent memory"
+      ],
       "url": "https://github.com/pxnkit/trace-mem",
       "sourceIds": ["github:pxnkit/trace-mem"]
     },
@@ -325,12 +415,12 @@
       "kind": "project",
       "slug": "barriernow",
       "title": "BarrierNow",
-      "summary": "Fresh-evidence accessible route previews with calibrated abstention.",
+      "summary": "Fresh-evidence route previews under temporary, uncertain, and time-sensitive mobility barriers.",
       "terms": [
-        "barrier now",
+        "Barrier Now",
         "accessibility",
-        "route risk",
-        "active evidence"
+        "active evidence",
+        "risk-aware routing"
       ],
       "url": "https://github.com/pxnkit/barriernow",
       "sourceIds": ["local:barriernow:readme", "github:pxnkit/barriernow"]
@@ -340,11 +430,11 @@
       "kind": "project",
       "slug": "whofixesthis",
       "title": "WhoFixesThis",
-      "summary": "Temporal responsibility search for civic service routing.",
+      "summary": "Temporal responsibility search for evidence-based civic service routing.",
       "terms": [
-        "who fixes this",
+        "Who Fixes This",
         "civic technology",
-        "temporal graph",
+        "temporal graphs",
         "service routing"
       ],
       "url": "https://github.com/pxnkit/whofixesthis",
@@ -356,7 +446,8 @@
       "slug": "chaffmem",
       "title": "ChaffMem",
       "summary": "Curated rank 1, project 24; verified public details are pending.",
-      "terms": ["chaff mem", "project 24", "rank 1", "curated shortlist"],
+      "terms": ["Chaff Mem", "curated shortlist", "project 24", "rank 1"],
+      "url": "/projects/chaffmem",
       "sourceIds": ["ranked:project-24"]
     },
     {
@@ -366,11 +457,12 @@
       "title": "SynthesisAutopsy",
       "summary": "Curated rank 3, project 41; verified public details are pending.",
       "terms": [
-        "synthesis autopsy",
+        "Synthesis Autopsy",
+        "curated shortlist",
         "project 41",
-        "rank 3",
-        "curated shortlist"
+        "rank 3"
       ],
+      "url": "/projects/synthesisautopsy",
       "sourceIds": ["ranked:project-41"]
     },
     {
@@ -379,7 +471,8 @@
       "slug": "rowwitness",
       "title": "RowWitness",
       "summary": "Curated rank 4, project 46; verified public details are pending.",
-      "terms": ["row witness", "project 46", "rank 4", "curated shortlist"],
+      "terms": ["Row Witness", "curated shortlist", "project 46", "rank 4"],
+      "url": "/projects/rowwitness",
       "sourceIds": ["ranked:project-46"]
     },
     {
@@ -388,7 +481,8 @@
       "slug": "probediff",
       "title": "ProbeDiff",
       "summary": "Curated rank 5, project 45; verified public details are pending.",
-      "terms": ["probe diff", "project 45", "rank 5", "curated shortlist"],
+      "terms": ["Probe Diff", "curated shortlist", "project 45", "rank 5"],
+      "url": "/projects/probediff",
       "sourceIds": ["ranked:project-45"]
     },
     {
@@ -397,8 +491,289 @@
       "slug": "veriforget",
       "title": "VeriForget",
       "summary": "Curated rank 6, project 35; verified public details are pending.",
-      "terms": ["veri forget", "project 35", "rank 6", "curated shortlist"],
+      "terms": ["Veri Forget", "curated shortlist", "project 35", "rank 6"],
+      "url": "/projects/veriforget",
       "sourceIds": ["ranked:project-35"]
+    },
+    {
+      "id": "knowledge:content:profile:identity",
+      "kind": "profile",
+      "title": "Profile — Identity",
+      "summary": "Pankit Brahmkhatri is a Master's CS student at TU Dresden.",
+      "terms": ["profile", "identity", "research focus"],
+      "url": "/portfolio",
+      "sourceIds": ["curated:profile"]
+    },
+    {
+      "id": "knowledge:content:profile:research-focus",
+      "kind": "profile",
+      "title": "Profile — Research focus",
+      "summary": "His research focuses on agent memory, information retrieval, test-time learning, search-guided reasoning, and reliable tool agents. He builds research prototypes and evaluation systems, and presents their evidence, assumptions, and limitations explicitly.",
+      "terms": ["profile", "identity", "research focus"],
+      "url": "/portfolio",
+      "sourceIds": ["curated:profile"]
+    },
+    {
+      "id": "knowledge:content:research-overview:central-research-question",
+      "kind": "overview",
+      "title": "Research overview — Central research question",
+      "summary": "How can an agent turn remembered or retrieved evidence into a reliable action when sources can be incomplete, stale, conflicting, or wrong? The portfolio approaches this as an end-to-end systems question spanning memory, retrieval, adaptation, reasoning, tools, and evaluation.",
+      "terms": [
+        "research overview",
+        "agent systems",
+        "evaluation",
+        "central research question"
+      ],
+      "url": "/portfolio",
+      "sourceIds": ["curated:research-overview"]
+    },
+    {
+      "id": "knowledge:content:research-overview:research-method",
+      "kind": "overview",
+      "title": "Research overview — Research method",
+      "summary": "The projects make evidence boundaries visible, record provenance and time, test interventions or counterfactuals where possible, and distinguish deterministic software checks from broader research claims. They favor calibrated clarification or abstention when the indexed evidence is insufficient.",
+      "terms": [
+        "research overview",
+        "agent systems",
+        "evaluation",
+        "research method"
+      ],
+      "url": "/portfolio",
+      "sourceIds": ["curated:research-overview"]
+    },
+    {
+      "id": "knowledge:content:research-overview:shared-system-view",
+      "kind": "overview",
+      "title": "Research overview — Shared system view",
+      "summary": "The shared framing is memory as a decision system. Across the portfolio, reliable behavior depends on more than storing facts: an agent must recognize relevant evidence, recall it at the right moment, identify its source, decide whether it is still valid, and use it to choose an appropriate action.",
+      "terms": [
+        "research overview",
+        "agent systems",
+        "evaluation",
+        "shared system view"
+      ],
+      "url": "/portfolio",
+      "sourceIds": ["curated:research-overview"]
+    },
+    {
+      "id": "knowledge:content:research-themes:agent-memory-and-adaptation",
+      "kind": "theme",
+      "title": "Research themes — Agent memory and adaptation",
+      "summary": "This theme studies what an agent should retain, consolidate, correct, or forget. It treats memory as a controlled state that must remain useful across changing contexts rather than as an unbounded transcript.",
+      "terms": [
+        "research themes",
+        "agent memory",
+        "retrieval",
+        "test-time learning",
+        "reasoning",
+        "tool agents",
+        "agent memory and adaptation"
+      ],
+      "url": "/portfolio#themes-heading",
+      "sourceIds": ["curated:research-themes"]
+    },
+    {
+      "id": "knowledge:content:research-themes:information-retrieval-and-evidence",
+      "kind": "theme",
+      "title": "Research themes — Information retrieval and evidence",
+      "summary": "This theme studies recall, source recollection, provenance, temporal validity, and selective evidence acquisition. The goal is to retrieve evidence that is not merely similar to a query, but relevant, attributable, and timely enough to support a decision.",
+      "terms": [
+        "research themes",
+        "agent memory",
+        "retrieval",
+        "test-time learning",
+        "reasoning",
+        "tool agents",
+        "information retrieval and evidence"
+      ],
+      "url": "/portfolio#themes-heading",
+      "sourceIds": ["curated:research-themes"]
+    },
+    {
+      "id": "knowledge:content:research-themes:test-time-learning",
+      "kind": "theme",
+      "title": "Research themes — Test-time learning",
+      "summary": "This theme studies safe adaptation during use, including when repeated observations justify parameter promotion and when uncertain evidence should stay outside persistent model state. Adaptation is evaluated as a governed process rather than an automatic update.",
+      "terms": [
+        "research themes",
+        "agent memory",
+        "retrieval",
+        "test-time learning",
+        "reasoning",
+        "tool agents"
+      ],
+      "url": "/portfolio#themes-heading",
+      "sourceIds": ["curated:research-themes"]
+    },
+    {
+      "id": "knowledge:content:research-themes:search-guided-reasoning",
+      "kind": "theme",
+      "title": "Research themes — Search-guided reasoning",
+      "summary": "This theme treats reasoning as a search over hypotheses, evidence requests, and possible actions. Search should expose uncertainty, respect constraints, and stop with clarification or abstention when the available evidence cannot support a reliable choice.",
+      "terms": [
+        "research themes",
+        "agent memory",
+        "retrieval",
+        "test-time learning",
+        "reasoning",
+        "tool agents",
+        "search-guided reasoning"
+      ],
+      "url": "/portfolio#themes-heading",
+      "sourceIds": ["curated:research-themes"]
+    },
+    {
+      "id": "knowledge:content:research-themes:reliable-tool-agents",
+      "kind": "theme",
+      "title": "Research themes — Reliable tool agents",
+      "summary": "This theme studies agents that act through tools under concurrency, scope, and failure. Reliability depends on typed state changes, causal influence tests, pre-action verification, and traceable boundaries between observation, decision, and effect.",
+      "terms": [
+        "research themes",
+        "agent memory",
+        "retrieval",
+        "test-time learning",
+        "reasoning",
+        "tool agents",
+        "reliable tool agents"
+      ],
+      "url": "/portfolio#themes-heading",
+      "sourceIds": ["curated:research-themes"]
+    },
+    {
+      "id": "knowledge:content:project-map:indexed-catalog",
+      "kind": "project-map",
+      "title": "Research connection map — Indexed catalog",
+      "summary": "The catalog count is generated from the authoritative project records, keeping verified public projects separate from pending title-only entries. The portfolio has 34 indexed project records: 29 verified public projects and 5 pending title-only records.",
+      "terms": [
+        "research connection",
+        "project map",
+        "agent memory",
+        "reliability",
+        "indexed catalog"
+      ],
+      "url": "/projects",
+      "sourceIds": ["curated:project-map"]
+    },
+    {
+      "id": "knowledge:content:project-map:recognition-recall-source-and-action",
+      "kind": "project-map",
+      "title": "Research connection map — Recognition, recall, source, and action",
+      "summary": "RKA-Lab connects four evaluation rungs: recognizing remembered evidence, recalling it, identifying its source, and using it to choose an action. The distinction separates fluent answers from memory that causally changes behavior.",
+      "terms": [
+        "research connection",
+        "project map",
+        "agent memory",
+        "reliability",
+        "recognition, recall, source, and action"
+      ],
+      "url": "/projects",
+      "sourceIds": ["curated:project-map"]
+    },
+    {
+      "id": "knowledge:content:project-map:concurrency-and-temporal-validity",
+      "kind": "project-map",
+      "title": "Research connection map — Concurrency and temporal validity",
+      "summary": "TxnMem studies concurrent updates to shared agent memory. FreshIndex schedules checks when mutable memories may be stale, while RegimeBank tracks whether experience remains valid after a regime change. Together they connect concurrency control with temporal validity.",
+      "terms": [
+        "research connection",
+        "project map",
+        "agent memory",
+        "reliability",
+        "concurrency and temporal validity"
+      ],
+      "url": "/projects",
+      "sourceIds": ["curated:project-map"]
+    },
+    {
+      "id": "knowledge:content:project-map:consolidation-correction-and-forgetting",
+      "kind": "project-map",
+      "title": "Research connection map — Consolidation, correction, and forgetting",
+      "summary": "HippoGate decides whether to retain, probe, consolidate, or forget a candidate memory. MemEquiv tests whether a correction really changes behavior, and CertiCompress asks whether consolidation preserves the constraints that matter.",
+      "terms": [
+        "research connection",
+        "project map",
+        "agent memory",
+        "reliability",
+        "consolidation, correction, and forgetting"
+      ],
+      "url": "/projects",
+      "sourceIds": ["curated:project-map"]
+    },
+    {
+      "id": "knowledge:content:project-map:causal-influence-scope-and-provenance",
+      "kind": "project-map",
+      "title": "Research connection map — Causal influence, scope, and provenance",
+      "summary": "MemIntervene measures causal influence by intervening on memory. ScopeGuard limits where learned instructions apply, and CertiCompress preserves provenance through compression. Trace-Mem is connected only at the verified public metadata level; detailed implementation and evaluation claims are intentionally not inferred.",
+      "terms": [
+        "research connection",
+        "project map",
+        "agent memory",
+        "reliability",
+        "causal influence, scope, and provenance"
+      ],
+      "url": "/projects",
+      "sourceIds": ["curated:project-map"]
+    },
+    {
+      "id": "knowledge:content:project-map:parameter-promotion",
+      "kind": "project-map",
+      "title": "Research connection map — Parameter promotion",
+      "summary": "ParamLedger studies parameter promotion: moving repeated, supported observations into a more persistent state while keeping evidence, timing, and rollback information available for review.",
+      "terms": [
+        "research connection",
+        "project map",
+        "agent memory",
+        "reliability",
+        "parameter promotion"
+      ],
+      "url": "/projects",
+      "sourceIds": ["curated:project-map"]
+    },
+    {
+      "id": "knowledge:content:site-scope:indexed-source-boundary",
+      "kind": "site-scope",
+      "title": "Site scope and navigation — Indexed source boundary",
+      "summary": "The assistant answers from this portfolio's curated profile, research overview, themes, project map, project records, rankings, and approved public repository evidence. It does not infer private facts or fill gaps with unsupported details.",
+      "terms": [
+        "site scope",
+        "navigation",
+        "indexed sources",
+        "indexed source boundary"
+      ],
+      "url": "/",
+      "sourceIds": ["curated:site-scope"]
+    },
+    {
+      "id": "knowledge:content:site-scope:navigation",
+      "kind": "site-scope",
+      "title": "Site scope and navigation — Navigation",
+      "summary": "Use the portfolio overview for the research focus and themes and projects for the verified public catalog and curated shortlist. Published research notes will appear under writing; none are currently published. Pankit's canonical GitHub profile is github.com/pxnkit.",
+      "terms": ["site scope", "navigation", "indexed sources"],
+      "url": "/",
+      "sourceIds": ["curated:site-scope"]
+    },
+    {
+      "id": "knowledge:content:site-scope:answer-behavior",
+      "kind": "site-scope",
+      "title": "Site scope and navigation — Answer behavior",
+      "summary": "Answers should identify the source that supports a claim, preserve project caveats, and distinguish verified repository evidence from title-only pending records. When the indexed sources do not support an answer, the assistant should say so plainly.",
+      "terms": [
+        "site scope",
+        "navigation",
+        "indexed sources",
+        "answer behavior"
+      ],
+      "url": "/",
+      "sourceIds": ["curated:site-scope"]
+    },
+    {
+      "id": "knowledge:manual:ranked-projects",
+      "kind": "ranking",
+      "title": "Curated project ranking",
+      "summary": "Rank 1: ChaffMem, project 24. Rank 2: MemEquiv, project 21. Rank 3: SynthesisAutopsy, project 41. Rank 4: RowWitness, project 46. Rank 5: ProbeDiff, project 45. Rank 6: VeriForget, project 35. Only MemEquiv has a verified public repository source; the other ranked entries remain title-only and pending.",
+      "terms": ["ranking", "manual curation"],
+      "url": "/projects",
+      "sourceIds": ["manual:ranked-projects"]
     }
   ]
 }

@@ -1,32 +1,56 @@
-import { env as cloudflareEnv } from "cloudflare:workers";
+import { getCloudflareContext } from "@opennextjs/cloudflare";
 
-export interface PortfolioRuntimeBindings {
-  AI?: {
-    run(
-      model: string,
-      inputs: Record<string, unknown>,
-      options?: Record<string, unknown>,
-    ): Promise<unknown>;
-  };
-  RATE_LIMIT_KV?: {
-    get(key: string): Promise<string | null>;
-    put(
-      key: string,
-      value: string,
-      options?: Record<string, unknown>,
-    ): Promise<void>;
-  };
-  AI_MODEL?: string;
-  CHAT_MOCK_MODE?: string;
-  RATE_LIMIT_MAX_REQUESTS?: string;
-  RATE_LIMIT_WINDOW_SECONDS?: string;
-  TURNSTILE_SECRET_KEY?: string;
-  IP_HASH_SALT?: string;
-  NEXT_PUBLIC_SITE_URL?: string;
+export interface PortfolioAiBinding {
+  run(
+    model: string,
+    inputs: Record<string, unknown>,
+    options?: Record<string, unknown>,
+  ): Promise<unknown>;
 }
 
+export interface PortfolioRateLimitKv {
+  get(key: string): Promise<string | null>;
+  put(
+    key: string,
+    value: string,
+    options?: Record<string, unknown>,
+  ): Promise<void>;
+}
+
+export interface PortfolioRuntimeBindings {
+  AI?: PortfolioAiBinding;
+  RATE_LIMIT_KV?: PortfolioRateLimitKv;
+  GITHUB_USERNAME?: string;
+  GITHUB_TOKEN?: string;
+  AI_MODE?: string;
+  AI_MODEL_PRIMARY?: string;
+  AI_MODEL_ECONOMY?: string;
+  AI_MODEL_CHALLENGER?: string;
+  ENABLE_ECONOMY_ROUTING?: string;
+  TURNSTILE_SECRET_KEY?: string;
+  RATE_LIMIT_SALT?: string;
+  MAX_SESSION_GENERATED_ANSWERS?: string;
+  MAX_QUESTION_CHARACTERS?: string;
+  NEXT_PUBLIC_SITE_URL?: string;
+  NEXT_PUBLIC_TURNSTILE_SITE_KEY?: string;
+}
+
+function processBindings(): PortfolioRuntimeBindings {
+  if (typeof process === "undefined") return {};
+  return process.env as PortfolioRuntimeBindings;
+}
+
+const PUBLIC_TURNSTILE_SITE_KEY =
+  typeof process === "undefined"
+    ? ""
+    : (process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY?.trim() ?? "");
+
 export async function getPortfolioRuntimeBindings(): Promise<PortfolioRuntimeBindings> {
-  return (cloudflareEnv ?? {}) as PortfolioRuntimeBindings;
+  try {
+    return getCloudflareContext().env as PortfolioRuntimeBindings;
+  } catch {
+    return processBindings();
+  }
 }
 
 function integerSetting(
@@ -41,41 +65,83 @@ function integerSetting(
     : fallback;
 }
 
-/**
- * All secrets and provider bindings are read in a server-only module. The
- * returned public mode label never contains a model identifier or credential.
- */
+function normalizedAiMode(value: unknown) {
+  const mode = String(value ?? "")
+    .trim()
+    .toLowerCase();
+  if (mode === "cloudflare" || mode === "mock" || mode === "retrieval-only") {
+    return mode;
+  }
+  return process.env.NODE_ENV === "production" ? "retrieval-only" : "mock";
+}
+
 export function getChatRuntimeConfig(workerEnv: PortfolioRuntimeBindings = {}) {
-  const processEnv: Record<string, string | undefined> =
-    typeof process === "undefined" ? {} : process.env;
-  const turnstileSecret =
-    workerEnv.TURNSTILE_SECRET_KEY || processEnv.TURNSTILE_SECRET_KEY;
+  const processEnv = processBindings();
+  const read = (
+    key:
+      | "GITHUB_USERNAME"
+      | "GITHUB_TOKEN"
+      | "AI_MODE"
+      | "AI_MODEL_PRIMARY"
+      | "AI_MODEL_ECONOMY"
+      | "AI_MODEL_CHALLENGER"
+      | "ENABLE_ECONOMY_ROUTING"
+      | "TURNSTILE_SECRET_KEY"
+      | "RATE_LIMIT_SALT"
+      | "MAX_SESSION_GENERATED_ANSWERS"
+      | "MAX_QUESTION_CHARACTERS"
+      | "NEXT_PUBLIC_SITE_URL"
+      | "NEXT_PUBLIC_TURNSTILE_SITE_KEY",
+  ) => {
+    const workerValue = workerEnv[key];
+    if (typeof workerValue === "string") return workerValue;
+    const processValue = processEnv[key];
+    return typeof processValue === "string" ? processValue : undefined;
+  };
+
+  const aiMode = normalizedAiMode(read("AI_MODE"));
+  const primaryModel = read("AI_MODEL_PRIMARY") || "@cf/zai-org/glm-4.7-flash";
+
+  const turnstileSecret = read("TURNSTILE_SECRET_KEY")?.trim();
+  const turnstileSiteKey =
+    read("NEXT_PUBLIC_TURNSTILE_SITE_KEY")?.trim() || PUBLIC_TURNSTILE_SITE_KEY;
 
   return {
     ai: workerEnv.AI,
-    model: workerEnv.AI_MODEL || processEnv.AI_MODEL,
-    mockMode: workerEnv.CHAT_MOCK_MODE || processEnv.CHAT_MOCK_MODE,
+    aiMode,
+    primaryModel,
+    economyModel:
+      read("AI_MODEL_ECONOMY") || "@cf/ibm-granite/granite-4.0-h-micro",
+    challengerModel:
+      read("AI_MODEL_CHALLENGER") || "@cf/qwen/qwen3-30b-a3b-fp8",
+    economyRoutingEnabled:
+      String(read("ENABLE_ECONOMY_ROUTING") ?? "").toLowerCase() === "true",
     rateLimitStore: workerEnv.RATE_LIMIT_KV,
-    rateLimitMax: integerSetting(
-      workerEnv.RATE_LIMIT_MAX_REQUESTS || processEnv.RATE_LIMIT_MAX_REQUESTS,
-      12,
+    // Backward-compatible aliases are kept while older request handlers are
+    // rolled forward to the named provider modes.
+    model: primaryModel,
+    mockMode: aiMode === "mock" ? "true" : "false",
+    rateLimitMax: 12,
+    rateLimitWindowMs: 60_000,
+    maximumSessionAnswers: integerSetting(
+      read("MAX_SESSION_GENERATED_ANSWERS"),
+      8,
       1,
-      1_000,
+      100,
     ),
-    rateLimitWindowMs:
-      integerSetting(
-        workerEnv.RATE_LIMIT_WINDOW_SECONDS ||
-          processEnv.RATE_LIMIT_WINDOW_SECONDS,
-        60,
-        1,
-        86_400,
-      ) * 1_000,
+    maximumQuestionCharacters: integerSetting(
+      read("MAX_QUESTION_CHARACTERS"),
+      700,
+      100,
+      2_000,
+    ),
     turnstileSecret,
+    turnstileSiteKeyConfigured: Boolean(turnstileSiteKey),
+    turnstilePairingOk: Boolean(turnstileSiteKey) === Boolean(turnstileSecret),
     ipHashSalt:
-      workerEnv.IP_HASH_SALT ||
-      processEnv.IP_HASH_SALT ||
-      turnstileSecret ||
-      "portfolio-local-rate-limit-v1",
-    siteUrl: workerEnv.NEXT_PUBLIC_SITE_URL || processEnv.NEXT_PUBLIC_SITE_URL,
+      read("RATE_LIMIT_SALT") ||
+      read("TURNSTILE_SECRET_KEY") ||
+      "portfolio-local-rate-limit-v2",
+    siteUrl: read("NEXT_PUBLIC_SITE_URL"),
   };
 }

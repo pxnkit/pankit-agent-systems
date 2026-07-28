@@ -1,7 +1,7 @@
 import "./test-setup";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { vi } from "vitest";
-import { ChatShell } from "@/components/chat/chat-shell";
+import { ResearchChat } from "@/components/chat/research-chat";
 
 vi.mock("next/link", () => ({
   default: ({
@@ -18,7 +18,8 @@ vi.mock("next/link", () => ({
 test("suggestion fills the composer and Enter submits", async () => {
   const fetchMock = vi.fn().mockResolvedValue(
     Response.json({
-      answer: "MemEquiv tests whether memory transformations preserve meaning.",
+      answer:
+        "MemEquiv tests whether memory transformations preserve meaning. [source:memequiv-readme]",
       sources: [
         {
           id: "memequiv-readme",
@@ -30,7 +31,7 @@ test("suggestion fills the composer and Enter submits", async () => {
   );
   vi.stubGlobal("fetch", fetchMock);
 
-  render(<ChatShell />);
+  render(<ResearchChat />);
   fireEvent.click(
     screen.getByRole("button", { name: "Explain MemEquiv in simple terms." }),
   );
@@ -42,20 +43,22 @@ test("suggestion fills the composer and Enter submits", async () => {
 
   await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1));
   expect(
-    await screen.findByText(
-      "MemEquiv tests whether memory transformations preserve meaning.",
-    ),
+    await screen.findByText(/MemEquiv tests whether memory transformations/),
   ).toBeVisible();
-  expect(screen.getByRole("link", { name: /MemEquiv/ })).toHaveAttribute(
-    "href",
-    "/projects/memequiv",
-  );
+  expect(
+    screen.getByRole("link", { name: "Source 1: MemEquiv" }),
+  ).toHaveTextContent("[1]");
+  expect(
+    screen
+      .getAllByRole("link", { name: /MemEquiv/ })
+      .some((link) => link.getAttribute("href") === "/projects/memequiv"),
+  ).toBe(true);
 });
 
 test("Shift+Enter does not submit and clear conversation removes local history", () => {
   const fetchMock = vi.fn();
   vi.stubGlobal("fetch", fetchMock);
-  render(<ChatShell />);
+  render(<ResearchChat />);
   const composer = screen.getByLabelText(
     "Ask about Pankit’s research portfolio",
   );

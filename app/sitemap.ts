@@ -2,9 +2,7 @@ import type { MetadataRoute } from "next";
 import { projects } from "@/data/projects";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base =
-    process.env.NEXT_PUBLIC_SITE_URL ??
-    "https://pankit-agent-systems.brahmkhatripankit.chatgpt.site";
+  const base = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
   const staticRoutes = ["", "/portfolio", "/projects", "/writing", "/privacy"];
 
   return [

@@ -1,8 +1,11 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import {
+  QUERY_INTENTS,
   buildKnowledgeCorpus,
+  classifyQueryIntent,
   dedupeChunks,
+  findDuplicateChunks,
   retrieveKnowledge,
 } from "../../lib/retrieval.mjs";
 
@@ -86,10 +89,59 @@ test("comparisons return distinct projects before duplicate chunks", () => {
   );
 });
 
+test("terminal punctuation does not hide the final comparison project", () => {
+  const results = retrieveKnowledge("Compare Alpha Memory with Beta Search.", {
+    chunks,
+    projects,
+    rankedProjects,
+    limit: 4,
+  });
+  assert.deepEqual(
+    new Set(results.slice(0, 2).map((result) => result.chunk.projectSlug)),
+    new Set(["alpha-memory", "beta-search"]),
+  );
+});
+
+test("canonical portfolio questions receive explicit intents", () => {
+  assert.equal(
+    classifyQueryIntent("Who is Pankit?", { projects, rankedProjects }),
+    QUERY_INTENTS.IDENTITY,
+  );
+  assert.equal(
+    classifyQueryIntent("How do the projects connect into a research agenda?", {
+      projects,
+      rankedProjects,
+    }),
+    QUERY_INTENTS.RESEARCH_CONNECTION,
+  );
+  assert.equal(
+    classifyQueryIntent("What is this site about?", {
+      projects,
+      rankedProjects,
+    }),
+    QUERY_INTENTS.SITE,
+  );
+  assert.equal(
+    classifyQueryIntent("Compare Alpha Memory with Beta Search.", {
+      projects,
+      rankedProjects,
+    }),
+    QUERY_INTENTS.COMPARE,
+  );
+});
+
 test("dedupe removes repeated IDs and equivalent text", () => {
   const repeated = { ...chunks[0] };
   const equivalent = { ...chunks[0], id: "different-id" };
   assert.equal(dedupeChunks([chunks[0], repeated, equivalent]).length, 1);
+});
+
+test("duplicate diagnostics remain visible before runtime de-duplication", () => {
+  const repeated = { ...chunks[0] };
+  const equivalent = { ...chunks[0], id: "different-id" };
+  const report = findDuplicateChunks([chunks[0], repeated, equivalent]);
+  assert.deepEqual(report.duplicateIds, [chunks[0].id]);
+  assert.equal(report.duplicateFingerprints.length, 1);
 });
 
 test("unrelated multi-term queries abstain", () => {

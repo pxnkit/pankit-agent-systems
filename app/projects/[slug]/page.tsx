@@ -24,6 +24,12 @@ export async function generateMetadata({
       project.shortDescription ??
       `${project.title} appears in Pankit Brahmkhatri’s curated research shortlist.`,
     alternates: { canonical: `/projects/${project.slug}` },
+    openGraph: {
+      type: "website",
+      title: project.title,
+      description: project.shortDescription,
+      images: ["/og.png"],
+    },
   };
 }
 
@@ -84,6 +90,43 @@ export default async function ProjectPage({
 
   return (
     <main id="main-content" className="project-detail-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
+              "@type": "SoftwareSourceCode",
+              name: project.title,
+              description: project.shortDescription,
+              codeRepository: project.repositoryUrl,
+              programmingLanguage: project.languages,
+              author: {
+                "@type": "Person",
+                name: "Pankit Brahmkhatri",
+              },
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                {
+                  "@type": "ListItem",
+                  position: 1,
+                  name: "Projects",
+                  item: "/projects",
+                },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: project.title,
+                  item: `/projects/${project.slug}`,
+                },
+              ],
+            },
+          ]).replace(/</g, "\\u003c"),
+        }}
+      />
       <header className={`project-hero card-${project.cardVariant ?? "light"}`}>
         <div className="editorial-shell project-hero-inner">
           <div className="project-hero-copy">

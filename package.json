@@ -6,14 +6,18 @@
     "node": ">=22.13.0"
   },
   "scripts": {
-    "dev": "vinext dev",
-    "build": "vinext build",
-    "start": "vinext start",
-    "preview": "vinext start",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "build:worker": "opennextjs-cloudflare build",
+    "preview": "npm run build:worker && wrangler dev --config wrangler.jsonc --local",
+    "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy -- --keep-vars",
+    "cf:typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
     "sync:github": "node scripts/sync-github.mjs",
+    "build:corpus": "node scripts/build-corpus.mjs",
     "build:index": "node scripts/build-search-index.mjs",
     "format:check": "prettier --check .",
-    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next",
+    "lint": "eslint . --ignore-pattern dist --ignore-pattern .next --ignore-pattern .open-next --ignore-pattern .wrangler --ignore-pattern playwright-report --ignore-pattern test-results",
     "typecheck": "tsc --noEmit",
     "test:unit": "node --test tests/unit/*.test.mjs tests/integration/*.test.mjs",
     "test:components": "node scripts/run-vitest.mjs",
@@ -24,18 +28,26 @@
     "verify:content": "node scripts/verify-content-exclusions.mjs",
     "verify:links": "node scripts/verify-links.mjs",
     "eval:chat": "node scripts/eval-chat.mjs",
-    "verify": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run verify:content && npm run verify:links && npm run build && npm run test:e2e",
-    "deploy": "npm run build && wrangler deploy --config wrangler.jsonc --env production"
+    "verify": "npm run format:check && npm run lint && npm run typecheck && npm run test && npm run verify:content && npm run verify:links && npm run build && npm run build:worker && npm run test:e2e"
   },
   "dependencies": {
-    "@fontsource-variable/inter": "5.2.8",
-    "next": "16.2.6",
+    "@fontsource/newsreader": "^5.3.0",
+    "@opennextjs/cloudflare": "^1.20.2",
+    "geist": "^1.7.2",
+    "next": "^16.2.12",
     "react": "19.2.6",
-    "react-dom": "19.2.6"
+    "react-dom": "19.2.6",
+    "zod": "^4.4.3"
+  },
+  "overrides": {
+    "@node-minify/core": "7.1.0",
+    "@node-minify/terser": "7.1.0",
+    "@node-minify/utils": "7.1.0",
+    "postcss": "8.5.23",
+    "sharp": "0.35.3"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.10.2",
-    "@cloudflare/vite-plugin": "1.37.1",
     "@playwright/test": "1.55.1",
     "@tailwindcss/postcss": "4.2.1",
     "@testing-library/jest-dom": "6.8.0",
@@ -44,19 +56,16 @@
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
     "@vitejs/plugin-react": "6.0.2",
-    "@vitejs/plugin-rsc": "0.5.26",
-    "@vitest/coverage-v8": "3.2.4",
-    "eslint": "9.39.4",
-    "eslint-config-next": "16.2.6",
+    "@vitest/coverage-v8": "4.1.10",
+    "eslint": "9.39.5",
+    "eslint-config-next": "^16.2.12",
     "jsdom": "26.1.0",
     "prettier": "3.6.2",
-    "react-server-dom-webpack": "19.2.6",
     "tailwindcss": "4.2.1",
     "typescript": "5.9.3",
-    "vinext": "0.0.50",
-    "vite": "8.0.13",
-    "vitest": "3.2.4",
-    "wrangler": "4.92.0"
+    "vite": "8.1.5",
+    "vitest": "4.1.10",
+    "wrangler": "^4.114.0"
   },
   "type": "module"
 }

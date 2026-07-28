@@ -33,3 +33,8 @@ Object.defineProperty(globalThis, "cancelAnimationFrame", {
   value: () => {},
   writable: true,
 });
+
+Object.defineProperty(Element.prototype, "scrollIntoView", {
+  value: () => {},
+  writable: true,
+});

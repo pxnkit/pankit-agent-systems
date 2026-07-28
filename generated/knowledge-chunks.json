@@ -1,6 +1,6 @@
 {
-  "version": "2026-07-27.manual.1",
-  "generatedAt": "2026-07-27T00:00:00.000Z",
+  "version": "2026-07-28.aa1cb8f8150a",
+  "generatedAt": "2026-07-28T00:00:00.000Z",
   "chunks": [
     {
       "id": "project:rka-lab:summary",
@@ -8,9 +8,29 @@
       "kind": "project-summary",
       "projectSlug": "rka-lab",
       "title": "RKA-Lab",
-      "text": "RKA-Lab evaluates whether remembered evidence survives recognition, recall, source recollection, and correct action. Its included 10-item deterministic snapshot verifies the software path and is not the planned full benchmark.",
+      "text": "Evaluation library for tracing remembered evidence from recognition through recall, source recollection, and action. RKA-Lab evaluates four matched rungs against the same evidence and compares them with irrelevant-memory and gold-memory masks, separating fluent answers from evidence-linked memory that changes behavior.",
       "url": "https://github.com/pxnkit/rka-lab",
-      "tags": ["agent memory", "causal evaluation", "benchmarking"]
+      "tags": [
+        "agent memory",
+        "causal evaluation",
+        "benchmarking",
+        "Verification and Reliability"
+      ]
+    },
+    {
+      "id": "project:rka-lab:limitation:1",
+      "sourceId": "local:rka-lab:readme",
+      "kind": "project-limitation",
+      "projectSlug": "rka-lab",
+      "title": "RKA-Lab — limitation",
+      "text": "The included 10-item snapshot verifies the software path; it is not the planned full benchmark or a publication result.",
+      "url": "https://github.com/pxnkit/rka-lab",
+      "tags": [
+        "limitation",
+        "agent memory",
+        "causal evaluation",
+        "benchmarking"
+      ]
     },
     {
       "id": "project:txnmem:summary",
@@ -18,9 +38,24 @@
       "kind": "project-summary",
       "projectSlug": "txnmem",
       "title": "TxnMem",
-      "text": "TxnMem is a transactional shared-memory service for concurrent agent teams. It gives typed update semantics to shared records and checks replayable histories against a deterministic serial interpreter.",
+      "text": "Transactional shared memory with explicit update semantics and replayable histories for concurrent agent teams. TxnMem models facts, constraints, resources, commitments, evidence, and commutative values as typed operations, then checks accepted histories against a deterministic serial interpreter.",
       "url": "https://github.com/pxnkit/txnmem",
-      "tags": ["shared memory", "transactions", "concurrency"]
+      "tags": [
+        "shared memory",
+        "transactions",
+        "concurrency",
+        "Agent Memory and Adaptation"
+      ]
+    },
+    {
+      "id": "project:txnmem:limitation:1",
+      "sourceId": "local:txnmem:readme",
+      "kind": "project-limitation",
+      "projectSlug": "txnmem",
+      "title": "TxnMem — limitation",
+      "text": "The repository identifies itself as a research prototype and does not claim production readiness.",
+      "url": "https://github.com/pxnkit/txnmem",
+      "tags": ["limitation", "shared memory", "transactions", "concurrency"]
     },
     {
       "id": "project:chronicle-guard:summary",
@@ -28,9 +63,29 @@
       "kind": "project-summary",
       "projectSlug": "chronicle-guard",
       "title": "ChronicleGuard",
-      "text": "ChronicleGuard is a source-aware platform for evaluating whether language received after a visual event changes later recall. It keeps raw episodic evidence separate from mutable current-world beliefs.",
+      "text": "Source-aware multimodal recall evaluation that keeps episodic evidence separate from mutable beliefs.",
       "url": "https://github.com/pxnkit/chronicle-guard",
-      "tags": ["multimodal recall", "provenance", "belief updates"]
+      "tags": [
+        "multimodal recall",
+        "provenance",
+        "belief updates",
+        "Verification and Reliability"
+      ]
+    },
+    {
+      "id": "project:chronicle-guard:limitation:1",
+      "sourceId": "local:chronicle-guard:readme",
+      "kind": "project-limitation",
+      "projectSlug": "chronicle-guard",
+      "title": "ChronicleGuard — limitation",
+      "text": "The default evaluation uses original synthetic scenes; external vision-language models are optional.",
+      "url": "https://github.com/pxnkit/chronicle-guard",
+      "tags": [
+        "limitation",
+        "multimodal recall",
+        "provenance",
+        "belief updates"
+      ]
     },
     {
       "id": "project:intentledger:summary",
@@ -38,9 +93,29 @@
       "kind": "project-summary",
       "projectSlug": "intentledger",
       "title": "IntentLedger",
-      "text": "IntentLedger is a cancellation-safe prospective-memory runtime. It rechecks lifecycle state, trigger evidence, preconditions, version, and idempotency immediately before execution.",
+      "text": "Cancellation-safe prospective memory built on an append-only lifecycle ledger.",
       "url": "https://github.com/pxnkit/intentledger",
-      "tags": ["prospective memory", "event ledger", "idempotency"]
+      "tags": [
+        "prospective memory",
+        "event ledger",
+        "idempotency",
+        "Agent Memory and Adaptation"
+      ]
+    },
+    {
+      "id": "project:intentledger:limitation:1",
+      "sourceId": "local:intentledger:readme",
+      "kind": "project-limitation",
+      "projectSlug": "intentledger",
+      "title": "IntentLedger — limitation",
+      "text": "The included lifecycle benchmark is synthetic and does not validate deployment in an autonomous production agent.",
+      "url": "https://github.com/pxnkit/intentledger",
+      "tags": [
+        "limitation",
+        "prospective memory",
+        "event ledger",
+        "idempotency"
+      ]
     },
     {
       "id": "project:freshindex:summary",
@@ -48,9 +123,29 @@
       "kind": "project-summary",
       "projectSlug": "freshindex",
       "title": "FreshIndex",
-      "text": "FreshIndex schedules proactive verification when mutable agent memories exceed available audit capacity. It assigns age-aware priorities, explains them, and records decisions in a tamper-evident log.",
+      "text": "Capacity-aware scheduling for proactive verification of mutable agent memories. FreshIndex assigns each memory an age-aware audit priority, explains that score, dispatches only approved verifiers, and records decisions in a tamper-evident event log.",
       "url": "https://github.com/pxnkit/freshindex",
-      "tags": ["verification scheduling", "freshness", "restless bandits"]
+      "tags": [
+        "verification scheduling",
+        "freshness",
+        "restless bandits",
+        "Agent Memory and Adaptation"
+      ]
+    },
+    {
+      "id": "project:freshindex:limitation:1",
+      "sourceId": "local:freshindex:readme",
+      "kind": "project-limitation",
+      "projectSlug": "freshindex",
+      "title": "FreshIndex — limitation",
+      "text": "Included simulations support engineering checks; policy effectiveness on live memory streams remains an open evaluation question.",
+      "url": "https://github.com/pxnkit/freshindex",
+      "tags": [
+        "limitation",
+        "verification scheduling",
+        "freshness",
+        "restless bandits"
+      ]
     },
     {
       "id": "project:recallresolve:summary",
@@ -58,9 +153,29 @@
       "kind": "project-summary",
       "projectSlug": "recallresolve",
       "title": "RecallResolve",
-      "text": "RecallResolve targets exact consumer-product recall variant resolution. Its design calls for active acquisition of the least burdensome photo, barcode, label, receipt field, structured answer, or official lookup needed to resolve uncertainty.",
+      "text": "Evidence-first resolution of exact consumer-product recall variants with active multimodal evidence acquisition.",
       "url": "https://github.com/pxnkit/recallresolve",
-      "tags": ["entity resolution", "multimodal retrieval", "product recalls"]
+      "tags": [
+        "entity resolution",
+        "multimodal retrieval",
+        "product recalls",
+        "Retrieval and Evidence"
+      ]
+    },
+    {
+      "id": "project:recallresolve:limitation:1",
+      "sourceId": "local:recallresolve:implementation-brief",
+      "kind": "project-limitation",
+      "projectSlug": "recallresolve",
+      "title": "RecallResolve — limitation",
+      "text": "The local source is an implementation brief; implementation and evaluation details are not asserted in this catalog.",
+      "url": "https://github.com/pxnkit/recallresolve",
+      "tags": [
+        "limitation",
+        "entity resolution",
+        "multimodal retrieval",
+        "product recalls"
+      ]
     },
     {
       "id": "project:hippogate:summary",
@@ -68,9 +183,24 @@
       "kind": "project-summary",
       "projectSlug": "hippogate",
       "title": "HippoGate",
-      "text": "HippoGate uses a belief-state decision model to choose whether to forget, retain episodically, probe, or consolidate a candidate memory. Decisions expose their posterior, costs, horizon, recurrence estimate, and probe likelihoods.",
+      "text": "Belief-state control for deciding whether to forget, probe, retain, or consolidate a candidate memory. HippoGate treats cross-context applicability as a hidden state and makes each consolidation decision traceable to its posterior, cost model, recurrence estimate, horizon, and probe likelihoods.",
       "url": "https://github.com/pxnkit/hippogate",
-      "tags": ["memory consolidation", "POMDP", "decision theory"]
+      "tags": [
+        "memory consolidation",
+        "POMDP",
+        "decision theory",
+        "Agent Memory and Adaptation"
+      ]
+    },
+    {
+      "id": "project:hippogate:limitation:1",
+      "sourceId": "local:hippogate:readme",
+      "kind": "project-limitation",
+      "projectSlug": "hippogate",
+      "title": "HippoGate — limitation",
+      "text": "The decision model depends on configured costs and likelihoods and is not a general safety guarantee.",
+      "url": "https://github.com/pxnkit/hippogate",
+      "tags": ["limitation", "memory consolidation", "POMDP", "decision theory"]
     },
     {
       "id": "project:hypothesisops:summary",
@@ -78,9 +208,29 @@
       "kind": "project-summary",
       "projectSlug": "hypothesisops",
       "title": "HypothesisOps",
-      "text": "HypothesisOps is a platform for safe sequential cloud-incident diagnosis. It maintains competing causal explanations and selects bounded observations or sandbox interventions that can distinguish them.",
+      "text": "Safe sequential search over competing causal explanations for simulated cloud incidents.",
       "url": "https://github.com/pxnkit/hypothesisops",
-      "tags": ["incident diagnosis", "causal search", "safe interventions"]
+      "tags": [
+        "incident diagnosis",
+        "causal search",
+        "safe interventions",
+        "Search-Guided Reasoning"
+      ]
+    },
+    {
+      "id": "project:hypothesisops:limitation:1",
+      "sourceId": "local:hypothesisops:readme",
+      "kind": "project-limitation",
+      "projectSlug": "hypothesisops",
+      "title": "HypothesisOps — limitation",
+      "text": "The system operates in a deterministic simulator and does not connect to production services.",
+      "url": "https://github.com/pxnkit/hypothesisops",
+      "tags": [
+        "limitation",
+        "incident diagnosis",
+        "causal search",
+        "safe interventions"
+      ]
     },
     {
       "id": "project:methodchain:summary",
@@ -88,9 +238,29 @@
       "kind": "project-summary",
       "projectSlug": "methodchain",
       "title": "MethodChain",
-      "text": "MethodChain reconstructs experimental procedures whose parameters are distributed across cited methods and supporting files. Resolved fields point to exact source spans, while missing evidence remains explicit.",
+      "text": "Evidence-governed reconstruction of experimental procedures spread across citations and supporting files.",
       "url": "https://github.com/pxnkit/methodchain",
-      "tags": ["provenance", "scientific methods", "citation chains"]
+      "tags": [
+        "provenance",
+        "scientific methods",
+        "citation chains",
+        "Retrieval and Evidence"
+      ]
+    },
+    {
+      "id": "project:methodchain:limitation:1",
+      "sourceId": "local:methodchain:readme",
+      "kind": "project-limitation",
+      "projectSlug": "methodchain",
+      "title": "MethodChain — limitation",
+      "text": "The output is not validated for laboratory execution and does not provide safety approval.",
+      "url": "https://github.com/pxnkit/methodchain",
+      "tags": [
+        "limitation",
+        "provenance",
+        "scientific methods",
+        "citation chains"
+      ]
     },
     {
       "id": "project:changepilot:summary",
@@ -98,9 +268,24 @@
       "kind": "project-summary",
       "projectSlug": "changepilot",
       "title": "ChangePilot",
-      "text": "ChangePilot analyzes Python API usage across dependency-version boundaries, traces affected local calls, stages conservative edits, and rejects changes outside the declared rewrite set.",
+      "text": "Version-aware Python API migration analysis with conservative edits and closed-world verification.",
       "url": "https://github.com/pxnkit/changepilot",
-      "tags": ["static analysis", "API migration", "codemods"]
+      "tags": [
+        "static analysis",
+        "API migration",
+        "codemods",
+        "Applied Agent Systems"
+      ]
+    },
+    {
+      "id": "project:changepilot:limitation:1",
+      "sourceId": "local:changepilot:readme",
+      "kind": "project-limitation",
+      "projectSlug": "changepilot",
+      "title": "ChangePilot — limitation",
+      "text": "The prototype is not a replacement for a project test suite or a general-purpose refactoring platform.",
+      "url": "https://github.com/pxnkit/changepilot",
+      "tags": ["limitation", "static analysis", "API migration", "codemods"]
     },
     {
       "id": "project:memequiv:summary",
@@ -108,9 +293,29 @@
       "kind": "project-summary",
       "projectSlug": "memequiv",
       "title": "MemEquiv",
-      "text": "MemEquiv is an offline test harness with executable metamorphic contracts for persistent agent memory. It checks facts, uncertainty, scope, provenance, and future behavior under declared relations between histories.",
+      "text": "Executable metamorphic contracts for persistent agent memory. MemEquiv checks whether histories related by a declared transformation preserve the right facts, uncertainty, scope, provenance, and future behavior across memory adapters.",
       "url": "https://github.com/pxnkit/memequiv",
-      "tags": ["agent memory", "metamorphic testing", "counterexamples"]
+      "tags": [
+        "agent memory",
+        "metamorphic testing",
+        "counterexamples",
+        "Verification and Reliability"
+      ]
+    },
+    {
+      "id": "project:memequiv:limitation:1",
+      "sourceId": "local:memequiv:readme",
+      "kind": "project-limitation",
+      "projectSlug": "memequiv",
+      "title": "MemEquiv — limitation",
+      "text": "Passing the included contracts is evidence about tested relations, not proof of safety or correctness in every deployment.",
+      "url": "https://github.com/pxnkit/memequiv",
+      "tags": [
+        "limitation",
+        "agent memory",
+        "metamorphic testing",
+        "counterexamples"
+      ]
     },
     {
       "id": "project:currigraph:summary",
@@ -118,9 +323,29 @@
       "kind": "project-summary",
       "projectSlug": "currigraph",
       "title": "CurriGraph",
-      "text": "CurriGraph estimates how practice on one task family affects another, represents those estimates as a directed transfer graph, and uses the graph to select the next experience under a fixed budget.",
+      "text": "Directed transfer graphs for online curriculum selection in tool agents.",
       "url": "https://github.com/pxnkit/currigraph",
-      "tags": ["curriculum learning", "transfer graphs", "tool agents"]
+      "tags": [
+        "curriculum learning",
+        "transfer graphs",
+        "tool agents",
+        "Agent Memory and Adaptation"
+      ]
+    },
+    {
+      "id": "project:currigraph:limitation:1",
+      "sourceId": "local:currigraph:readme",
+      "kind": "project-limitation",
+      "projectSlug": "currigraph",
+      "title": "CurriGraph — limitation",
+      "text": "Synthetic diagnostics do not establish general performance on real agents.",
+      "url": "https://github.com/pxnkit/currigraph",
+      "tags": [
+        "limitation",
+        "curriculum learning",
+        "transfer graphs",
+        "tool agents"
+      ]
     },
     {
       "id": "project:communicate-to-remember:summary",
@@ -128,9 +353,29 @@
       "kind": "project-summary",
       "projectSlug": "communicate-to-remember",
       "title": "Communicate to Remember",
-      "text": "Communicate to Remember jointly routes communication and memory for multi-agent systems. A contextual-bandit controller chooses whether to drop, send, broadcast, keep, or store information.",
+      "text": "Contextual-bandit routing that jointly chooses communication and memory actions for multi-agent systems.",
       "url": "https://github.com/pxnkit/communicate-to-remember",
-      "tags": ["multi-agent systems", "contextual bandits", "memory routing"]
+      "tags": [
+        "multi-agent systems",
+        "contextual bandits",
+        "memory routing",
+        "Agent Memory and Adaptation"
+      ]
+    },
+    {
+      "id": "project:communicate-to-remember:limitation:1",
+      "sourceId": "local:communicate-to-remember:readme",
+      "kind": "project-limitation",
+      "projectSlug": "communicate-to-remember",
+      "title": "Communicate to Remember — limitation",
+      "text": "The included evaluation is a controlled simulation and does not establish effectiveness in deployed agent teams.",
+      "url": "https://github.com/pxnkit/communicate-to-remember",
+      "tags": [
+        "limitation",
+        "multi-agent systems",
+        "contextual bandits",
+        "memory routing"
+      ]
     },
     {
       "id": "project:scopeguard:summary",
@@ -138,9 +383,24 @@
       "kind": "project-summary",
       "projectSlug": "scopeguard",
       "title": "ScopeGuard",
-      "text": "ScopeGuard attributes memory influence at the tool-argument level, checks that influence against explicit scope and authority, repairs unauthorized changes, and records an audit trace.",
+      "text": "Argument-level memory non-interference checks for tool-using agents.",
       "url": "https://github.com/pxnkit/scopeguard",
-      "tags": ["memory safety", "tool use", "non-interference"]
+      "tags": [
+        "memory safety",
+        "tool use",
+        "non-interference",
+        "Tool-Using Agent Evaluation"
+      ]
+    },
+    {
+      "id": "project:scopeguard:limitation:1",
+      "sourceId": "local:scopeguard:readme",
+      "kind": "project-limitation",
+      "projectSlug": "scopeguard",
+      "title": "ScopeGuard — limitation",
+      "text": "Authorization depends on explicit scope, source, authority, purpose, and evidence declarations.",
+      "url": "https://github.com/pxnkit/scopeguard",
+      "tags": ["limitation", "memory safety", "tool use", "non-interference"]
     },
     {
       "id": "project:worldmodel-lstar:summary",
@@ -148,9 +408,29 @@
       "kind": "project-summary",
       "projectSlug": "worldmodel-lstar",
       "title": "WorldModel-L*",
-      "text": "WorldModel-L* learns hidden tool behavior before an agent commits to a plan. It combines bounded semantic proposals with an explicit symbolic version space and blocks model-dependent plans while relevant uncertainty remains.",
+      "text": "Active symbolic world-model induction for learning hidden tool behavior before committing to a plan.",
       "url": "https://github.com/pxnkit/worldmodel-lstar",
-      "tags": ["active learning", "tool agents", "symbolic uncertainty"]
+      "tags": [
+        "active learning",
+        "tool agents",
+        "symbolic uncertainty",
+        "Search-Guided Reasoning"
+      ]
+    },
+    {
+      "id": "project:worldmodel-lstar:limitation:1",
+      "sourceId": "local:worldmodel-lstar:readme",
+      "kind": "project-limitation",
+      "projectSlug": "worldmodel-lstar",
+      "title": "WorldModel-L* — limitation",
+      "text": "The bounded version space represents configured hypotheses, not every possible hidden tool behavior.",
+      "url": "https://github.com/pxnkit/worldmodel-lstar",
+      "tags": [
+        "limitation",
+        "active learning",
+        "tool agents",
+        "symbolic uncertainty"
+      ]
     },
     {
       "id": "project:lineagerag:summary",
@@ -158,9 +438,24 @@
       "kind": "project-summary",
       "projectSlug": "lineagerag",
       "title": "LineageRAG",
-      "text": "LineageRAG asks whether agreeing documents are independent or copied. It infers likely derivation links, groups documents into origin families, and combines evidence at the family level.",
+      "text": "Copy-aware evidence corroboration that groups dependent documents before verification. LineageRAG infers likely document derivation links, collapses dependent documents into origin families, and combines evidence at the family level instead of counting copied URLs as independent support.",
       "url": "https://github.com/pxnkit/lineagerag",
-      "tags": ["RAG", "provenance", "fact verification"]
+      "tags": [
+        "RAG",
+        "provenance",
+        "fact verification",
+        "Retrieval and Evidence"
+      ]
+    },
+    {
+      "id": "project:lineagerag:limitation:1",
+      "sourceId": "local:lineagerag:readme",
+      "kind": "project-limitation",
+      "projectSlug": "lineagerag",
+      "title": "LineageRAG — limitation",
+      "text": "Copy-family inference is probabilistic; corroboration quality depends on lineage and stance estimates.",
+      "url": "https://github.com/pxnkit/lineagerag",
+      "tags": ["limitation", "RAG", "provenance", "fact verification"]
     },
     {
       "id": "project:robustask:summary",
@@ -168,9 +463,24 @@
       "kind": "project-summary",
       "projectSlug": "robustask",
       "title": "RobustAsk",
-      "text": "RobustAsk treats a clarification answer as an observation from an uncertain channel. It models field values, reliability, systematic confusion, and fatigue before asking, checking, acting, or abstaining.",
+      "text": "Reliability-aware clarification when user answers may be noisy, changing, or systematically confused.",
       "url": "https://github.com/pxnkit/robustask",
-      "tags": ["clarification", "uncertainty", "decision theory"]
+      "tags": [
+        "clarification",
+        "uncertainty",
+        "decision theory",
+        "Applied Agent Systems"
+      ]
+    },
+    {
+      "id": "project:robustask:limitation:1",
+      "sourceId": "local:robustask:readme",
+      "kind": "project-limitation",
+      "projectSlug": "robustask",
+      "title": "RobustAsk — limitation",
+      "text": "Smoke-scale and synthetic results do not establish general performance with real users.",
+      "url": "https://github.com/pxnkit/robustask",
+      "tags": ["limitation", "clarification", "uncertainty", "decision theory"]
     },
     {
       "id": "project:skillfalsify:summary",
@@ -178,9 +488,29 @@
       "kind": "project-summary",
       "projectSlug": "skillfalsify",
       "title": "FALSIFY",
-      "text": "FALSIFY searches for minimal counterexamples to selectively stored procedures in tool-using agents. The repository keeps broader claims behind matched-cost evaluation on public environments.",
+      "text": "Active minimal-counterexample discovery for selective procedural memory.",
       "url": "https://github.com/pxnkit/skillfalsify",
-      "tags": ["counterexamples", "procedural memory", "tool safety"]
+      "tags": [
+        "counterexamples",
+        "procedural memory",
+        "tool safety",
+        "Search-Guided Reasoning"
+      ]
+    },
+    {
+      "id": "project:skillfalsify:limitation:1",
+      "sourceId": "local:skillfalsify:readme",
+      "kind": "project-limitation",
+      "projectSlug": "skillfalsify",
+      "title": "FALSIFY — limitation",
+      "text": "The repository does not claim that active search beats a strong judge on unseen operator families.",
+      "url": "https://github.com/pxnkit/skillfalsify",
+      "tags": [
+        "limitation",
+        "counterexamples",
+        "procedural memory",
+        "tool safety"
+      ]
     },
     {
       "id": "project:regimebank:summary",
@@ -188,9 +518,29 @@
       "kind": "project-summary",
       "projectSlug": "regimebank",
       "title": "RegimeBank",
-      "text": "RegimeBank keeps separate memories for operating regimes that can disappear and return. It detects changes, preserves earlier banks, and reactivates them when a prior regime recurs.",
+      "text": "Separate memory banks for recurring operating regimes in non-stationary environments.",
       "url": "https://github.com/pxnkit/regimebank",
-      "tags": ["continual learning", "change points", "recurring regimes"]
+      "tags": [
+        "continual learning",
+        "change points",
+        "recurring regimes",
+        "Agent Memory and Adaptation"
+      ]
+    },
+    {
+      "id": "project:regimebank:limitation:1",
+      "sourceId": "local:regimebank:readme",
+      "kind": "project-limitation",
+      "projectSlug": "regimebank",
+      "title": "RegimeBank — limitation",
+      "text": "The included benchmark is controlled and does not cover every form of non-stationarity.",
+      "url": "https://github.com/pxnkit/regimebank",
+      "tags": [
+        "limitation",
+        "continual learning",
+        "change points",
+        "recurring regimes"
+      ]
     },
     {
       "id": "project:memintervene:summary",
@@ -198,9 +548,24 @@
       "kind": "project-summary",
       "projectSlug": "memintervene",
       "title": "MemIntervene",
-      "text": "MemIntervene records memory operations, restores a decision checkpoint, applies a typed intervention, and replays the agent under the same protocol to measure how memory changes later action.",
+      "text": "Replay-defined causal evaluation of how stored memories change later agent actions.",
       "url": "https://github.com/pxnkit/memintervene",
-      "tags": ["causal evaluation", "replay", "agent memory"]
+      "tags": [
+        "causal evaluation",
+        "replay",
+        "agent memory",
+        "Verification and Reliability"
+      ]
+    },
+    {
+      "id": "project:memintervene:limitation:1",
+      "sourceId": "local:memintervene:readme",
+      "kind": "project-limitation",
+      "projectSlug": "memintervene",
+      "title": "MemIntervene — limitation",
+      "text": "Current results are smoke-scale engineering results, not evidence for broad causal claims.",
+      "url": "https://github.com/pxnkit/memintervene",
+      "tags": ["limitation", "causal evaluation", "replay", "agent memory"]
     },
     {
       "id": "project:certicompress:summary",
@@ -208,9 +573,29 @@
       "kind": "project-summary",
       "projectSlug": "certicompress",
       "title": "CertiCompress",
-      "text": "CertiCompress treats each memory consolidation as an untrusted proposal. A proposal becomes active only after typed semantic checks, provenance checks, and deterministic behavior replay.",
+      "text": "Proof-carrying consolidation for action-coupled agent memory.",
       "url": "https://github.com/pxnkit/certicompress",
-      "tags": ["memory consolidation", "provenance", "behavior replay"]
+      "tags": [
+        "memory consolidation",
+        "provenance",
+        "behavior replay",
+        "Agent Memory and Adaptation"
+      ]
+    },
+    {
+      "id": "project:certicompress:limitation:1",
+      "sourceId": "local:certicompress:readme",
+      "kind": "project-limitation",
+      "projectSlug": "certicompress",
+      "title": "CertiCompress — limitation",
+      "text": "Certificates cover configured semantic checks and replay probes rather than every downstream behavior.",
+      "url": "https://github.com/pxnkit/certicompress",
+      "tags": [
+        "limitation",
+        "memory consolidation",
+        "provenance",
+        "behavior replay"
+      ]
     },
     {
       "id": "project:tempo-trust:summary",
@@ -218,19 +603,49 @@
       "kind": "project-summary",
       "projectSlug": "tempo-trust",
       "title": "TEMPO-Trust",
-      "text": "TEMPO-Trust keeps source reliability local to topic, claim type, time, and detected regime. It groups dependent sources, detects drift, and abstains when independent support is too weak.",
+      "text": "Claim-conditioned online source reliability under drift, copying, and delayed feedback.",
       "url": "https://github.com/pxnkit/tempo-trust",
-      "tags": ["source reliability", "concept drift", "evidence aggregation"]
+      "tags": [
+        "source reliability",
+        "concept drift",
+        "evidence aggregation",
+        "Retrieval and Evidence"
+      ]
+    },
+    {
+      "id": "project:tempo-trust:limitation:1",
+      "sourceId": "local:tempo-trust:readme",
+      "kind": "project-limitation",
+      "projectSlug": "tempo-trust",
+      "title": "TEMPO-Trust — limitation",
+      "text": "Trust estimates remain conditional on available audits, copy detection, and configured regimes.",
+      "url": "https://github.com/pxnkit/tempo-trust",
+      "tags": [
+        "limitation",
+        "source reliability",
+        "concept drift",
+        "evidence aggregation"
+      ]
     },
     {
       "id": "project:temporags:summary",
       "sourceId": "local:temporags:readme",
       "kind": "project-summary",
       "projectSlug": "temporags",
-      "title": "TempoRGS",
-      "text": "TempoRGS studies reader-aware parallel anytime reranker-guided graph search under latency budgets. Its included MiniTempoRGS results are engineering smoke measurements rather than public-benchmark results.",
+      "title": "TempoRAGS",
+      "text": "Reader-aware parallel anytime reranker-guided graph search under latency budgets. TempoRAGS studies how several complementary document-graph frontier regions can be reranked in parallel while an anytime controller returns the best valid ranking before a deadline.",
       "url": "https://github.com/pxnkit/temporags",
-      "tags": ["graph search", "reranking", "RAG"]
+      "tags": ["graph search", "reranking", "RAG", "Retrieval and Evidence"]
+    },
+    {
+      "id": "project:temporags:limitation:1",
+      "sourceId": "local:temporags:readme",
+      "kind": "project-limitation",
+      "projectSlug": "temporags",
+      "title": "TempoRAGS — limitation",
+      "text": "Included measurements are engineering smoke results, not public-benchmark or publication results.",
+      "url": "https://github.com/pxnkit/temporags",
+      "tags": ["limitation", "graph search", "reranking", "RAG"]
     },
     {
       "id": "project:paramledger:summary",
@@ -238,9 +653,29 @@
       "kind": "project-summary",
       "projectSlug": "paramledger",
       "title": "ParamLedger",
-      "text": "ParamLedger treats a model adapter as a compiled view of an authoritative experience ledger. Updates promote only after evidence and governance checks and can later be quarantined or replaced through measured rollback.",
+      "text": "Evidence-governed promotion and rollback for parametric memory updates.",
       "url": "https://github.com/pxnkit/paramledger",
-      "tags": ["parametric memory", "model governance", "rollback"]
+      "tags": [
+        "parametric memory",
+        "model governance",
+        "rollback",
+        "Agent Memory and Adaptation"
+      ]
+    },
+    {
+      "id": "project:paramledger:limitation:1",
+      "sourceId": "local:paramledger:readme",
+      "kind": "project-limitation",
+      "projectSlug": "paramledger",
+      "title": "ParamLedger — limitation",
+      "text": "The deterministic reference path does not establish safe promotion for arbitrary model updates.",
+      "url": "https://github.com/pxnkit/paramledger",
+      "tags": [
+        "limitation",
+        "parametric memory",
+        "model governance",
+        "rollback"
+      ]
     },
     {
       "id": "project:verifysplit:summary",
@@ -248,9 +683,25 @@
       "kind": "project-summary",
       "projectSlug": "verifysplit",
       "title": "VerifySplit",
-      "text": "VerifySplit studies generator-verifier agreement caused by shared model, trajectory, or evidence errors. The included synthetic smoke results verify the artifact path, not the full research thesis.",
+      "text": "Independent-evidence controls for shared failure in generator-verifier systems. VerifySplit studies failures where a generator and verifier agree because they inherit the same model, trajectory, or evidence error, using explicit provenance and independent evidence paths.",
       "url": "https://github.com/pxnkit/verifysplit",
       "tags": [
+        "generator-verifier",
+        "independent evidence",
+        "trajectory search",
+        "Verification and Reliability"
+      ]
+    },
+    {
+      "id": "project:verifysplit:limitation:1",
+      "sourceId": "local:verifysplit:readme",
+      "kind": "project-limitation",
+      "projectSlug": "verifysplit",
+      "title": "VerifySplit — limitation",
+      "text": "The included smoke results verify the artifact path and do not establish the full research thesis.",
+      "url": "https://github.com/pxnkit/verifysplit",
+      "tags": [
+        "limitation",
         "generator-verifier",
         "independent evidence",
         "trajectory search"
@@ -262,9 +713,24 @@
       "kind": "project-summary",
       "projectSlug": "evidroute",
       "title": "EvidRoute",
-      "text": "EvidRoute is an offline-first implementation of risk-constrained sequential evidence routing. Given a query, budget, and risk target, it selects a source or terminates with answer, clarification, or abstention.",
+      "text": "Risk-constrained sequential routing across heterogeneous evidence sources.",
       "url": "https://github.com/pxnkit/evidroute",
-      "tags": ["source routing", "selective prediction", "RAG"]
+      "tags": [
+        "source routing",
+        "selective prediction",
+        "RAG",
+        "Retrieval and Evidence"
+      ]
+    },
+    {
+      "id": "project:evidroute:limitation:1",
+      "sourceId": "local:evidroute:readme",
+      "kind": "project-limitation",
+      "projectSlug": "evidroute",
+      "title": "EvidRoute — limitation",
+      "text": "Risk and stopping behavior are evaluated within configured source and shift models.",
+      "url": "https://github.com/pxnkit/evidroute",
+      "tags": ["limitation", "source routing", "selective prediction", "RAG"]
     },
     {
       "id": "project:trace-mem:summary",
@@ -272,9 +738,29 @@
       "kind": "project-summary",
       "projectSlug": "trace-mem",
       "title": "TraceMem",
-      "text": "TraceMem is publicly described as causal reliability mapping for persistent agents using fault injection, counterfactual replay, and pre-commit verification. Detailed claims are omitted because only repository-level metadata is in the approved source set.",
+      "text": "Causal reliability maps for persistent agents using fault injection, counterfactual replay, and pre-commit verification.",
       "url": "https://github.com/pxnkit/trace-mem",
-      "tags": ["causal tracing", "fault injection", "agent memory"]
+      "tags": [
+        "causal tracing",
+        "fault injection",
+        "agent memory",
+        "Verification and Reliability"
+      ]
+    },
+    {
+      "id": "project:trace-mem:limitation:1",
+      "sourceId": "github:pxnkit/trace-mem",
+      "kind": "project-limitation",
+      "projectSlug": "trace-mem",
+      "title": "TraceMem — limitation",
+      "text": "Only repository-level public metadata is represented; detailed implementation and evaluation claims are intentionally omitted.",
+      "url": "https://github.com/pxnkit/trace-mem",
+      "tags": [
+        "limitation",
+        "causal tracing",
+        "fault injection",
+        "agent memory"
+      ]
     },
     {
       "id": "project:barriernow:summary",
@@ -282,9 +768,29 @@
       "kind": "project-summary",
       "projectSlug": "barriernow",
       "title": "BarrierNow",
-      "text": "BarrierNow combines versioned evidence, freshness decay, movement constraints, route-level risk bounds, active source selection, and calibrated abstention for accessible route previews. It is not safety certification or emergency navigation.",
+      "text": "Fresh-evidence route previews under temporary, uncertain, and time-sensitive mobility barriers.",
       "url": "https://github.com/pxnkit/barriernow",
-      "tags": ["accessibility", "active evidence", "risk-aware routing"]
+      "tags": [
+        "accessibility",
+        "active evidence",
+        "risk-aware routing",
+        "Retrieval and Evidence"
+      ]
+    },
+    {
+      "id": "project:barriernow:limitation:1",
+      "sourceId": "local:barriernow:readme",
+      "kind": "project-limitation",
+      "projectSlug": "barriernow",
+      "title": "BarrierNow — limitation",
+      "text": "BarrierNow is not safety certification or emergency navigation and does not establish that a route is safe for a person.",
+      "url": "https://github.com/pxnkit/barriernow",
+      "tags": [
+        "limitation",
+        "accessibility",
+        "active evidence",
+        "risk-aware routing"
+      ]
     },
     {
       "id": "project:whofixesthis:summary",
@@ -292,9 +798,295 @@
       "kind": "project-summary",
       "projectSlug": "whofixesthis",
       "title": "WhoFixesThis",
-      "text": "WhoFixesThis constructs competing provider and service hypotheses, searches dated evidence, checks likely duplicates, and selects a supported civic-service route or abstains. Its demo uses fictional jurisdictions and never submits a report.",
+      "text": "Temporal responsibility search for evidence-based civic service routing.",
       "url": "https://github.com/pxnkit/whofixesthis",
-      "tags": ["civic technology", "temporal graphs", "service routing"]
+      "tags": [
+        "civic technology",
+        "temporal graphs",
+        "service routing",
+        "Retrieval and Evidence"
+      ]
+    },
+    {
+      "id": "project:whofixesthis:limitation:1",
+      "sourceId": "local:whofixesthis:readme",
+      "kind": "project-limitation",
+      "projectSlug": "whofixesthis",
+      "title": "WhoFixesThis — limitation",
+      "text": "The demo is not government guidance and never submits a report.",
+      "url": "https://github.com/pxnkit/whofixesthis",
+      "tags": [
+        "limitation",
+        "civic technology",
+        "temporal graphs",
+        "service routing"
+      ]
+    },
+    {
+      "id": "content:profile:identity",
+      "sourceId": "curated:profile",
+      "kind": "profile",
+      "title": "Profile — Identity",
+      "text": "Pankit Brahmkhatri is a Master's CS student at TU Dresden.",
+      "url": "/portfolio",
+      "tags": ["profile", "identity", "research focus"]
+    },
+    {
+      "id": "content:profile:research-focus",
+      "sourceId": "curated:profile",
+      "kind": "profile",
+      "title": "Profile — Research focus",
+      "text": "His research focuses on agent memory, information retrieval, test-time learning, search-guided reasoning, and reliable tool agents. He builds research prototypes and evaluation systems, and presents their evidence, assumptions, and limitations explicitly.",
+      "url": "/portfolio",
+      "tags": ["profile", "identity", "research focus"]
+    },
+    {
+      "id": "content:research-overview:central-research-question",
+      "sourceId": "curated:research-overview",
+      "kind": "overview",
+      "title": "Research overview — Central research question",
+      "text": "How can an agent turn remembered or retrieved evidence into a reliable action when sources can be incomplete, stale, conflicting, or wrong? The portfolio approaches this as an end-to-end systems question spanning memory, retrieval, adaptation, reasoning, tools, and evaluation.",
+      "url": "/portfolio",
+      "tags": [
+        "research overview",
+        "agent systems",
+        "evaluation",
+        "central research question"
+      ]
+    },
+    {
+      "id": "content:research-overview:research-method",
+      "sourceId": "curated:research-overview",
+      "kind": "overview",
+      "title": "Research overview — Research method",
+      "text": "The projects make evidence boundaries visible, record provenance and time, test interventions or counterfactuals where possible, and distinguish deterministic software checks from broader research claims. They favor calibrated clarification or abstention when the indexed evidence is insufficient.",
+      "url": "/portfolio",
+      "tags": [
+        "research overview",
+        "agent systems",
+        "evaluation",
+        "research method"
+      ]
+    },
+    {
+      "id": "content:research-overview:shared-system-view",
+      "sourceId": "curated:research-overview",
+      "kind": "overview",
+      "title": "Research overview — Shared system view",
+      "text": "The shared framing is memory as a decision system. Across the portfolio, reliable behavior depends on more than storing facts: an agent must recognize relevant evidence, recall it at the right moment, identify its source, decide whether it is still valid, and use it to choose an appropriate action.",
+      "url": "/portfolio",
+      "tags": [
+        "research overview",
+        "agent systems",
+        "evaluation",
+        "shared system view"
+      ]
+    },
+    {
+      "id": "content:research-themes:agent-memory-and-adaptation",
+      "sourceId": "curated:research-themes",
+      "kind": "theme",
+      "title": "Research themes — Agent memory and adaptation",
+      "text": "This theme studies what an agent should retain, consolidate, correct, or forget. It treats memory as a controlled state that must remain useful across changing contexts rather than as an unbounded transcript.",
+      "url": "/portfolio#themes-heading",
+      "tags": [
+        "research themes",
+        "agent memory",
+        "retrieval",
+        "test-time learning",
+        "reasoning",
+        "tool agents",
+        "agent memory and adaptation"
+      ]
+    },
+    {
+      "id": "content:research-themes:information-retrieval-and-evidence",
+      "sourceId": "curated:research-themes",
+      "kind": "theme",
+      "title": "Research themes — Information retrieval and evidence",
+      "text": "This theme studies recall, source recollection, provenance, temporal validity, and selective evidence acquisition. The goal is to retrieve evidence that is not merely similar to a query, but relevant, attributable, and timely enough to support a decision.",
+      "url": "/portfolio#themes-heading",
+      "tags": [
+        "research themes",
+        "agent memory",
+        "retrieval",
+        "test-time learning",
+        "reasoning",
+        "tool agents",
+        "information retrieval and evidence"
+      ]
+    },
+    {
+      "id": "content:research-themes:test-time-learning",
+      "sourceId": "curated:research-themes",
+      "kind": "theme",
+      "title": "Research themes — Test-time learning",
+      "text": "This theme studies safe adaptation during use, including when repeated observations justify parameter promotion and when uncertain evidence should stay outside persistent model state. Adaptation is evaluated as a governed process rather than an automatic update.",
+      "url": "/portfolio#themes-heading",
+      "tags": [
+        "research themes",
+        "agent memory",
+        "retrieval",
+        "test-time learning",
+        "reasoning",
+        "tool agents"
+      ]
+    },
+    {
+      "id": "content:research-themes:search-guided-reasoning",
+      "sourceId": "curated:research-themes",
+      "kind": "theme",
+      "title": "Research themes — Search-guided reasoning",
+      "text": "This theme treats reasoning as a search over hypotheses, evidence requests, and possible actions. Search should expose uncertainty, respect constraints, and stop with clarification or abstention when the available evidence cannot support a reliable choice.",
+      "url": "/portfolio#themes-heading",
+      "tags": [
+        "research themes",
+        "agent memory",
+        "retrieval",
+        "test-time learning",
+        "reasoning",
+        "tool agents",
+        "search-guided reasoning"
+      ]
+    },
+    {
+      "id": "content:research-themes:reliable-tool-agents",
+      "sourceId": "curated:research-themes",
+      "kind": "theme",
+      "title": "Research themes — Reliable tool agents",
+      "text": "This theme studies agents that act through tools under concurrency, scope, and failure. Reliability depends on typed state changes, causal influence tests, pre-action verification, and traceable boundaries between observation, decision, and effect.",
+      "url": "/portfolio#themes-heading",
+      "tags": [
+        "research themes",
+        "agent memory",
+        "retrieval",
+        "test-time learning",
+        "reasoning",
+        "tool agents",
+        "reliable tool agents"
+      ]
+    },
+    {
+      "id": "content:project-map:indexed-catalog",
+      "sourceId": "curated:project-map",
+      "kind": "project-map",
+      "title": "Research connection map — Indexed catalog",
+      "text": "The catalog count is generated from the authoritative project records, keeping verified public projects separate from pending title-only entries. The portfolio has 34 indexed project records: 29 verified public projects and 5 pending title-only records.",
+      "url": "/projects",
+      "tags": [
+        "research connection",
+        "project map",
+        "agent memory",
+        "reliability",
+        "indexed catalog"
+      ]
+    },
+    {
+      "id": "content:project-map:recognition-recall-source-and-action",
+      "sourceId": "curated:project-map",
+      "kind": "project-map",
+      "title": "Research connection map — Recognition, recall, source, and action",
+      "text": "RKA-Lab connects four evaluation rungs: recognizing remembered evidence, recalling it, identifying its source, and using it to choose an action. The distinction separates fluent answers from memory that causally changes behavior.",
+      "url": "/projects",
+      "tags": [
+        "research connection",
+        "project map",
+        "agent memory",
+        "reliability",
+        "recognition, recall, source, and action"
+      ]
+    },
+    {
+      "id": "content:project-map:concurrency-and-temporal-validity",
+      "sourceId": "curated:project-map",
+      "kind": "project-map",
+      "title": "Research connection map — Concurrency and temporal validity",
+      "text": "TxnMem studies concurrent updates to shared agent memory. FreshIndex schedules checks when mutable memories may be stale, while RegimeBank tracks whether experience remains valid after a regime change. Together they connect concurrency control with temporal validity.",
+      "url": "/projects",
+      "tags": [
+        "research connection",
+        "project map",
+        "agent memory",
+        "reliability",
+        "concurrency and temporal validity"
+      ]
+    },
+    {
+      "id": "content:project-map:consolidation-correction-and-forgetting",
+      "sourceId": "curated:project-map",
+      "kind": "project-map",
+      "title": "Research connection map — Consolidation, correction, and forgetting",
+      "text": "HippoGate decides whether to retain, probe, consolidate, or forget a candidate memory. MemEquiv tests whether a correction really changes behavior, and CertiCompress asks whether consolidation preserves the constraints that matter.",
+      "url": "/projects",
+      "tags": [
+        "research connection",
+        "project map",
+        "agent memory",
+        "reliability",
+        "consolidation, correction, and forgetting"
+      ]
+    },
+    {
+      "id": "content:project-map:causal-influence-scope-and-provenance",
+      "sourceId": "curated:project-map",
+      "kind": "project-map",
+      "title": "Research connection map — Causal influence, scope, and provenance",
+      "text": "MemIntervene measures causal influence by intervening on memory. ScopeGuard limits where learned instructions apply, and CertiCompress preserves provenance through compression. Trace-Mem is connected only at the verified public metadata level; detailed implementation and evaluation claims are intentionally not inferred.",
+      "url": "/projects",
+      "tags": [
+        "research connection",
+        "project map",
+        "agent memory",
+        "reliability",
+        "causal influence, scope, and provenance"
+      ]
+    },
+    {
+      "id": "content:project-map:parameter-promotion",
+      "sourceId": "curated:project-map",
+      "kind": "project-map",
+      "title": "Research connection map — Parameter promotion",
+      "text": "ParamLedger studies parameter promotion: moving repeated, supported observations into a more persistent state while keeping evidence, timing, and rollback information available for review.",
+      "url": "/projects",
+      "tags": [
+        "research connection",
+        "project map",
+        "agent memory",
+        "reliability",
+        "parameter promotion"
+      ]
+    },
+    {
+      "id": "content:site-scope:indexed-source-boundary",
+      "sourceId": "curated:site-scope",
+      "kind": "site-scope",
+      "title": "Site scope and navigation — Indexed source boundary",
+      "text": "The assistant answers from this portfolio's curated profile, research overview, themes, project map, project records, rankings, and approved public repository evidence. It does not infer private facts or fill gaps with unsupported details.",
+      "url": "/",
+      "tags": [
+        "site scope",
+        "navigation",
+        "indexed sources",
+        "indexed source boundary"
+      ]
+    },
+    {
+      "id": "content:site-scope:navigation",
+      "sourceId": "curated:site-scope",
+      "kind": "site-scope",
+      "title": "Site scope and navigation — Navigation",
+      "text": "Use the portfolio overview for the research focus and themes and projects for the verified public catalog and curated shortlist. Published research notes will appear under writing; none are currently published. Pankit's canonical GitHub profile is github.com/pxnkit.",
+      "url": "/",
+      "tags": ["site scope", "navigation", "indexed sources"]
+    },
+    {
+      "id": "content:site-scope:answer-behavior",
+      "sourceId": "curated:site-scope",
+      "kind": "site-scope",
+      "title": "Site scope and navigation — Answer behavior",
+      "text": "Answers should identify the source that supports a claim, preserve project caveats, and distinguish verified repository evidence from title-only pending records. When the indexed sources do not support an answer, the assistant should say so plainly.",
+      "url": "/",
+      "tags": ["site scope", "navigation", "indexed sources", "answer behavior"]
     },
     {
       "id": "manual:ranked-projects",
@@ -302,6 +1094,7 @@
       "kind": "ranking",
       "title": "Curated project ranking",
       "text": "Rank 1: ChaffMem, project 24. Rank 2: MemEquiv, project 21. Rank 3: SynthesisAutopsy, project 41. Rank 4: RowWitness, project 46. Rank 5: ProbeDiff, project 45. Rank 6: VeriForget, project 35. Only MemEquiv has a verified public repository source; the other ranked entries remain title-only and pending.",
+      "url": "/projects",
       "tags": ["ranking", "manual curation"]
     }
   ]

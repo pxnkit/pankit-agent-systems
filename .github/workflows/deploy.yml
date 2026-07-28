@@ -17,13 +17,13 @@ concurrency:
 
 jobs:
   deploy:
-    name: Deploy Cloudflare Worker
+    name: Deploy public OpenNext Worker
     if: >-
       github.event_name == 'workflow_dispatch' ||
       (github.event.workflow_run.conclusion == 'success' &&
       github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     environment: production
 
     steps:
@@ -41,15 +41,132 @@ jobs:
       - name: Install locked dependencies
         run: npm ci
 
-      - name: Build production Worker
-        run: npm run build
+      - name: Verify Turnstile secret pairing
+        if: ${{ vars.NEXT_PUBLIC_TURNSTILE_SITE_KEY != '' }}
         env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          npx wrangler secret list --name pankit-agent-systems --format json > configured-secrets.json
+          node --input-type=module <<'NODE'
+          import { readFile } from "node:fs/promises";
+          const secrets = JSON.parse(
+            await readFile("configured-secrets.json", "utf8"),
+          );
+          if (
+            !Array.isArray(secrets) ||
+            !secrets.some((secret) => secret?.name === "TURNSTILE_SECRET_KEY")
+          ) {
+            throw new Error(
+              "NEXT_PUBLIC_TURNSTILE_SITE_KEY requires a pre-provisioned TURNSTILE_SECRET_KEY Worker secret.",
+            );
+          }
+          NODE
+
+      - name: Build and deploy through OpenNext
+        run: npm run deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL }}
           NEXT_PUBLIC_TURNSTILE_SITE_KEY: ${{ vars.NEXT_PUBLIC_TURNSTILE_SITE_KEY }}
 
-      - name: Deploy
-        uses: cloudflare/wrangler-action@v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: deploy --env production
+      - name: Smoke-test anonymous production access
+        env:
+          SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL }}
+        run: |
+          node --input-type=module <<'NODE'
+          const base = process.env.SITE_URL;
+          if (!base) throw new Error("NEXT_PUBLIC_SITE_URL is not configured.");
+
+          for (const path of ["/", "/portfolio"]) {
+            const response = await fetch(new URL(path, base), {
+              redirect: "manual",
+            });
+            if (!response.ok) {
+              throw new Error(`${path} returned ${response.status}.`);
+            }
+          }
+
+          const healthResponse = await fetch(new URL("/api/health", base), {
+            redirect: "manual",
+            headers: { Accept: "application/json" },
+          });
+          if (!healthResponse.ok) {
+            throw new Error(`/api/health returned ${healthResponse.status}.`);
+          }
+
+          const health = await healthResponse.json();
+          if (
+            health.status !== "ok" ||
+            health.chatConfigured !== true ||
+            health.turnstilePairingOk !== true ||
+            health.aiMode !== "cloudflare" ||
+            health.indexedProjects !== 34 ||
+            health.knowledgeChunks < 60 ||
+            health.profileSources < 1 ||
+            typeof health.corpusVersion !== "string" ||
+            health.snapshotAge?.stale !== false ||
+            health.mandatoryRetrievalChecks?.allPassed !== true
+          ) {
+            throw new Error(`Unexpected health payload: ${JSON.stringify(health)}`);
+          }
+
+          const chatResponse = await fetch(new URL("/api/chat", base), {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Accept: "text/event-stream",
+              Origin: new URL(base).origin,
+              "Sec-Fetch-Site": "same-origin",
+            },
+            body: JSON.stringify({
+              message:
+                "How do the evaluation contracts distinguish synthetic checks from broader claims?",
+              history: [],
+            }),
+          });
+          if (!chatResponse.ok) {
+            throw new Error(`/api/chat returned ${chatResponse.status}.`);
+          }
+          if (
+            !chatResponse.headers
+              .get("content-type")
+              ?.includes("text/event-stream")
+          ) {
+            throw new Error("The production chat response is not an SSE stream.");
+          }
+
+          const eventPayloads = (await chatResponse.text())
+            .split("\n")
+            .filter((line) => line.startsWith("data:"))
+            .map((line) => JSON.parse(line.slice(5).trim()));
+          const metadata = eventPayloads.find(
+            (event) => event.type === "metadata",
+          );
+          const sourceList = eventPayloads.find(
+            (event) => event.type === "source-list",
+          );
+          const deltas = eventPayloads.filter(
+            (event) => event.type === "text-delta" && event.text,
+          );
+          const completions = eventPayloads.filter(
+            (event) => event.type === "completion",
+          );
+          const fallbacks = eventPayloads.filter(
+            (event) => event.type === "fallback",
+          );
+          if (
+            metadata?.aiMode !== "cloudflare" ||
+            metadata?.responseMode !== "cloudflare" ||
+            !Array.isArray(sourceList?.sources) ||
+            sourceList.sources.length < 1 ||
+            deltas.length < 1 ||
+            completions.length !== 1 ||
+            fallbacks.length !== 0
+          ) {
+            throw new Error(
+              `Production chat did not complete through Workers AI: ${JSON.stringify(eventPayloads)}`,
+            );
+          }
+          NODE

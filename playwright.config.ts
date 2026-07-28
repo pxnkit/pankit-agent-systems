@@ -2,6 +2,9 @@ import { defineConfig, devices } from "@playwright/test";
 
 const externalBaseUrl = process.env.PLAYWRIGHT_BASE_URL;
 const baseURL = externalBaseUrl ?? "http://localhost:4173";
+const previewCommand = process.env.CI
+  ? "wrangler dev --config wrangler.jsonc --local --port 4173 --var AI_MODE:mock"
+  : "npm run preview -- --port 4173 --var AI_MODE:mock";
 
 export default defineConfig({
   testDir: "./tests/e2e",
@@ -19,13 +22,13 @@ export default defineConfig({
   webServer: externalBaseUrl
     ? undefined
     : {
-        command: "node ./node_modules/vinext/dist/cli.js dev --port 4173",
+        command: previewCommand,
         url: baseURL,
         reuseExistingServer: !process.env.CI,
-        timeout: 120_000,
+        timeout: 180_000,
         env: {
           AI_MODE: "mock",
-          CHAT_MOCK_MODE: "true",
+          NEXT_PUBLIC_SITE_URL: baseURL,
         },
       },
   projects: [

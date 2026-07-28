@@ -22,16 +22,35 @@ test("chat payload validation normalizes bounded history", () => {
   const result = validateChatPayload({
     message: "  Compare Alpha  ",
     history: [{ role: "user", content: " Earlier question " }],
+    sessionId: "session-12345678",
   });
   assert.equal(result.ok, true);
   assert.equal(result.value.message, "Compare Alpha");
   assert.deepEqual(result.value.history, [
     { role: "user", content: "Earlier question" },
   ]);
+  assert.equal(result.value.sessionId, "session-12345678");
 });
 
 test("chat payload validation rejects oversized and invalid roles", () => {
-  assert.equal(validateChatPayload({ message: "x".repeat(2_001) }).ok, false);
+  assert.equal(validateChatPayload({ message: "x".repeat(701) }).ok, false);
+  assert.equal(
+    validateChatPayload({
+      message: "hello",
+      history: Array.from({ length: 7 }, () => ({
+        role: "user",
+        content: "bounded",
+      })),
+    }).ok,
+    false,
+  );
+  assert.equal(
+    validateChatPayload({
+      message: "hello",
+      sessionId: "<script>",
+    }).ok,
+    false,
+  );
   assert.equal(
     validateChatPayload({
       message: "hello",
@@ -86,6 +105,30 @@ test("provider output cannot self-certify without an inline citation", () => {
   );
   assert.equal(result.ok, false);
   assert.equal(result.reason, "ungrounded");
+});
+
+test("source-less factual provider output is rejected", () => {
+  const result = validateProviderOutput(
+    {
+      answer: "Pankit has an unsupported biography.",
+      sourceIds: [],
+    },
+    [],
+  );
+  assert.equal(result.ok, false);
+  assert.equal(result.reason, "source-less-factual-output");
+});
+
+test("one valid citation cannot certify a separate uncited paragraph", () => {
+  const result = validateProviderOutput(
+    {
+      answer:
+        "This paragraph invents an unsupported result.\n\nThe indexed project has a public source. [source:local:alpha:readme]",
+    },
+    sources,
+  );
+  assert.equal(result.ok, false);
+  assert.equal(result.reason, "uncited-factual-block");
 });
 
 test("provider output strips invented citations and unsafe links", () => {

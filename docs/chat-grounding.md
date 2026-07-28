@@ -44,24 +44,36 @@ The relevant artifacts are:
 - `generated/search-index.json` for deterministic retrieval data;
 - `generated/corpus-version.json` for the corpus fingerprint.
 
-`lib/retrieval.mjs`, `lib/content-policy.mjs`, and
-`lib/source-validation.mjs` enforce the server-side boundary.
+The builder also ingests the committed portfolio authority in:
+
+- `content/profile.mdx`;
+- `content/research-overview.mdx`;
+- `content/research-themes.mdx`;
+- `content/project-map.mdx`;
+- `content/site-scope.mdx`.
+
+`scripts/build-corpus.mjs` is the canonical build entry point. `build:index`
+delegates to it rather than maintaining a second indexing path.
 
 ## Corpus construction
 
 Generated chunks are accepted only when their project slug exists in the
 curated project list and their source ID is one of that project's approved
-source IDs. Curated project records also produce a minimum local corpus from
-the short description, long description, topics, technologies, and explicit
-limitations. This keeps credential-free development useful when an optional
-generated snapshot is absent.
+source IDs. Curated project records and the five portfolio-level MDX documents
+produce the committed corpus used in every environment.
 
 Chunks are deduplicated by stable ID and by a normalized fingerprint of project,
 kind, and text. A chunk that contains excluded content is discarded before
 retrieval.
 
-This fallback is not permission to invent data. An allowlisted project without
-an approved description or source ID contributes no factual chunk.
+The build fails unless the exact 29-name policy, four exclusions, verified
+public-project floor, provenance registration, profile/theme coverage, unique
+chunk floor, link integrity, and mandatory retrieval fixtures all hold. It also
+rejects excluded content, duplicate chunks, and unknown source IDs.
+
+This deterministic corpus is not permission to invent data. An allowlisted
+project without an approved description or source ID contributes no factual
+chunk.
 
 ## Retrieval
 
@@ -78,18 +90,17 @@ implementation:
 - favors project diversity for comparison questions;
 - sorts ties by stable chunk ID.
 
-The default result limit is six and is clamped to twelve. Comparison queries
-select one strong chunk per project before filling remaining slots. This keeps
-a comparison from being dominated by near-duplicate chunks from one project.
+The answer path supplies four to six unique approved sources when enough
+relevant evidence exists. Comparison queries select one strong chunk per
+project before filling remaining slots. This keeps a comparison from being
+dominated by near-duplicate chunks from one project.
 
 The score is a relevance heuristic. It is not a probability, confidence score,
 or research metric.
 
 ## Source cards
 
-Retrieved evidence is normalized into public source cards. The default answer
-surface exposes at most five unique source IDs, clamped to eight by the server.
-A card contains:
+Retrieved evidence is normalized into public source cards. A card contains:
 
 - approved source ID;
 - title;
@@ -101,6 +112,10 @@ The model may cite only IDs supplied with its evidence. Provider output cannot
 introduce a new source or link. Unknown source markers are removed, Markdown
 links are restricted to approved URLs, and an answer with available evidence
 but no valid citation is treated as ungrounded.
+
+Each factual paragraph or bullet must carry its own approved citation. The
+client keeps that marker visible as a numbered, keyboard-focusable inline link
+whose number resolves to the associated source card.
 
 Local paths and internal manifest locations are never returned to the browser.
 
@@ -142,31 +157,46 @@ Request content type must be `application/json`.
 
 Limits enforced before retrieval:
 
-| Field                 |            Limit |
-| --------------------- | ---------------: |
-| Request body          |     16,384 bytes |
-| `message`             | 2,000 characters |
-| `history`             |       8 messages |
-| Combined history text | 6,000 characters |
-| `turnstileToken`      | 2,048 characters |
+| Field     | Limit                           |
+| --------- | ------------------------------- |
+| `message` | 700 characters                  |
+| `history` | 6 prior user/assistant messages |
 
-The browser may choose a smaller composer limit. The server limit remains the
-security boundary.
+The server limits remain the security boundary even when the browser uses
+smaller limits.
 
-Successful responses use newline-delimited JSON (`application/x-ndjson`) with
-this ordered event contract:
+Successful responses use Server-Sent Events (`text/event-stream`) with this
+ordered event contract:
 
 ```text
-{"type":"meta","requestId":"...","mode":"mock"}
-{"type":"delta","text":"..."}
-{"type":"delta","text":"..."}
-{"type":"sources","sources":[...]}
-{"type":"done"}
+event: metadata
+data: {"type":"metadata", ...}
+
+event: fallback
+data: {"type":"fallback", ...}        // conditional
+
+event: source-list
+data: {"type":"source-list","sources":[...]}
+
+event: text-delta
+data: {"type":"text-delta","text":"..."}
+
+event: completion
+data: {"type":"completion", ...}
 ```
 
-`mode` distinguishes deterministic mock responses from Workers AI responses.
-There may be any number of `delta` events. Errors return bounded client-safe
-messages; internal provider details and binding values stay server-side.
+`metadata` reports the non-secret mode, interpreted intent, and any applicable
+fallback reason. There may be any number of `text-delta` events. `fallback`
+appears only when the primary generation path falls back to validated
+retrieval. `error` is reserved for a bounded stream-safe terminal failure.
+Internal provider details and binding values stay server-side.
+
+Cloudflare mode consumes the actual upstream Workers AI stream, but raw tokens
+are not forwarded directly. The route buffers until an approved citation
+closes a factual segment, validates that segment against the source allowlist
+and exclusion policy, and only then emits it. Any invalid, invented, or uncited
+segment discards the unfinished model answer and emits a labeled
+retrieval-only fallback.
 
 ### `OPTIONS /api/chat`
 
@@ -178,27 +208,46 @@ signals when present.
 
 Returns operational readiness information suitable for a deployment smoke
 check. It must not reveal secrets, raw binding objects, internal prompts, user
-data, or local paths.
+data, or local paths. Its top-level contract is:
 
-## Mock and live modes
+- `status`;
+- `chatConfigured`;
+- `aiMode`;
+- `primaryModel`;
+- `turnstilePairingOk`;
+- `indexedProjects`;
+- `knowledgeChunks`;
+- `profileSources`;
+- `corpusVersion`;
+- `snapshotAge`;
+- `mandatoryRetrievalChecks`.
+
+## Runtime modes
 
 ### Mock mode
 
-`CHAT_MOCK_MODE=true` avoids Workers AI entirely. It returns deterministic,
-retrieval-grounded output through the same source and response validation
+`AI_MODE=mock` avoids Workers AI entirely. It returns deterministic,
+retrieval-grounded output through the same source and response-validation
 surface. Use it for local development, pull-request tests, and failure
 reproduction.
 
 Mock mode proves the application contract, not live model answer quality.
 
-### Live mode
+### Retrieval-only mode
 
-`CHAT_MOCK_MODE=false` requires the Cloudflare `AI` binding. The model is chosen
-by `AI_MODEL`. The route sends only the bounded question context and selected
-portfolio evidence needed for the answer.
+`AI_MODE=retrieval-only` skips model generation and turns validated retrieval
+results into an extractive answer. It is the explicit low-dependency fallback,
+not a license to use model memory.
+
+### Cloudflare mode
+
+`AI_MODE=cloudflare` requires the Cloudflare `AI` binding. The route sends only
+the bounded question context and selected portfolio evidence needed for the
+answer. The configured primary is GLM 4.7 Flash. Granite economy routing is
+disabled unless explicitly enabled, and Qwen is an evaluation-only challenger.
 
 If the binding is missing, times out, or returns invalid, uncited, or
-ungrounded output, the route uses an extractive response from the validated
+ungrounded output, the route uses a labeled extractive response from validated
 retrieval results. With no evidence it abstains. It must not silently switch to
 an unrelated external provider.
 
@@ -213,7 +262,7 @@ cross-origin form submission, while explicit Origin, Referer, and
 ### Rate limiting
 
 The client network identifier is converted to a one-way keyed digest before it
-becomes a bucket key. Production should configure `IP_HASH_SALT`; the
+becomes a bucket key. Production should configure `RATE_LIMIT_SALT`; the
 credential-free local fallback is intentionally non-secret and must not be
 treated as production anonymity.
 
@@ -223,13 +272,23 @@ returning the identifier.
 
 With `RATE_LIMIT_KV`, counters are shared through Workers KV. Because a
 read-then-write KV counter is not a strongly atomic global primitive, this is
-an abuse throttle rather than a billing-grade quota. Without KV, the fallback
-is memory-local to a Worker isolate and best effort only.
+an abuse throttle rather than a billing-grade quota. Without KV, both request
+and session counters are non-durable and memory-local to a Worker isolate.
+They reset on eviction, restart, or deploy and are not coordinated across
+isolates or points of presence.
+
+The answer route also caps a browser session at the configured
+`MAX_SESSION_GENERATED_ANSWERS` value (eight in the committed production
+configuration). The UI should explain the limit without exposing its
+rate-bucket identifier.
 
 ### Turnstile
 
-When `TURNSTILE_SECRET_KEY` is absent, verification is explicitly skipped.
-When it is configured, a token is required and the route validates it
+When neither Turnstile value is configured, verification is explicitly
+disabled. When enabled, `NEXT_PUBLIC_TURNSTILE_SITE_KEY` and
+`TURNSTILE_SECRET_KEY` must be configured as a pair. A mismatch makes health
+degraded and generated chat fail closed. With the pair configured, a token is
+required after the free generated-answer allowance and the route validates it
 server-side through Siteverify with a bounded timeout. Missing, invalid,
 expired, replayed, mismatched-action, and verification-unavailable cases fail
 closed.

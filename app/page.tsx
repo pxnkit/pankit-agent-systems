@@ -1,4 +1,4 @@
-import { ChatShell } from "@/components/chat/chat-shell";
+import { ResearchChat } from "@/components/chat/research-chat";
 
 export const metadata = {
   title: "Portfolio research guide",
@@ -10,7 +10,7 @@ export const metadata = {
 export default function Home() {
   return (
     <main id="main-content" className="chat-page">
-      <ChatShell />
+      <ResearchChat />
     </main>
   );
 }

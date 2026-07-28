@@ -7,7 +7,19 @@ export const metadata = {
     "A searchable catalogue of public research systems for memory, retrieval, verification, and reliable AI agents.",
 };
 
-export default function ProjectsPage() {
+export default async function ProjectsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{
+    pillar?: string | string[];
+    q?: string | string[];
+  }>;
+}) {
+  const params = await searchParams;
+  const initialPillar =
+    typeof params.pillar === "string" ? params.pillar : undefined;
+  const initialQuery = typeof params.q === "string" ? params.q : undefined;
+
   return (
     <main id="main-content" className="projects-page editorial-shell">
       <header className="page-hero">
@@ -19,7 +31,11 @@ export default function ProjectsPage() {
           mistaken for externally validated evidence.
         </p>
       </header>
-      <ProjectCatalogue projects={projects} />
+      <ProjectCatalogue
+        projects={projects}
+        initialPillar={initialPillar}
+        initialQuery={initialQuery}
+      />
     </main>
   );
 }

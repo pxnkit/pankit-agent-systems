@@ -22,40 +22,41 @@ the decisions that should remain stable when components evolve.
 5. **Theme parity.** Light and dark themes preserve hierarchy, contrast, and
    semantic colors rather than simply inverting pixels.
 
-## Token model
+## Trace Indigo tokens
 
 Use semantic custom properties instead of literal colors inside components.
-The exact values live in `app/globals.css`; new components should consume the
-closest existing token.
+The exact implementation lives in `app/globals.css`, but the core palette is a
+stable contract.
 
-| Custom property                         | Intended use                                           |
-| --------------------------------------- | ------------------------------------------------------ |
-| `--page`                                | Page canvas                                            |
-| `--surface`                             | Primary cards, composer, and raised regions            |
-| `--surface-soft`                        | Secondary panels and quiet grouped content             |
-| `--ink`                                 | Headlines and main body copy                           |
-| `--muted`                               | Descriptions, metadata, helper copy, inactive controls |
-| `--line`                                | Quiet structure and dividers                           |
-| `--line-strong`                         | Selected or emphasized boundaries                      |
-| `--dark-surface`, `--dark-ink`          | Dark cards that remain dark in either theme            |
-| `--accent`, `--accent-blue`             | Primary actions, active filters, links, and focus      |
-| `--success`, `--warning`                | Semantic status only                                   |
-| `--radius-card`, `--radius-panel`       | Consistent card and panel geometry                     |
-| `--radius-pill`                         | Segmented controls, chips, and pill buttons            |
-| `--shadow-card`, `--shadow-lift`        | Resting and elevated depth                             |
-| `--editorial-gutter`, `--header-height` | Shared page geometry                                   |
+| Role                | Light                              | Dark                  |
+| ------------------- | ---------------------------------- | --------------------- |
+| Page                | `#f7f6f2`                          | `#0d0d0f`             |
+| Surface             | `#ffffff`                          | `#171719`             |
+| Soft surface        | `#fbfaf7`                          | `#202024`             |
+| Ink                 | `#171719`                          | `#f6f5f2`             |
+| Muted               | `#6e6e73` / quiet `#929298`        | `#a7a7ad`             |
+| Line                | current ink at approximately `10%` | current ink at `10%`  |
+| Trace               | `#4b55d9`                          | `#9aa3ff`             |
+| Trace hover/pressed | `#3d47c7` / `#303aa7`              | theme-adjusted states |
+| Trace soft          | `#eceeff`                          | translucent trace     |
+
+Primary semantic tokens cover page, surface, soft surface, ink, muted copy,
+line, trace, focus, status, radii, elevation, editorial gutter, and header
+height. New components consume those tokens rather than introducing another
+neutral or accent family.
 
 Do not encode meaning with color alone. Pair status color with text, shape, or
 an accessible label.
 
 ## Typography
 
-- Use the configured sans family for navigation, controls, and body copy.
-- Use the configured display or serif treatment only where the stylesheet
-  defines it; do not introduce a third family for one component.
-- Keep body text at a comfortable reading size and line height.
-- Use the monospace family for repository identifiers, code, model names, and
-  compact technical metadata.
+- Use Geist Sans for navigation, controls, body copy, and most headings.
+- Use Newsreader selectively for editorial hero and section headlines. It adds
+  contrast; it is not the default UI face.
+- Use Geist Mono for repository identifiers, code, model names, labels, source
+  IDs, and compact technical metadata.
+- Keep body text at a comfortable reading size and line height and preserve the
+  tighter rhythm of labels and evidence metadata.
 - Prefer sentence case. Repository names retain their canonical casing.
 - Avoid all-caps paragraphs; short eyebrows and compact status labels are the
   exception.
@@ -66,19 +67,25 @@ an accessible label.
 - Reading-heavy copy uses a narrower measure inside that frame.
 - Project grids should use responsive `minmax()` behavior rather than fixed
   card counts.
-- The chat composer remains reachable without covering the most recent answer.
+- The home route keeps a compact orientation hero, followed by the dark
+  four-step process panel, four research questions, and ranked/featured rails.
+- The chat composer is fixed within the viewport while preserving enough bottom
+  space that it never covers the most recent answer or footer content.
 - On narrow screens, horizontal rails remain keyboard-scrollable and expose
   their next item rather than hiding overflow without a cue.
+- Preserve scroll-snap behavior only where it improves rail browsing; never
+  trap vertical page scrolling.
 - Components should work at 320 CSS pixels and at 200% browser zoom.
 
 ## Components
 
 ### Navigation
 
-The global navigation provides a consistent path to the portfolio, projects,
-research context, and privacy information. The current route has a non-color
-indicator. The theme control has an accessible name that describes the action
-or current state.
+The primary routes are Chat (`/`), Portfolio (`/portfolio`), project catalogue
+and detail routes, Writing, and Privacy. Writing may render a deliberate empty
+state; it must not imply that draft templates are published articles. The
+current route has a non-color indicator. The theme control has an accessible
+name that describes the action or current state.
 
 ### Project cards
 
@@ -103,7 +110,14 @@ available during generation, `Escape` stops generation, and `Enter` sends while
 
 Source cards are part of the answer contract. They show a human-readable title,
 repository identifier, source type, and safe link without exposing internal
-filesystem paths.
+filesystem paths. Approved citations remain visible as numbered inline links;
+they are keyboard-focusable and their accessible label names the associated
+source card.
+
+The compact hero explains that chat is a grounded research guide, while the
+four-step dark panel makes the answer path legible: interpret, retrieve,
+ground, and answer. Four suggested research questions act as genuine controls
+and remain distinct from the ranked and featured project rails.
 
 ### Filters and search
 

@@ -6,13 +6,19 @@ import {
   containsExcludedSourceContent,
 } from "../../lib/content-policy.mjs";
 import { classifyLink } from "../../lib/link-policy.mjs";
-import { getClientIp, hashIpAddress } from "../../lib/security/ip-hash.mjs";
+import {
+  getClientIp,
+  hashIpAddress,
+  hashRateLimitIdentifier,
+} from "../../lib/security/ip-hash.mjs";
 import { checkSameOrigin } from "../../lib/security/origin.mjs";
 import {
   checkRateLimit,
   resetMemoryRateLimits,
 } from "../../lib/security/rate-limit.mjs";
 import { verifyTurnstile } from "../../lib/security/turnstile.mjs";
+
+const TURNSTILE_ALWAYS_PASS_TEST_SECRET = "1x0000000000000000000000000000000AA";
 
 test("scope policy blocks employment and materials queries exactly", () => {
   assert.equal(
@@ -73,6 +79,13 @@ test("IP extraction prefers Cloudflare and hashes deterministically", async () =
   assert.equal(first, second);
   assert.equal(first.length, 64);
   assert.doesNotMatch(first, /203\.0\.113\.9/);
+  const session = await hashRateLimitIdentifier(
+    "session-12345678",
+    "test-salt",
+    "browser-session",
+  );
+  assert.equal(session.length, 64);
+  assert.notEqual(session, first);
 });
 
 test("fixed-window fallback returns remaining quota and retry timing", async () => {
@@ -82,6 +95,7 @@ test("fixed-window fallback returns remaining quota and retry timing", async () 
   const second = await checkRateLimit(options);
   const third = await checkRateLimit(options);
   assert.equal(first.allowed, true);
+  assert.equal(first.count, 1);
   assert.equal(first.remaining, 1);
   assert.equal(second.remaining, 0);
   assert.equal(third.allowed, false);
@@ -94,10 +108,17 @@ test("Turnstile is optional locally and fail-closed when configured", async () =
     skipped: true,
     reason: "not-configured",
   });
-  assert.equal((await verifyTurnstile({ secret: "server-secret" })).ok, false);
+  assert.equal(
+    (
+      await verifyTurnstile({
+        secret: TURNSTILE_ALWAYS_PASS_TEST_SECRET,
+      })
+    ).ok,
+    false,
+  );
 
   const accepted = await verifyTurnstile({
-    secret: "server-secret",
+    secret: TURNSTILE_ALWAYS_PASS_TEST_SECRET,
     token: "client-token",
     expectedAction: "portfolio-chat",
     expectedHostname: "portfolio.test",

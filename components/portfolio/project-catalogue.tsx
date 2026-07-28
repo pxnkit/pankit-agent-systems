@@ -50,10 +50,22 @@ function searchMatches(project: Project, query: string) {
   return haystack.includes(query.toLowerCase());
 }
 
-export function ProjectCatalogue({ projects }: { projects: Project[] }) {
-  const [filter, setFilter] = useState<Filter>("All");
+export function ProjectCatalogue({
+  projects,
+  initialPillar,
+  initialQuery,
+}: {
+  projects: Project[];
+  initialPillar?: string;
+  initialQuery?: string;
+}) {
+  const [filter, setFilter] = useState<Filter>(() =>
+    initialPillar && FILTERS.includes(initialPillar as (typeof FILTERS)[number])
+      ? (initialPillar as Filter)
+      : "All",
+  );
   const [sort, setSort] = useState<Sort>("Curated");
-  const [query, setQuery] = useState("");
+  const [query, setQuery] = useState(() => initialQuery?.slice(0, 120) ?? "");
 
   const visible = useMemo(() => {
     const result = projects.filter(

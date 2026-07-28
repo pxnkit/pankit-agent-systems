@@ -1,8 +1,11 @@
 # Content editing
 
-Portfolio content has two layers:
+Portfolio content has three layers:
 
-- **manual authority** under `data/`, where editorial decisions live;
+- **manual authority** under `data/`, where project policy and editorial
+  decisions live;
+- **portfolio narrative authority** under `content/`, where profile, research,
+  navigation, and long-form writing live;
 - **derived artifacts** under `generated/`, where normalized metadata,
   provenance, knowledge chunks, and search structures live.
 
@@ -25,6 +28,21 @@ its approved source.
 Manual descriptions, categories, featured choices, and ranking always take
 precedence over repository metadata. GitHub data may fill an approved metadata
 field; it may not rewrite editorial authority.
+
+## Portfolio narrative authority
+
+| File                            | Responsibility                                           |
+| ------------------------------- | -------------------------------------------------------- |
+| `content/profile.mdx`           | Supported identity, background, and profile evidence     |
+| `content/research-overview.mdx` | Research-guide overview and cross-project framing        |
+| `content/research-themes.mdx`   | Named themes and their supported project relationships   |
+| `content/project-map.mdx`       | Portfolio navigation and project-map evidence            |
+| `content/site-scope.mdx`        | Indexed scope, omissions, and explicit answer boundaries |
+| `content/writing/`              | Publishable notes plus reusable authoring templates      |
+
+Keep facts and limitations together. Headings participate in deterministic
+chunking, so prefer stable, descriptive headings over decorative section names.
+Internal links must resolve to supported application routes.
 
 ## Derived artifacts
 
@@ -75,14 +93,16 @@ the corpus.
    data pipeline.
 4. Preserve status and limitation language near the affected claim.
 5. Refresh trusted GitHub metadata when the approved remote snapshot needs to
-   change, then rebuild the local index:
+   change, then rebuild the canonical corpus:
 
    ```bash
    npm run sync:github
-   npm run build:index
+   npm run build:corpus
    ```
 
-   `sync:github` is limited to exact allowlist members. Neither command may
+   `sync:github` is limited to exact allowlist members.
+   `scripts/build-corpus.mjs` is the only canonical corpus builder;
+   `npm run build:index` delegates to it for compatibility. Neither command may
    fetch or execute arbitrary repository code.
 
 6. Inspect the generated diff. Unexpected new repositories, local paths,
@@ -90,24 +110,34 @@ the corpus.
 7. Run:
 
    ```bash
+   npm run build:corpus
    npm run verify:content
    npm run typecheck
    npm test
    npm run verify:links
-   npm run build
+   npm run build:worker
    npm run test:e2e
    npm run test:a11y
    npm run eval:chat
-   npm run verify
    ```
 
 8. Open the affected project route and ask at least one chat question whose
    answer depends on the changed content.
 9. Commit the manual source change and its generated artifacts together.
 
-`sync:github`, `build:index`, and `verify:content` are the stable package
-contracts for refresh and verification. Editors should not depend on an
-unversioned internal script path.
+`sync:github`, `build:corpus`, and `verify:content` are the stable package
+contracts for refresh and verification.
+
+The corpus builder fails unless:
+
+- the exact 29-project allowlist and all exclusions remain intact;
+- at least 15 public repositories are verified;
+- at least 60 unique chunks are emitted;
+- at least two profile chunks and four theme chunks exist;
+- every chunk refers to a registered source ID;
+- excluded content, duplicate chunks, and broken internal links are absent;
+- identity, overview, connection, exact-project, comparison, theme, navigation,
+  and excluded-topic retrieval assertions pass.
 
 ## Editing an existing project
 
@@ -182,15 +212,13 @@ limitations. Cite the approved project source for project-specific facts.
 Do not publish a template route or draft that still contains placeholder
 claims.
 
-## Missing sources
+## Limited sources
 
-`recallresolve` and `trace-mem` are allowlisted but have no sibling README in
-the current workspace snapshot. The approved implementation brief for
-`recallresolve` supports its scope only; it does not establish implementation or
-evaluation status. Trusted repository metadata for `trace-mem` supports only a
-repository-level summary. Keep deeper factual fields unavailable until stronger
-approved sources are supplied, then follow the standard refresh and review
-workflow.
+Public verification confirms that a repository belongs to the approved set; it
+does not make every implementation or evaluation claim available. When the
+approved source material supports only a title or repository-level summary,
+keep deeper factual fields unavailable until stronger approved evidence is
+supplied. Then follow the standard refresh and review workflow.
 
 ## Review checklist
 

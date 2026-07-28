@@ -1,7 +1,5 @@
 export async function GET() {
-  const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ??
-    "https://pankit-agent-systems.brahmkhatripankit.chatgpt.site";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
   const body = `<?xml version="1.0" encoding="UTF-8" ?>
 <rss version="2.0">
   <channel>

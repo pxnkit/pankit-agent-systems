@@ -1,20 +1,65 @@
 {
   "schemaVersion": 1,
-  "version": "2026-07-27.manual.1",
-  "generatedAt": "2026-07-27T00:00:00.000Z",
+  "version": "2026-07-28.aa1cb8f8150a",
+  "generatedAt": "2026-07-28T00:00:00.000Z",
   "catalogProjectCount": 34,
   "verifiedPublicProjectCount": 29,
   "pendingTitleOnlyProjectCount": 5,
   "featuredProjectCount": 8,
   "rankedProjectCount": 6,
-  "knowledgeChunkCount": 30,
-  "searchDocumentCount": 34,
+  "knowledgeChunkCount": 78,
+  "searchDocumentCount": 54,
+  "sourceCount": 35,
+  "profileSourceCount": 1,
+  "profileChunkCount": 2,
+  "themeChunkCount": 5,
+  "kindCounts": {
+    "overview": 3,
+    "profile": 2,
+    "project-limitation": 29,
+    "project-map": 6,
+    "project-summary": 29,
+    "ranking": 1,
+    "site-scope": 3,
+    "theme": 5
+  },
   "sourceManifestVersion": 1,
   "contentPolicyVersion": 1,
   "manualOverrideRevision": 1,
+  "hashes": {
+    "knowledge": "85d19c91dc5917ac479498341a05610a5f3e853a9e230a6464b482fae9e85bae",
+    "sourceManifest": "57f2acffac55468c0466aea0e31571ef1492b3388b720b28a8a9db2c3cd91b32",
+    "searchIndex": "8737c12b20b14a62e230c09ee8bccd159313c286dab005506b758ed986410095"
+  },
+  "checks": {
+    "uniqueChunkIds": true,
+    "uniqueChunkFingerprints": true,
+    "sourceIdsRegistered": true,
+    "allowlistExact": true,
+    "exclusionsExact": true,
+    "internalLinksValid": true,
+    "prohibitedContentAbsent": true,
+    "minimumChunkCount": true,
+    "minimumVerifiedPublicProjects": true,
+    "profileCoverage": true,
+    "themeCoverage": true,
+    "requiredSourcesPresent": true,
+    "retrievalAssertionsPassed": true
+  },
+  "retrievalAssertions": [
+    { "id": "identity", "ok": true, "matchCount": 3 },
+    { "id": "overview", "ok": true, "matchCount": 6 },
+    { "id": "research-connection", "ok": true, "matchCount": 8 },
+    { "id": "exact-project", "ok": true, "matchCount": 4 },
+    { "id": "comparison", "ok": true, "matchCount": 5 },
+    { "id": "theme", "ok": true, "matchCount": 8 },
+    { "id": "navigation", "ok": true, "matchCount": 2 },
+    { "id": "excluded-topic", "ok": true, "matchCount": 0 }
+  ],
   "notes": [
     "Manual project records override generated metadata.",
-    "Only allowlisted projects are present.",
-    "Explicit project and current employment or organization exclusions are enforced."
+    "Only allowlisted verified projects contribute project knowledge chunks.",
+    "Explicit project and indexed-source exclusions are enforced.",
+    "Corpus release minima are hard validation invariants, not environment configuration."
   ]
 }

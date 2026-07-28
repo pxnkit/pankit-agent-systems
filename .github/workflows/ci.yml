@@ -17,7 +17,7 @@ jobs:
   quality:
     name: Quality gates
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
 
     steps:
       - name: Check out repository
@@ -32,6 +32,9 @@ jobs:
       - name: Install locked dependencies
         run: npm ci
 
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps
+
       - name: Check formatting
         run: npm run format:check
 
@@ -44,11 +47,23 @@ jobs:
       - name: Run unit and integration tests
         run: npm test
 
-      - name: Verify indexed content
+      - name: Build the grounded corpus
+        run: npm run build:corpus
+
+      - name: Verify generated corpus is current
+        run: git diff --exit-code -- generated
+
+      - name: Verify content policy
         run: npm run verify:content
 
-      - name: Build production Worker
-        run: npm run build
+      - name: Verify links
+        run: npm run verify:links
 
-      - name: Run end-to-end tests
+      - name: Build OpenNext Worker
+        run: npm run build:worker
+        env:
+          AI_MODE: mock
+          NEXT_PUBLIC_SITE_URL: http://localhost:4173
+
+      - name: Run end-to-end tests against the Workers runtime
         run: npm run test:e2e

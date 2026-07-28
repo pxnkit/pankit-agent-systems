@@ -1,13 +1,17 @@
 {
   "schemaVersion": 1,
-  "capturedAt": "2026-07-27",
+  "version": "2026-07-28.aa1cb8f8150a",
+  "capturedAt": "2026-07-28",
+  "generatedAt": "2026-07-28T00:00:00.000Z",
   "precedence": [
     "manual-curation",
+    "curated-mdx",
     "local-readme-and-docs",
     "trusted-github-metadata"
   ],
   "overridePolicy": "Manual descriptions, rankings, aliases, featured choices, and exclusions always override generated metadata.",
   "trustedHosts": ["github.com"],
+  "sourceCount": 35,
   "sources": [
     {
       "projectSlug": "rka-lab",
@@ -230,9 +234,61 @@
       "trustedUrls": ["https://github.com/pxnkit/whofixesthis"]
     },
     {
-      "sourceIds": ["manual:ranked-projects"],
+      "sourceIds": [
+        "manual:ranked-projects",
+        "ranked:project-24",
+        "ranked:project-41",
+        "ranked:project-46",
+        "ranked:project-45",
+        "ranked:project-35"
+      ],
       "primaryKind": "manual-curation",
       "localPath": "data/ranked-projects.ts",
+      "trustedUrls": []
+    },
+    {
+      "sourceIds": ["curated:profile"],
+      "primaryKind": "curated-mdx",
+      "contentKind": "profile",
+      "title": "Profile",
+      "localPath": "content/profile.mdx",
+      "url": "/portfolio",
+      "trustedUrls": []
+    },
+    {
+      "sourceIds": ["curated:research-overview"],
+      "primaryKind": "curated-mdx",
+      "contentKind": "overview",
+      "title": "Research overview",
+      "localPath": "content/research-overview.mdx",
+      "url": "/portfolio",
+      "trustedUrls": []
+    },
+    {
+      "sourceIds": ["curated:research-themes"],
+      "primaryKind": "curated-mdx",
+      "contentKind": "theme",
+      "title": "Research themes",
+      "localPath": "content/research-themes.mdx",
+      "url": "/portfolio#themes-heading",
+      "trustedUrls": []
+    },
+    {
+      "sourceIds": ["curated:project-map"],
+      "primaryKind": "curated-mdx",
+      "contentKind": "project-map",
+      "title": "Research connection map",
+      "localPath": "content/project-map.mdx",
+      "url": "/projects",
+      "trustedUrls": []
+    },
+    {
+      "sourceIds": ["curated:site-scope"],
+      "primaryKind": "curated-mdx",
+      "contentKind": "site-scope",
+      "title": "Site scope and navigation",
+      "localPath": "content/site-scope.mdx",
+      "url": "/",
       "trustedUrls": []
     }
   ],

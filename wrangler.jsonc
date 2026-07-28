@@ -1,46 +1,35 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "pankit-research-portfolio",
-  "main": "./worker/index.ts",
-  "compatibility_date": "2026-05-22",
-  "compatibility_flags": ["nodejs_compat"],
+  "name": "pankit-agent-systems",
+  "workers_dev": true,
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-07-28",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": {
-    "directory": "dist/client",
-    "not_found_handling": "none",
+    "directory": ".open-next/assets",
     "binding": "ASSETS",
   },
+  "ai": {
+    "binding": "AI",
+  },
+  "observability": {
+    "enabled": true,
+  },
   "vars": {
-    "CHAT_MOCK_MODE": "true",
-    "AI_MODEL": "@cf/meta/llama-3.1-8b-instruct-fast",
-    "RATE_LIMIT_MAX_REQUESTS": "12",
-    "RATE_LIMIT_WINDOW_SECONDS": "60",
+    "GITHUB_USERNAME": "pxnkit",
+    "AI_MODE": "cloudflare",
+    "AI_MODEL_PRIMARY": "@cf/zai-org/glm-4.7-flash",
+    "AI_MODEL_ECONOMY": "@cf/ibm-granite/granite-4.0-h-micro",
+    "AI_MODEL_CHALLENGER": "@cf/qwen/qwen3-30b-a3b-fp8",
+    "ENABLE_ECONOMY_ROUTING": "false",
+    "MAX_SESSION_GENERATED_ANSWERS": "8",
+    "MAX_QUESTION_CHARACTERS": "700",
   },
-  "env": {
-    "production": {
-      "name": "pankit-research-portfolio",
-      "assets": {
-        "directory": "dist/client",
-        "not_found_handling": "none",
-        "binding": "ASSETS",
-      },
-      "ai": {
-        "binding": "AI",
-      },
-      "vars": {
-        "CHAT_MOCK_MODE": "false",
-        "AI_MODEL": "@cf/meta/llama-3.1-8b-instruct-fast",
-        "RATE_LIMIT_MAX_REQUESTS": "12",
-        "RATE_LIMIT_WINDOW_SECONDS": "60",
-      },
-
-      // Optional distributed rate limiting. Create the namespace, then
-      // uncomment this block and replace the placeholder with its real ID.
-      // "kv_namespaces": [
-      //   {
-      //     "binding": "RATE_LIMIT_KV",
-      //     "id": "<RATE_LIMIT_KV_NAMESPACE_ID>"
-      //   }
-      // ]
-    },
-  },
+  // Optional distributed counters:
+  // "kv_namespaces": [
+  //   {
+  //     "binding": "RATE_LIMIT_KV",
+  //     "id": "<RATE_LIMIT_KV_NAMESPACE_ID>"
+  //   }
+  // ]
 }

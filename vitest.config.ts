@@ -10,9 +10,6 @@ export default defineConfig({
       "@": projectRoot,
     },
   },
-  esbuild: {
-    jsx: "automatic",
-  },
   test: {
     environment: "jsdom",
     globals: true,

@@ -517,14 +517,14 @@ export const projects: Project[] = [
   }),
   defineProject({
     slug: "temporags",
-    title: "TempoRGS",
+    title: "TempoRAGS",
     shortDescription:
       "Reader-aware parallel anytime reranker-guided graph search under latency budgets.",
     longDescription:
-      "TempoRGS studies how several complementary document-graph frontier regions can be reranked in parallel while an anytime controller returns the best valid ranking before a deadline.",
+      "TempoRAGS studies how several complementary document-graph frontier regions can be reranked in parallel while an anytime controller returns the best valid ranking before a deadline.",
     primaryPillar: "Retrieval and Evidence",
     tags: ["graph search", "reranking", "RAG"],
-    aliases: ["Tempo RGS", "Tempo-RGS"],
+    aliases: ["Tempo RAGS", "Tempo-RAGS", "TempoRGS", "Tempo RGS", "Tempo-RGS"],
     featured: true,
     evaluationStatus: "deterministic MiniTempoRGS smoke fixture",
     languages: ["Python", "TypeScript"],

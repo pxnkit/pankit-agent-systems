@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import { GlobalNavigation } from "@/components/navigation/global-navigation";
-import "@fontsource-variable/inter";
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
+import "@fontsource/newsreader/500.css";
+import "@fontsource/newsreader/600.css";
 import "./globals.css";
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  "https://pankit-agent-systems.brahmkhatripankit.chatgpt.site";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -51,7 +52,31 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body>
+      <body className={`${GeistSans.variable} ${GeistMono.variable}`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              name: "Pankit Brahmkhatri",
+              url: siteUrl,
+              sameAs: ["https://github.com/pxnkit"],
+              jobTitle: "Master’s student in Computer Science",
+              affiliation: {
+                "@type": "CollegeOrUniversity",
+                name: "TU Dresden",
+              },
+              knowsAbout: [
+                "agent memory",
+                "information retrieval",
+                "test-time learning",
+                "search-guided reasoning",
+                "reliable tool-using AI agents",
+              ],
+            }).replace(/</g, "\\u003c"),
+          }}
+        />
         <a className="skip-link" href="#main-content">
           Skip to content
         </a>
