@@ -106,6 +106,9 @@ Chromium is the required CI browser because it is the verified Workers-runtime
 gate on the supported runner. Run the unscoped `npm run test:e2e` command for
 the extended Firefox and WebKit matrix where those engines complete reliably;
 do not treat a stalled or unavailable engine as a passing result.
+The one-pixel artifact detector runs in CI on Linux. The full-page screenshot
+comparison is intentionally tied to its committed Windows baseline so
+platform-specific font rasterization does not create a false release failure.
 
 After `build:corpus`, the committed `generated/` directory must have no
 unexpected diff. The corpus gate is a security boundary: it rejects stale

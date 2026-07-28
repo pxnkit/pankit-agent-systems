@@ -37,6 +37,10 @@ test("portfolio desktop visual remains stable", async ({
   browserName,
 }) => {
   test.skip(browserName !== "chromium", "Chromium owns the visual baseline.");
+  test.skip(
+    process.platform !== "win32",
+    "The committed pixel baseline is generated on Windows.",
+  );
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto("/portfolio", { waitUntil: "networkidle" });
   await page.evaluate(() => document.fonts.ready);
