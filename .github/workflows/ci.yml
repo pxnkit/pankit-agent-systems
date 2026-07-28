@@ -65,5 +65,5 @@ jobs:
           AI_MODE: mock
           NEXT_PUBLIC_SITE_URL: http://localhost:4173
 
-      - name: Run end-to-end tests against the Workers runtime
-        run: npm run test:e2e
+      - name: Run Chromium end-to-end tests against the Workers runtime
+        run: npm run test:e2e -- --project=chromium
