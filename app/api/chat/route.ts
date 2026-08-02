@@ -175,6 +175,9 @@ function liveAnswerStream(options: {
         if (options.requestSignal.aborted) {
           return;
         }
+        console.error("Workers AI stream fallback", {
+          message: error instanceof Error ? error.message : String(error),
+        });
         const reason = providerFallbackReason(error);
         const fallback = await options.fallback(reason);
         emit({
@@ -350,6 +353,9 @@ export async function POST(request: Request) {
         },
       );
     } catch (error) {
+      console.error("Workers AI streaming unavailable", {
+        message: error instanceof Error ? error.message : String(error),
+      });
       const reason = providerFallbackReason(error);
       generationFallback = {
         reason,
