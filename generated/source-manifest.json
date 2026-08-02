@@ -1,17 +1,18 @@
 {
   "schemaVersion": 1,
-  "version": "2026-07-28.aa1cb8f8150a",
+  "version": "2026-07-28.22b6050f1aac",
   "capturedAt": "2026-07-28",
   "generatedAt": "2026-07-28T00:00:00.000Z",
   "precedence": [
     "manual-curation",
     "curated-mdx",
     "local-readme-and-docs",
+    "trusted-github-documentation",
     "trusted-github-metadata"
   ],
   "overridePolicy": "Manual descriptions, rankings, aliases, featured choices, and exclusions always override generated metadata.",
   "trustedHosts": ["github.com"],
-  "sourceCount": 35,
+  "sourceCount": 161,
   "sources": [
     {
       "projectSlug": "rka-lab",
@@ -290,6 +291,1019 @@
       "localPath": "content/site-scope.mdx",
       "url": "/",
       "trustedUrls": []
+    },
+    {
+      "sourceIds": ["curated:cv-education"],
+      "primaryKind": "curated-mdx",
+      "contentKind": "profile",
+      "title": "Education and academic foundation",
+      "localPath": "content/profile-education.mdx",
+      "url": "/portfolio",
+      "trustedUrls": []
+    },
+    {
+      "sourceIds": ["curated:cv-projects"],
+      "primaryKind": "curated-mdx",
+      "contentKind": "profile",
+      "title": "Selected applied AI systems",
+      "localPath": "content/profile-projects.mdx",
+      "url": "/projects",
+      "trustedUrls": []
+    },
+    {
+      "sourceIds": ["curated:cv-technical"],
+      "primaryKind": "curated-mdx",
+      "contentKind": "profile",
+      "title": "Technical practice",
+      "localPath": "content/profile-technical.mdx",
+      "url": "/portfolio",
+      "trustedUrls": []
+    },
+    {
+      "sourceIds": ["curated:cv-experience"],
+      "primaryKind": "curated-mdx",
+      "contentKind": "profile",
+      "title": "Selected earlier experience",
+      "localPath": "content/profile-experience.mdx",
+      "url": "/portfolio",
+      "trustedUrls": []
+    },
+    {
+      "sourceIds": ["curated:cv-publications"],
+      "primaryKind": "curated-mdx",
+      "contentKind": "profile",
+      "title": "Selected writing and recognition",
+      "localPath": "content/profile-publications.mdx",
+      "url": "/writing",
+      "trustedUrls": []
+    },
+    {
+      "sourceIds": ["github:pxnkit/synthesis-autopsy:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "synthesis-autopsy — README.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/synthesis-autopsy/blob/main/README.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/synthesis-autopsy:ARCHITECTURE.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "synthesis-autopsy — ARCHITECTURE.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/synthesis-autopsy/blob/main/ARCHITECTURE.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/chaffmem-lab:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "chaffmem-lab — README.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/chaffmem-lab/blob/main/README.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/chaffmem-lab:docs/architecture.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "chaffmem-lab — docs/architecture.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/chaffmem-lab/blob/main/docs/architecture.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/chaffmem-lab:docs/api.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "chaffmem-lab — docs/api.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/chaffmem-lab/blob/main/docs/api.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/chaffmem-lab:docs/originality.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "chaffmem-lab — docs/originality.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/chaffmem-lab/blob/main/docs/originality.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/chaffmem-lab:docs/test-strategy.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "chaffmem-lab — docs/test-strategy.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/chaffmem-lab/blob/main/docs/test-strategy.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/paramledger:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "paramledger — README.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/paramledger/blob/main/README.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/rka-lab:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "rka-lab — README.md",
+      "trustedUrls": ["https://github.com/pxnkit/rka-lab/blob/main/README.md"]
+    },
+    {
+      "sourceIds": ["github:pxnkit/rka-lab:docs/architecture.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "rka-lab — docs/architecture.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/rka-lab/blob/main/docs/architecture.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/rka-lab:docs/benchmark_protocol.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "rka-lab — docs/benchmark_protocol.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/rka-lab/blob/main/docs/benchmark_protocol.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/rka-lab:docs/claims_ledger.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "rka-lab — docs/claims_ledger.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/rka-lab/blob/main/docs/claims_ledger.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/rka-lab:docs/data_card.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "rka-lab — docs/data_card.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/rka-lab/blob/main/docs/data_card.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/rka-lab:docs/failure_gallery.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "rka-lab — docs/failure_gallery.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/rka-lab/blob/main/docs/failure_gallery.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/txnmem:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "txnmem — README.md",
+      "trustedUrls": ["https://github.com/pxnkit/txnmem/blob/main/README.md"]
+    },
+    {
+      "sourceIds": ["github:pxnkit/txnmem:docs/architecture.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "txnmem — docs/architecture.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/txnmem/blob/main/docs/architecture.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/txnmem:docs/benchmark-card.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "txnmem — docs/benchmark-card.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/txnmem/blob/main/docs/benchmark-card.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/txnmem:docs/consistency.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "txnmem — docs/consistency.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/txnmem/blob/main/docs/consistency.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/txnmem:docs/data-card.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "txnmem — docs/data-card.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/txnmem/blob/main/docs/data-card.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/txnmem:docs/protocol.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "txnmem — docs/protocol.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/txnmem/blob/main/docs/protocol.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/chronicle-guard:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "chronicle-guard — README.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/chronicle-guard/blob/main/README.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/chronicle-guard:docs/architecture.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "chronicle-guard — docs/architecture.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/chronicle-guard/blob/main/docs/architecture.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/chronicle-guard:docs/benchmark-card.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "chronicle-guard — docs/benchmark-card.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/chronicle-guard/blob/main/docs/benchmark-card.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/chronicle-guard:docs/data-card.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "chronicle-guard — docs/data-card.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/chronicle-guard/blob/main/docs/data-card.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/chronicle-guard:docs/evaluation.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "chronicle-guard — docs/evaluation.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/chronicle-guard/blob/main/docs/evaluation.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/chronicle-guard:docs/model-card.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "chronicle-guard — docs/model-card.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/chronicle-guard/blob/main/docs/model-card.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/barriernow:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "barriernow — README.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/barriernow/blob/main/README.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/barriernow:docs/architecture.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "barriernow — docs/architecture.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/barriernow/blob/main/docs/architecture.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/barriernow:docs/accessibility.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "barriernow — docs/accessibility.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/barriernow/blob/main/docs/accessibility.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/barriernow:docs/source_registry.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "barriernow — docs/source_registry.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/barriernow/blob/main/docs/source_registry.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/barriernow:docs/threat_model.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "barriernow — docs/threat_model.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/barriernow/blob/main/docs/threat_model.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/intentledger:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "intentledger — README.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/intentledger/blob/main/README.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/intentledger:docs/architecture.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "intentledger — docs/architecture.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/intentledger/blob/main/docs/architecture.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/intentledger:docs/benchmark-card.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "intentledger — docs/benchmark-card.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/intentledger/blob/main/docs/benchmark-card.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/intentledger:docs/data-card.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "intentledger — docs/data-card.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/intentledger/blob/main/docs/data-card.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/intentledger:docs/evaluation-protocol.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "intentledger — docs/evaluation-protocol.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/intentledger/blob/main/docs/evaluation-protocol.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/intentledger:docs/formal-semantics.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "intentledger — docs/formal-semantics.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/intentledger/blob/main/docs/formal-semantics.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/whofixesthis:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "whofixesthis — README.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/whofixesthis/blob/main/README.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/whofixesthis:docs/architecture.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "whofixesthis — docs/architecture.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/whofixesthis/blob/main/docs/architecture.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/whofixesthis:docs/annotation_manual.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "whofixesthis — docs/annotation_manual.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/whofixesthis/blob/main/docs/annotation_manual.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/whofixesthis:docs/benchmark_card.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "whofixesthis — docs/benchmark_card.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/whofixesthis/blob/main/docs/benchmark_card.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/whofixesthis:docs/data_governance.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "whofixesthis — docs/data_governance.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/whofixesthis/blob/main/docs/data_governance.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/whofixesthis:docs/model_card.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "whofixesthis — docs/model_card.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/whofixesthis/blob/main/docs/model_card.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/freshindex:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "freshindex — README.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/freshindex/blob/main/README.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/freshindex:docs/architecture.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "freshindex — docs/architecture.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/freshindex/blob/main/docs/architecture.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/freshindex:docs/research_scope.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "freshindex — docs/research_scope.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/freshindex/blob/main/docs/research_scope.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/freshindex:docs/source_registry.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "freshindex — docs/source_registry.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/freshindex/blob/main/docs/source_registry.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/hippogate:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "hippogate — README.md",
+      "trustedUrls": ["https://github.com/pxnkit/hippogate/blob/main/README.md"]
+    },
+    {
+      "sourceIds": ["github:pxnkit/hypothesisops:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "hypothesisops — README.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/hypothesisops/blob/main/README.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/hypothesisops:docs/source_registry.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "hypothesisops — docs/source_registry.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/hypothesisops/blob/main/docs/source_registry.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/methodchain:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "methodchain — README.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/methodchain/blob/main/README.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/methodchain:docs/architecture.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "methodchain — docs/architecture.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/methodchain/blob/main/docs/architecture.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/methodchain:docs/data-statement.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "methodchain — docs/data-statement.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/methodchain/blob/main/docs/data-statement.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/methodchain:docs/reproducibility.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "methodchain — docs/reproducibility.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/methodchain/blob/main/docs/reproducibility.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/methodchain:docs/threat-model.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "methodchain — docs/threat-model.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/methodchain/blob/main/docs/threat-model.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/changepilot:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "changepilot — README.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/changepilot/blob/main/README.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/changepilot:docs/architecture.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "changepilot — docs/architecture.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/changepilot/blob/main/docs/architecture.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/changepilot:docs/rule-authoring.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "changepilot — docs/rule-authoring.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/changepilot/blob/main/docs/rule-authoring.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/memequiv:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "memequiv — README.md",
+      "trustedUrls": ["https://github.com/pxnkit/memequiv/blob/main/README.md"]
+    },
+    {
+      "sourceIds": ["github:pxnkit/currigraph:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "currigraph — README.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/currigraph/blob/main/README.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/currigraph:docs/ARCHITECTURE.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "currigraph — docs/ARCHITECTURE.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/currigraph/blob/main/docs/ARCHITECTURE.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/currigraph:docs/EXPERIMENTS.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "currigraph — docs/EXPERIMENTS.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/currigraph/blob/main/docs/EXPERIMENTS.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/currigraph:docs/RESEARCH_INTEGRITY.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "currigraph — docs/RESEARCH_INTEGRITY.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/currigraph/blob/main/docs/RESEARCH_INTEGRITY.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/communicate-to-remember:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "communicate-to-remember — README.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/communicate-to-remember/blob/main/README.md"
+      ]
+    },
+    {
+      "sourceIds": [
+        "github:pxnkit/communicate-to-remember:docs/methodology.md"
+      ],
+      "primaryKind": "trusted-github-documentation",
+      "title": "communicate-to-remember — docs/methodology.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/communicate-to-remember/blob/main/docs/methodology.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/scopeguard:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "scopeguard — README.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/scopeguard/blob/main/README.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/scopeguard:docs/METHOD.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "scopeguard — docs/METHOD.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/scopeguard/blob/main/docs/METHOD.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/scopeguard:docs/DATASETS.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "scopeguard — docs/DATASETS.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/scopeguard/blob/main/docs/DATASETS.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/scopeguard:docs/NON_INTERFERENCE.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "scopeguard — docs/NON_INTERFERENCE.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/scopeguard/blob/main/docs/NON_INTERFERENCE.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/scopeguard:docs/PAPER_OUTLINE.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "scopeguard — docs/PAPER_OUTLINE.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/scopeguard/blob/main/docs/PAPER_OUTLINE.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/scopeguard:docs/PROXY.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "scopeguard — docs/PROXY.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/scopeguard/blob/main/docs/PROXY.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/worldmodel-lstar:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "worldmodel-lstar — README.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/worldmodel-lstar/blob/main/README.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/worldmodel-lstar:docs/METHOD.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "worldmodel-lstar — docs/METHOD.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/worldmodel-lstar/blob/main/docs/METHOD.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/worldmodel-lstar:docs/ENVIRONMENTS.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "worldmodel-lstar — docs/ENVIRONMENTS.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/worldmodel-lstar/blob/main/docs/ENVIRONMENTS.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/worldmodel-lstar:docs/EVALUATION.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "worldmodel-lstar — docs/EVALUATION.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/worldmodel-lstar/blob/main/docs/EVALUATION.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/worldmodel-lstar:docs/PAPER_OUTLINE.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "worldmodel-lstar — docs/PAPER_OUTLINE.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/worldmodel-lstar/blob/main/docs/PAPER_OUTLINE.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/worldmodel-lstar:docs/REPRODUCIBILITY.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "worldmodel-lstar — docs/REPRODUCIBILITY.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/worldmodel-lstar/blob/main/docs/REPRODUCIBILITY.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/lineagerag:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "lineagerag — README.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/lineagerag/blob/main/README.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/lineagerag:docs/dataset_card.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "lineagerag — docs/dataset_card.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/lineagerag/blob/main/docs/dataset_card.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/lineagerag:docs/model_card.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "lineagerag — docs/model_card.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/lineagerag/blob/main/docs/model_card.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/lineagerag:docs/originality.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "lineagerag — docs/originality.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/lineagerag/blob/main/docs/originality.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/lineagerag:docs/real_data.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "lineagerag — docs/real_data.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/lineagerag/blob/main/docs/real_data.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/lineagerag:docs/reproducibility.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "lineagerag — docs/reproducibility.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/lineagerag/blob/main/docs/reproducibility.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/robustask:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "robustask — README.md",
+      "trustedUrls": ["https://github.com/pxnkit/robustask/blob/main/README.md"]
+    },
+    {
+      "sourceIds": ["github:pxnkit/robustask:docs/dataset_card.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "robustask — docs/dataset_card.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/robustask/blob/main/docs/dataset_card.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/robustask:docs/model_card.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "robustask — docs/model_card.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/robustask/blob/main/docs/model_card.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/robustask:docs/reproducibility.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "robustask — docs/reproducibility.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/robustask/blob/main/docs/reproducibility.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/skillfalsify:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "skillfalsify — README.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/skillfalsify/blob/main/README.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/skillfalsify:docs/architecture.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "skillfalsify — docs/architecture.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/skillfalsify/blob/main/docs/architecture.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/skillfalsify:docs/adapters.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "skillfalsify — docs/adapters.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/skillfalsify/blob/main/docs/adapters.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/skillfalsify:docs/estimands.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "skillfalsify — docs/estimands.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/skillfalsify/blob/main/docs/estimands.md"
+      ]
+    },
+    {
+      "sourceIds": [
+        "github:pxnkit/skillfalsify:docs/originality-and-source-boundaries.md"
+      ],
+      "primaryKind": "trusted-github-documentation",
+      "title": "skillfalsify — docs/originality-and-source-boundaries.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/skillfalsify/blob/main/docs/originality-and-source-boundaries.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/skillfalsify:docs/reproducibility.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "skillfalsify — docs/reproducibility.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/skillfalsify/blob/main/docs/reproducibility.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/regimebank:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "regimebank — README.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/regimebank/blob/main/README.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/regimebank:docs/design.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "regimebank — docs/design.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/regimebank/blob/main/docs/design.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/memintervene:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "memintervene — README.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/memintervene/blob/main/README.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/memintervene:docs/architecture.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "memintervene — docs/architecture.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/memintervene/blob/main/docs/architecture.md"
+      ]
+    },
+    {
+      "sourceIds": [
+        "github:pxnkit/memintervene:docs/adr/0001-offline-first.md"
+      ],
+      "primaryKind": "trusted-github-documentation",
+      "title": "memintervene — docs/adr/0001-offline-first.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/memintervene/blob/main/docs/adr/0001-offline-first.md"
+      ]
+    },
+    {
+      "sourceIds": [
+        "github:pxnkit/memintervene:docs/adr/0002-append-only-ledger.md"
+      ],
+      "primaryKind": "trusted-github-documentation",
+      "title": "memintervene — docs/adr/0002-append-only-ledger.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/memintervene/blob/main/docs/adr/0002-append-only-ledger.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/memintervene:docs/providers.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "memintervene — docs/providers.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/memintervene/blob/main/docs/providers.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/memintervene:docs/public-datasets.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "memintervene — docs/public-datasets.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/memintervene/blob/main/docs/public-datasets.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/certicompress:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "certicompress — README.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/certicompress/blob/main/README.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/certicompress:docs/architecture.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "certicompress — docs/architecture.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/certicompress/blob/main/docs/architecture.md"
+      ]
+    },
+    {
+      "sourceIds": [
+        "github:pxnkit/certicompress:docs/adr/0001-append-only-ledger.md"
+      ],
+      "primaryKind": "trusted-github-documentation",
+      "title": "certicompress — docs/adr/0001-append-only-ledger.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/certicompress/blob/main/docs/adr/0001-append-only-ledger.md"
+      ]
+    },
+    {
+      "sourceIds": [
+        "github:pxnkit/certicompress:docs/adr/0002-fail-closed-activation.md"
+      ],
+      "primaryKind": "trusted-github-documentation",
+      "title": "certicompress — docs/adr/0002-fail-closed-activation.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/certicompress/blob/main/docs/adr/0002-fail-closed-activation.md"
+      ]
+    },
+    {
+      "sourceIds": [
+        "github:pxnkit/certicompress:docs/originality-and-source-boundaries.md"
+      ],
+      "primaryKind": "trusted-github-documentation",
+      "title": "certicompress — docs/originality-and-source-boundaries.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/certicompress/blob/main/docs/originality-and-source-boundaries.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/certicompress:docs/public-datasets.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "certicompress — docs/public-datasets.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/certicompress/blob/main/docs/public-datasets.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/tempo-trust:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "tempo-trust — README.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/tempo-trust/blob/main/README.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/tempo-trust:ARCHITECTURE.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "tempo-trust — ARCHITECTURE.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/tempo-trust/blob/main/ARCHITECTURE.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/temporags:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "temporags — README.md",
+      "trustedUrls": ["https://github.com/pxnkit/temporags/blob/main/README.md"]
+    },
+    {
+      "sourceIds": ["github:pxnkit/verifysplit:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "verifysplit — README.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/verifysplit/blob/main/README.md"
+      ]
+    },
+    {
+      "sourceIds": [
+        "github:pxnkit/verifysplit:docs/adr/0001-offline-first-vertical-slice.md"
+      ],
+      "primaryKind": "trusted-github-documentation",
+      "title": "verifysplit — docs/adr/0001-offline-first-vertical-slice.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/verifysplit/blob/main/docs/adr/0001-offline-first-vertical-slice.md"
+      ]
+    },
+    {
+      "sourceIds": [
+        "github:pxnkit/verifysplit:docs/adr/0002-event-and-provenance-audit.md"
+      ],
+      "primaryKind": "trusted-github-documentation",
+      "title": "verifysplit — docs/adr/0002-event-and-provenance-audit.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/verifysplit/blob/main/docs/adr/0002-event-and-provenance-audit.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/evidroute:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "evidroute — README.md",
+      "trustedUrls": ["https://github.com/pxnkit/evidroute/blob/main/README.md"]
+    },
+    {
+      "sourceIds": ["github:pxnkit/evidroute:docs/architecture.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "evidroute — docs/architecture.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/evidroute/blob/main/docs/architecture.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/evidroute:docs/adr/0001-offline-first.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "evidroute — docs/adr/0001-offline-first.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/evidroute/blob/main/docs/adr/0001-offline-first.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/evidroute:docs/adr/0002-risk-and-shift.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "evidroute — docs/adr/0002-risk-and-shift.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/evidroute/blob/main/docs/adr/0002-risk-and-shift.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/evidroute:docs/related-work.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "evidroute — docs/related-work.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/evidroute/blob/main/docs/related-work.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/evidroute:docs/reproducibility.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "evidroute — docs/reproducibility.md",
+      "trustedUrls": [
+        "https://github.com/pxnkit/evidroute/blob/main/docs/reproducibility.md"
+      ]
+    },
+    {
+      "sourceIds": ["github:pxnkit/pxnkit:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "pxnkit — README.md",
+      "trustedUrls": ["https://github.com/pxnkit/pxnkit/blob/main/README.md"]
+    },
+    {
+      "sourceIds": ["github:pxnkit/trace-mem:README.md"],
+      "primaryKind": "trusted-github-documentation",
+      "title": "trace-mem — README.md",
+      "trustedUrls": ["https://github.com/pxnkit/trace-mem/blob/main/README.md"]
     }
   ],
   "rankedEntries": [

@@ -148,6 +148,9 @@ function InlineAnswer({
             const match = sourceIndex.get(citation[1]);
             if (!match) return null;
             const href =
+              (match.source.type === "repository-documentation"
+                ? match.source.url
+                : undefined) ??
               match.source.internalUrl ??
               (match.source.projectSlug
                 ? `/projects/${match.source.projectSlug}`

@@ -14,6 +14,7 @@ export type TrustedSource = {
 
 export function SourceCard({ source }: { source: TrustedSource }) {
   const href =
+    (source.type === "repository-documentation" ? source.url : undefined) ??
     source.internalUrl ??
     source.url ??
     (source.projectSlug ? `/projects/${source.projectSlug}` : undefined);

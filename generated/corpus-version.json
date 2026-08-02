@@ -1,25 +1,26 @@
 {
   "schemaVersion": 1,
-  "version": "2026-07-28.aa1cb8f8150a",
+  "version": "2026-07-28.22b6050f1aac",
   "generatedAt": "2026-07-28T00:00:00.000Z",
   "catalogProjectCount": 34,
   "verifiedPublicProjectCount": 29,
   "pendingTitleOnlyProjectCount": 5,
   "featuredProjectCount": 8,
   "rankedProjectCount": 6,
-  "knowledgeChunkCount": 78,
-  "searchDocumentCount": 54,
-  "sourceCount": 35,
-  "profileSourceCount": 1,
-  "profileChunkCount": 2,
+  "knowledgeChunkCount": 432,
+  "searchDocumentCount": 408,
+  "sourceCount": 161,
+  "profileSourceCount": 6,
+  "profileChunkCount": 13,
   "themeChunkCount": 5,
   "kindCounts": {
     "overview": 3,
-    "profile": 2,
+    "profile": 13,
     "project-limitation": 29,
     "project-map": 6,
     "project-summary": 29,
     "ranking": 1,
+    "repository-documentation": 343,
     "site-scope": 3,
     "theme": 5
   },
@@ -27,9 +28,9 @@
   "contentPolicyVersion": 1,
   "manualOverrideRevision": 1,
   "hashes": {
-    "knowledge": "85d19c91dc5917ac479498341a05610a5f3e853a9e230a6464b482fae9e85bae",
-    "sourceManifest": "57f2acffac55468c0466aea0e31571ef1492b3388b720b28a8a9db2c3cd91b32",
-    "searchIndex": "8737c12b20b14a62e230c09ee8bccd159313c286dab005506b758ed986410095"
+    "knowledge": "6713810798a459c628fbfff14c9898d02bc9431cfe89f73917edb9b59cb1e93d",
+    "sourceManifest": "8ae0757a50c6072183a28f0e5a9557e039a2e7de1ef1ddc9f76311bc93899631",
+    "searchIndex": "d8c5d60ac933592417f7b96a2200c5a5a9f6003f9527bb28caec7b60125e0030"
   },
   "checks": {
     "uniqueChunkIds": true,
@@ -47,13 +48,13 @@
     "retrievalAssertionsPassed": true
   },
   "retrievalAssertions": [
-    { "id": "identity", "ok": true, "matchCount": 3 },
-    { "id": "overview", "ok": true, "matchCount": 6 },
+    { "id": "identity", "ok": true, "matchCount": 8 },
+    { "id": "overview", "ok": true, "matchCount": 8 },
     { "id": "research-connection", "ok": true, "matchCount": 8 },
-    { "id": "exact-project", "ok": true, "matchCount": 4 },
-    { "id": "comparison", "ok": true, "matchCount": 5 },
+    { "id": "exact-project", "ok": true, "matchCount": 8 },
+    { "id": "comparison", "ok": true, "matchCount": 7 },
     { "id": "theme", "ok": true, "matchCount": 8 },
-    { "id": "navigation", "ok": true, "matchCount": 2 },
+    { "id": "navigation", "ok": true, "matchCount": 6 },
     { "id": "excluded-topic", "ok": true, "matchCount": 0 }
   ],
   "notes": [

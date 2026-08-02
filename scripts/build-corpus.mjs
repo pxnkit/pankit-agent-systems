@@ -21,6 +21,9 @@ import {
 const GENERATED_AT = "2026-07-28T00:00:00.000Z";
 const CAPTURED_AT = "2026-07-28";
 const SOURCE_ID_PATTERN = /^[A-Za-z0-9][A-Za-z0-9._:/-]{0,159}$/;
+const REPOSITORY_EVIDENCE_FILE = "github-repository-evidence.json";
+const MAX_EVIDENCE_CHUNK_CHARACTERS = 1_600;
+const MAX_EVIDENCE_CHUNKS_PER_DOCUMENT = 12;
 
 export const CORPUS_INVARIANTS = Object.freeze({
   minimumChunkCount: 60,
@@ -56,6 +59,31 @@ export const REQUIRED_CONTENT_SEEDS = Object.freeze([
     fileName: "site-scope.mdx",
     sourceId: "curated:site-scope",
     kind: "site-scope",
+  },
+  {
+    fileName: "profile-education.mdx",
+    sourceId: "curated:cv-education",
+    kind: "profile",
+  },
+  {
+    fileName: "profile-projects.mdx",
+    sourceId: "curated:cv-projects",
+    kind: "profile",
+  },
+  {
+    fileName: "profile-technical.mdx",
+    sourceId: "curated:cv-technical",
+    kind: "profile",
+  },
+  {
+    fileName: "profile-experience.mdx",
+    sourceId: "curated:cv-experience",
+    kind: "profile",
+  },
+  {
+    fileName: "profile-publications.mdx",
+    sourceId: "curated:cv-publications",
+    kind: "profile",
   },
 ]);
 
@@ -416,6 +444,67 @@ function projectChunks(projects, allowlist) {
   return chunks;
 }
 
+/** @param {string} value */
+function splitEvidenceText(value) {
+  const clean = markdownToText(value);
+  if (!clean) return [];
+  const chunks = [];
+  let remainder = clean;
+  while (remainder && chunks.length < MAX_EVIDENCE_CHUNKS_PER_DOCUMENT) {
+    if (remainder.length <= MAX_EVIDENCE_CHUNK_CHARACTERS) {
+      chunks.push(remainder);
+      break;
+    }
+    const boundary = Math.max(
+      remainder.lastIndexOf(". ", MAX_EVIDENCE_CHUNK_CHARACTERS),
+      remainder.lastIndexOf("; ", MAX_EVIDENCE_CHUNK_CHARACTERS),
+      remainder.lastIndexOf(" ", MAX_EVIDENCE_CHUNK_CHARACTERS),
+    );
+    const end = boundary > 300 ? boundary + 1 : MAX_EVIDENCE_CHUNK_CHARACTERS;
+    chunks.push(remainder.slice(0, end).trim());
+    remainder = remainder.slice(end).trim();
+  }
+  return chunks.filter(Boolean);
+}
+
+/** @param {unknown} evidence */
+function repositoryEvidenceChunks(evidence) {
+  if (!isRecord(evidence) || !Array.isArray(evidence.documents)) return [];
+  return evidence.documents.flatMap((document) => {
+    if (!isRecord(document)) return [];
+    const id = typeof document.id === "string" ? document.id : "";
+    const sourceId =
+      typeof document.sourceId === "string" ? document.sourceId : "";
+    const title = typeof document.title === "string" ? document.title : "";
+    const url = typeof document.url === "string" ? document.url : "";
+    const tags = uniqueStrings([
+      ...stringList(document.tags),
+      typeof document.repository === "string" ? document.repository : "",
+    ]);
+    const parts = splitEvidenceText(
+      typeof document.content === "string" ? document.content : "",
+    );
+    if (
+      !SOURCE_ID_PATTERN.test(id) ||
+      !SOURCE_ID_PATTERN.test(sourceId) ||
+      !title ||
+      !url ||
+      tags.length === 0
+    ) {
+      return [];
+    }
+    return parts.map((text, index) => ({
+      id: `${id}:part:${index + 1}`,
+      sourceId,
+      kind: "repository-documentation",
+      title: parts.length > 1 ? `${title} - part ${index + 1}` : title,
+      text,
+      url,
+      tags,
+    }));
+  });
+}
+
 /** @param {Record<string, unknown>[]} rankedProjects */
 function rankingChunk(rankedProjects) {
   const ranking = rankedProjects
@@ -440,6 +529,7 @@ function rankingChunk(rankedProjects) {
  * @param {string[]} allowlist
  * @param {ReturnType<typeof parseContentSeed>[]} seeds
  * @param {Record<string, unknown>[]} rankedProjects
+ * @param {Record<string, unknown>[]} repositoryDocuments
  * @param {string} version
  */
 function buildSourceManifest(
@@ -447,6 +537,7 @@ function buildSourceManifest(
   allowlist,
   seeds,
   rankedProjects,
+  repositoryDocuments,
   version,
 ) {
   const bySlug = new Map(
@@ -501,6 +592,19 @@ function buildSourceManifest(
       trustedUrls: [],
     });
   });
+  repositoryDocuments.forEach((document) => {
+    if (!isRecord(document)) return;
+    const sourceId =
+      typeof document.sourceId === "string" ? document.sourceId : "";
+    const url = typeof document.url === "string" ? document.url : "";
+    if (!SOURCE_ID_PATTERN.test(sourceId) || !url) return;
+    sources.push({
+      sourceIds: [sourceId],
+      primaryKind: "trusted-github-documentation",
+      title: typeof document.title === "string" ? document.title : sourceId,
+      trustedUrls: [url],
+    });
+  });
 
   const rankedEntries = rankedProjects.map((ranked) => {
     const project = bySlug.get(String(ranked.slug));
@@ -534,6 +638,7 @@ function buildSourceManifest(
       "manual-curation",
       "curated-mdx",
       "local-readme-and-docs",
+      "trusted-github-documentation",
       "trusted-github-metadata",
     ],
     overridePolicy:
@@ -1253,7 +1358,7 @@ async function loadSeeds(contentDirectory) {
   ).sort();
   if (!sameJson(rootMdxFiles, expectedSorted)) {
     throw new Error(
-      `content/ must contain exactly these five root MDX seeds: ${expectedSorted.join(", ")}.`,
+      `content/ must contain exactly these curated root MDX seeds: ${expectedSorted.join(", ")}.`,
     );
   }
 
@@ -1270,7 +1375,7 @@ async function loadSeeds(contentDirectory) {
 
 /**
  * Build and validate every generated retrieval artifact from data-only project
- * records and the five curated MDX seeds.
+ * records, public repository documentation, and curated MDX seeds.
  *
  * @param {{
  *   projectsPath?: string,
@@ -1279,6 +1384,7 @@ async function loadSeeds(contentDirectory) {
  *   exclusionsPath?: string,
  *   contentDirectory?: string,
  *   generatedDirectory?: string,
+ *   repositoryEvidencePath?: string,
  *   write?: boolean
  * }} [options]
  */
@@ -1303,15 +1409,26 @@ export async function buildCorpus(options = {}) {
   const generatedDirectory = assertProjectPath(
     options.generatedDirectory ?? resolve(projectRoot, "generated"),
   );
+  const repositoryEvidencePath = assertProjectPath(
+    options.repositoryEvidencePath ??
+      resolve(projectRoot, "data", REPOSITORY_EVIDENCE_FILE),
+  );
 
-  const [rawProjects, rawRankedProjects, rawAllowlist, rawExclusions, seeds] =
-    await Promise.all([
-      readLiteralExport(projectsPath, "projects"),
-      readLiteralExport(rankedProjectsPath, "rankedProjects"),
-      readLiteralExport(allowlistPath, "projectAllowlist"),
-      readLiteralExport(exclusionsPath, "projectExclusions"),
-      loadSeeds(contentDirectory),
-    ]);
+  const [
+    rawProjects,
+    rawRankedProjects,
+    rawAllowlist,
+    rawExclusions,
+    seeds,
+    repositoryEvidence,
+  ] = await Promise.all([
+    readLiteralExport(projectsPath, "projects"),
+    readLiteralExport(rankedProjectsPath, "rankedProjects"),
+    readLiteralExport(allowlistPath, "projectAllowlist"),
+    readLiteralExport(exclusionsPath, "projectExclusions"),
+    loadSeeds(contentDirectory),
+    readOptionalJson(repositoryEvidencePath, { documents: [] }),
+  ]);
 
   const projectResult = validateProjectCollection(rawProjects);
   const rankResult = validateRankedProjects(
@@ -1351,9 +1468,15 @@ export async function buildCorpus(options = {}) {
           }
         : chunk,
     );
+  const evidenceChunks = repositoryEvidenceChunks(repositoryEvidence);
+  const repositoryDocuments =
+    isRecord(repositoryEvidence) && Array.isArray(repositoryEvidence.documents)
+      ? repositoryEvidence.documents.filter(isRecord)
+      : [];
   const chunks = [
     ...projectChunks(projects, allowlist),
     ...seedChunks,
+    ...evidenceChunks,
     rankingChunk(rankedProjects),
   ];
   const versionSeed = {
@@ -1361,6 +1484,11 @@ export async function buildCorpus(options = {}) {
     exclusions,
     rankedProjects,
     chunks,
+    repositoryEvidence: repositoryDocuments.map((document) => ({
+      id: document.id,
+      sourceId: document.sourceId,
+      url: document.url,
+    })),
     seedMetadata: seeds.map(({ metadata, relativePath }) => ({
       relativePath,
       ...metadata,
@@ -1373,6 +1501,7 @@ export async function buildCorpus(options = {}) {
     allowlist,
     seeds,
     rankedProjects,
+    repositoryDocuments,
     version,
   );
   const documents = buildSearchDocuments(projects, rankedProjects, chunks);
