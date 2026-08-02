@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "pankit-agent-systems",
+  "name": "pankit",
   "workers_dev": true,
   "main": ".open-next/worker.js",
   "compatibility_date": "2026-07-28",
